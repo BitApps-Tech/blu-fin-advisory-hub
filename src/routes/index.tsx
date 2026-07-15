@@ -7,8 +7,8 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "BluFin Capital Advisory — Institutional Capital Markets Advisory" },
       { name: "description", content: "ECMA-licensed Securities Investment Advisor. Corporate finance, listing solutions, transaction advisory and private equity for Ethiopia's next generation of issuers." },
-      { property: "og:title", content: "BluFin Capital Advisory" },
-      { property: "og:description", content: "ECMA-licensed Securities Investment Advisor for Ethiopia's capital markets." },
+      { property: "og:title", content: "BluFin Capital Advisory — Institutional Capital Markets Advisory" },
+      { property: "og:description", content: "ECMA-licensed Securities Investment Advisor. Corporate finance, listing solutions, transaction advisory and private equity for Ethiopia's next generation of issuers." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
