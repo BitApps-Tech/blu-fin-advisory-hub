@@ -39,11 +39,16 @@ function Insights() {
   return (
     <>
       <section className="hairline-b bg-background">
-        <div className="container-editorial py-20 md:py-24">
-          <div className="eyebrow">Insights & Newsroom</div>
-          <h1 className="mt-6 max-w-3xl font-serif text-5xl text-navy md:text-6xl">
-            Research, commentary and announcements.
-          </h1>
+        <div className="container-editorial grid gap-12 py-20 md:grid-cols-12 md:py-24">
+          <div className="md:col-span-8">
+            <div className="eyebrow">Insights & Newsroom</div>
+            <h1 className="mt-6 max-w-3xl font-serif text-5xl text-navy md:text-6xl">
+              Research, commentary and announcements.
+            </h1>
+          </div>
+          <div className="hidden md:col-span-4 md:block">
+            <AtAGlance practice="Market Research & Commentary" />
+          </div>
         </div>
       </section>
 
