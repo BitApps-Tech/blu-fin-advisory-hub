@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Building2, Landmark, Handshake, LineChart, ArrowUpRight } from "lucide-react";
+import { AtAGlance } from "../components/AtAGlance";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -70,15 +71,20 @@ function Services() {
   return (
     <>
       <section className="hairline-b bg-background">
-        <div className="container-editorial py-20 md:py-28">
-          <div className="eyebrow">Advisory Services</div>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl text-navy md:text-6xl">
-            Four practices, engineered for the transactions that define institutions.
-          </h1>
-          <p className="mt-8 max-w-2xl text-lg text-muted-foreground">
-            Every engagement is led by a senior partner. Every mandate carries the full
-            weight of our firm's institutional discipline, sector depth, and regulatory expertise.
-          </p>
+        <div className="container-editorial grid gap-12 py-20 md:grid-cols-12 md:py-28">
+          <div className="md:col-span-8">
+            <div className="eyebrow">Advisory Services</div>
+            <h1 className="mt-6 max-w-4xl font-serif text-5xl text-navy md:text-6xl">
+              Four practices, engineered for the transactions that define institutions.
+            </h1>
+            <p className="mt-8 max-w-2xl text-lg text-muted-foreground">
+              Every engagement is led by a senior partner. Every mandate carries the full
+              weight of our firm's institutional discipline, sector depth, and regulatory expertise.
+            </p>
+          </div>
+          <div className="hidden md:col-span-4 md:block">
+            <AtAGlance practice="Corporate Finance · Listings · M&A · PE" />
+          </div>
         </div>
       </section>
 

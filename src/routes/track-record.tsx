@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { txnStore, type Transaction, ensureSeeded } from "../lib/mock-store";
+import { AtAGlance } from "../components/AtAGlance";
 
 export const Route = createFileRoute("/track-record")({
   head: () => ({
@@ -43,15 +44,20 @@ function TrackRecord() {
   return (
     <>
       <section className="hairline-b bg-background">
-        <div className="container-editorial py-20 md:py-24">
-          <div className="eyebrow">Track record</div>
-          <h1 className="mt-6 max-w-3xl font-serif text-5xl text-navy md:text-6xl">
-            A ledger of completed mandates.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            Selected transactions on which BluFin has served as advisor. Filter by industry
-            vertical, transaction scale, or search by client or service.
-          </p>
+        <div className="container-editorial grid gap-12 py-20 md:grid-cols-12 md:py-24">
+          <div className="md:col-span-8">
+            <div className="eyebrow">Track record</div>
+            <h1 className="mt-6 max-w-3xl font-serif text-5xl text-navy md:text-6xl">
+              A ledger of completed mandates.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+              Selected transactions on which BluFin has served as advisor. Filter by industry
+              vertical, transaction scale, or search by client or service.
+            </p>
+          </div>
+          <div className="hidden md:col-span-4 md:block">
+            <AtAGlance practice="Transaction Advisory" />
+          </div>
         </div>
       </section>
 
