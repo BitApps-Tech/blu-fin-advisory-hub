@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { txnStore, type Transaction, ensureSeeded } from "../lib/mock-store";
+import { AtAGlance } from "../components/AtAGlance";
 
 export const Route = createFileRoute("/track-record")({
   head: () => ({
