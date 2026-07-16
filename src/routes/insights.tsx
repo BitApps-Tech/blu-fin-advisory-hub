@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { articleStore, type Article, ensureSeeded } from "../lib/mock-store";
+import { AtAGlance } from "../components/AtAGlance";
 
 export const Route = createFileRoute("/insights")({
   head: () => ({
