@@ -13,7 +13,7 @@ export function Logo({ variant = "dark", className }: LogoProps) {
     <img
       src={src}
       alt="BluFin Capital Advisory"
-      className={`h-16 w-auto object-contain md:h-20 ${className ?? ""}`}
+      className={`h-24 w-auto object-contain md:h-32 ${className ?? ""}`}
     />
   );
 }
