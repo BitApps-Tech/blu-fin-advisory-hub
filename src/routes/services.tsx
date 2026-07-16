@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Building2, Landmark, Handshake, LineChart, ArrowUpRight } from "lucide-react";
+import { AtAGlance } from "../components/AtAGlance";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
