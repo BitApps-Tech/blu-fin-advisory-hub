@@ -15,7 +15,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
     <header className="hairline-b sticky top-0 z-40 bg-background/90 backdrop-blur">
-      <div className="container-editorial flex h-28 items-center justify-between">
+      <div className="container-editorial flex h-40 items-center justify-between">
         <Link to="/" className="shrink-0">
           <Logo />
         </Link>
