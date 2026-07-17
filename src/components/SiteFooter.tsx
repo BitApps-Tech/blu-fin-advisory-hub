@@ -68,7 +68,19 @@ export function SiteFooter() {
 
       <div className="border-t border-white/10">
         <div className="container-editorial flex flex-col items-start justify-between gap-3 py-6 text-xs text-white/60 md:flex-row md:items-center">
-          <div>© {new Date().getFullYear()} BluFin Capital Advisory PLC. {t.footer.rights}</div>
+          <div>
+            © {new Date().getFullYear()} BluFin Capital Advisory PLC. {t.footer.rights}
+            <span className="mx-2 text-white/30">·</span>
+            {t.footer.designedBy}{" "}
+            <a
+              href="https://bitappstech.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/80 transition hover:text-white"
+            >
+              BitApps Tech
+            </a>
+          </div>
           <div>{t.footer.license}</div>
         </div>
       </div>

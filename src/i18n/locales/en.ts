@@ -23,6 +23,7 @@ export type Dictionary = {
     contact: string;
     rights: string;
     license: string;
+    designedBy: string;
   };
   common: {
     requestConsultation: string;
@@ -213,6 +214,7 @@ export const en: Dictionary = {
     contact: "Contact Us",
     rights: "All rights reserved.",
     license: "Licensed by the Ethiopian Capital Market Authority · License #ECMA-SIA-2024",
+    designedBy: "Designed & Developed by",
   },
   common: {
     requestConsultation: "Request Consultation",

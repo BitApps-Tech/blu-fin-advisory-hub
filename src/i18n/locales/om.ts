@@ -26,6 +26,7 @@ export const om: Dictionary = {
     contact: "Nu qunnamaa",
     rights: "Mirgi seeraan eegamaa dha.",
     license: "Ajaja Gabaa Kaappitaalaa Itoophiyaatiin hayyamame · Hayyama #ECMA-SIA-2024",
+    designedBy: "Kan qophaa'e fi misoomsame",
   },
   common: {
     requestConsultation: "Mariin gaafadhaa",

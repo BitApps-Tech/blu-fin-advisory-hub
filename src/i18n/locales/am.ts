@@ -26,6 +26,7 @@ export const am: Dictionary = {
     contact: "ያግኙን",
     rights: "መብቱ በህግ የተጠበቀ ነው።",
     license: "በኢትዮጵያ ካፒታል ማርኬት ባለስልጣን የተፈቀደ · ፈቃድ #ECMA-SIA-2024",
+    designedBy: "ንድፍና ልማት በ",
   },
   common: {
     requestConsultation: "ምክክር ይጠይቁ",
