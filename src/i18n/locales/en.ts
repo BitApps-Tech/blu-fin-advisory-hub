@@ -63,7 +63,8 @@ export type Dictionary = {
     engageTitle: string;
     teamTitle: string;
     teamIntro: string;
-    team: { name: string; title: string }[];
+    team: { name: string; title: string; bio: string }[];
+    teamMore: string;
     awards: {
       eyebrow: string;
       title: string;
@@ -271,11 +272,28 @@ export const en: Dictionary = {
     teamIntro:
       "Our senior leadership brings deep experience in corporate finance, compliance, research, and governance — guiding BluFin with integrity as Ethiopia's capital market grows.",
     team: [
-      { name: "Dr. Yitbarek Takele Bayiley", title: "Chief Executive Officer" },
-      { name: "Mr. Bizuayehu Seyoum Tsehaye", title: "Chief Compliance Officer" },
-      { name: "Dr. Abebe Gule Girma", title: "Chief Research Officer" },
-      { name: "Mr. Abraham Ejigu Shiferaw", title: "Board Chairperson" },
+      {
+        name: "Dr. Yitbarek Takele Bayiley",
+        title: "Chief Executive Officer",
+        bio: "Leads BluFin's strategy and client engagements, bringing deep expertise in corporate finance and capital markets to Ethiopia's emerging advisory landscape.",
+      },
+      {
+        name: "Mr. Bizuayehu Seyoum Tsehaye",
+        title: "Chief Compliance Officer",
+        bio: "Safeguards regulatory integrity across every mandate, ensuring BluFin's advice remains ethical, suitable, and fully aligned with ECMA standards.",
+      },
+      {
+        name: "Dr. Abebe Gule Girma",
+        title: "Chief Research Officer",
+        bio: "Drives independent, research-led insights that underpin our recommendations — turning rigorous analysis into clear guidance for clients.",
+      },
+      {
+        name: "Mr. Abraham Ejigu Shiferaw",
+        title: "Board Chairperson",
+        bio: "Provides board oversight and governance stewardship, anchoring BluFin's commitment to professionalism, accountability, and long-term client trust.",
+      },
     ],
+    teamMore: "More",
     awards: {
       eyebrow: "Awards & Accolades",
       title: "Official recognition from Ethiopia's capital markets regulator.",

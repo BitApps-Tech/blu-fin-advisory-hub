@@ -26,7 +26,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2 text-sm text-white/85">
             {practices.map((s) => (
               <li key={s.to}>
-                <Link to={s.to} className="hover:text-white">{s.short}</Link>
+                <Link to={s.to} className="footer-link text-white/85 hover:text-white">{s.short}</Link>
               </li>
             ))}
           </ul>
@@ -35,11 +35,11 @@ export function SiteFooter() {
         <div>
           <div className="eyebrow text-white/60">{t.footer.firm}</div>
           <ul className="mt-4 space-y-2 text-sm text-white/85">
-            <li><Link to="/about" className="hover:text-white">{t.footer.about}</Link></li>
-            <li><Link to="/insights" className="hover:text-white">{t.footer.news}</Link></li>
-            <li><Link to="/careers" className="hover:text-white">{t.footer.careers}</Link></li>
-            <li><Link to="/track-record" className="hover:text-white">{t.footer.trackRecord}</Link></li>
-            <li><Link to="/contact" className="hover:text-white">{t.footer.contact}</Link></li>
+            <li><Link to="/about" className="footer-link text-white/85 hover:text-white">{t.footer.about}</Link></li>
+            <li><Link to="/insights" className="footer-link text-white/85 hover:text-white">{t.footer.news}</Link></li>
+            <li><Link to="/careers" className="footer-link text-white/85 hover:text-white">{t.footer.careers}</Link></li>
+            <li><Link to="/track-record" className="footer-link text-white/85 hover:text-white">{t.footer.trackRecord}</Link></li>
+            <li><Link to="/contact" className="footer-link text-white/85 hover:text-white">{t.footer.contact}</Link></li>
           </ul>
         </div>
 
@@ -50,12 +50,12 @@ export function SiteFooter() {
               <div key={line}>{line}</div>
             ))}
             <div>
-              <a href={CONTACT.phoneHref} className="hover:text-white">
+              <a href={CONTACT.phoneHref} className="footer-link text-white/85 hover:text-white">
                 {CONTACT.phoneDisplay}
               </a>
             </div>
             <div>
-              <a href={`mailto:${CONTACT.email}`} className="hover:text-white">
+              <a href={`mailto:${CONTACT.email}`} className="footer-link text-white/85 hover:text-white">
                 {CONTACT.email}
               </a>
             </div>

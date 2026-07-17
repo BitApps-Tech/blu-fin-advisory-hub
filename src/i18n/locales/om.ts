@@ -68,11 +68,28 @@ export const om: Dictionary = {
     teamIntro:
       "Hoogganoonni keenya olaanaan muuxannoo gadi fagoo faayinaansii dhaabbataa, walabummaa seeraa, qorannoo fi bulchiinsa qabu — gabaa kaappitaalaa Itoophiyaa akkuma guddatutti BluFin amanamummaadhaan qajeelchu.",
     team: [
-      { name: "Dr. Yitbarek Takele Bayiley", title: "Daarektara Hojiirra Oolmaa Olaanaa (CEO)" },
-      { name: "Mr. Bizuayehu Seyoum Tsehaye", title: "Ogeessa Walabummaa Seeraa Olaanaa" },
-      { name: "Dr. Abebe Gule Girma", title: "Ogeessa Qorannoo Olaanaa" },
-      { name: "Mr. Abraham Ejigu Shiferaw", title: "Pirezidaantii Boordii" },
+      {
+        name: "Dr. Yitbarek Takele Bayiley",
+        title: "Daarektara Hojiirra Oolmaa Olaanaa (CEO)",
+        bio: "Tooftaa fi qunnamtii maamilaa BluFin qajeelcha, muuxannoo gadi fagoo faayinaansii dhaabbataafi gabaa kaappitaalaa gara gorsa guddachaa Itoophiyaatti fidee.",
+      },
+      {
+        name: "Mr. Bizuayehu Seyoum Tsehaye",
+        title: "Ogeessa Walabummaa Seeraa Olaanaa",
+        bio: "Amanamummaa seeraa hojii hundaa irratti eega, gorsi BluFin naamusaa, mijataa fi sadarkaa ECMA waliin walsimatu ta'uu mirkaneessa.",
+      },
+      {
+        name: "Dr. Abebe Gule Girma",
+        title: "Ogeessa Qorannoo Olaanaa",
+        bio: "Hubannoo walabaa qorannoorratti hundaa'e kakaasa — xiinxala cimaa gara qajeelfama ifaa maamilaaatti jijjiira.",
+      },
+      {
+        name: "Mr. Abraham Ejigu Shiferaw",
+        title: "Pirezidaantii Boordii",
+        bio: "To'annoo boordii fi eegumsa bulchiinsa kenna, kutannoo BluFin ogummaa, itti gaafatamummaa fi amantaa maamilaa yeroo dheeraaf cimsa.",
+      },
     ],
+    teamMore: "Dabalataan",
     awards: {
       eyebrow: "Badhaasaafi Kabaja",
       title: "Beekamtii idilee ajaja gabaa kaappitaalaa Itoophiyaa irraa.",

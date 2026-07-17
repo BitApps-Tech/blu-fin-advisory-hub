@@ -35,7 +35,7 @@ export function SocialLinks({ className, iconClassName }: SocialLinksProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={item.name}
-            className="transition hover:opacity-100 opacity-70"
+            className="flex h-8 w-8 items-center justify-center rounded-full opacity-70 transition-all duration-300 hover:bg-white/15 hover:opacity-100"
           >
             <Icon className={cn("h-4 w-4", iconClassName)} />
           </a>

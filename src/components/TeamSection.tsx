@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Linkedin } from "lucide-react";
 import { useI18n } from "../i18n";
 import { TEAM_PROFILES } from "../lib/team";
+import { Reveal } from "./Reveal";
+import { cn } from "../lib/utils";
 
 function XIcon({ className }: { className?: string }) {
   return (
@@ -12,58 +15,109 @@ function XIcon({ className }: { className?: string }) {
 
 export function TeamSection() {
   const { t } = useI18n();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section className="hairline-b bg-background">
       <div className="container-editorial py-20 md:py-24">
-        <h2 className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-navy md:text-base">
-          {t.home.teamTitle}
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground md:text-base">
-          {t.home.teamIntro}
-        </p>
+        <Reveal>
+          <h2 className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-navy md:text-base">
+            {t.home.teamTitle}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground md:text-base">
+            {t.home.teamIntro}
+          </p>
+        </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {t.home.team.map((member, i) => {
             const profile = TEAM_PROFILES[i] ?? TEAM_PROFILES[0];
+            const isOpen = openIndex === i;
+
             return (
-              <article key={member.name + member.title} className="flex flex-col items-stretch">
-                <div className="flex aspect-[3/4] items-center justify-center overflow-hidden rounded-t-sm bg-white">
-                  <img
-                    src={profile.avatar}
-                    alt=""
-                    className="h-[85%] w-auto object-contain object-bottom"
-                  />
-                </div>
-                <div className="bg-navy px-3 py-3 text-center">
-                  <h3 className="text-sm font-semibold tracking-wide text-navy-foreground">
-                    {member.name}
-                  </h3>
-                </div>
-                <p className="mt-3 text-center text-[11px] font-medium uppercase tracking-[0.14em] text-foreground/80">
-                  {member.title}
-                </p>
-                <div className="mt-3 flex items-center justify-center gap-3">
-                  <a
-                    href={profile.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${member.name} LinkedIn`}
-                    className="text-navy/60 transition hover:text-navy"
+              <Reveal key={member.name + member.title} delayMs={i * 90}>
+                <article
+                  className="group flex flex-col items-stretch"
+                  onMouseLeave={() => setOpenIndex(null)}
+                >
+                  <div
+                    className="relative flex aspect-[3/4] w-full cursor-pointer items-center justify-center overflow-hidden bg-white"
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setOpenIndex(isOpen ? null : i);
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isOpen}
+                    aria-label={`${member.name} — ${member.title}`}
                   >
-                    <Linkedin className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={profile.x}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${member.name} X`}
-                    className="text-navy/60 transition hover:text-navy"
-                  >
-                    <XIcon className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-              </article>
+                    <img
+                      src={profile.avatar}
+                      alt=""
+                      className="h-[85%] w-auto object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    />
+
+                    {/* Absa-style detail overlay — navy brand tint */}
+                    <div
+                      className={cn(
+                        "absolute inset-0 flex flex-col justify-between bg-navy/92 p-5 text-navy-foreground transition-all duration-500 ease-out md:p-6",
+                        "pointer-events-none translate-y-2 opacity-0",
+                        "group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100",
+                        isOpen && "pointer-events-auto translate-y-0 opacity-100",
+                      )}
+                    >
+                      <div>
+                        <h3 className="font-serif text-xl leading-snug text-white md:text-2xl">
+                          {member.title}
+                        </h3>
+                        <div className="mt-4 h-px w-full bg-white/80" />
+                        <p className="mt-4 text-sm leading-relaxed text-white/90">{member.bio}</p>
+                      </div>
+                      <a
+                        href={profile.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-flex w-fit text-xs font-semibold uppercase tracking-[0.18em] text-white transition-opacity hover:opacity-80"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {t.home.teamMore}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="bg-navy px-3 py-3 text-center">
+                    <h3 className="text-sm font-semibold tracking-wide text-navy-foreground">
+                      {member.name}
+                    </h3>
+                  </div>
+                  <p className="mt-3 text-center text-[11px] font-medium uppercase tracking-[0.14em] text-foreground/80">
+                    {member.title}
+                  </p>
+                  <div className="mt-3 flex items-center justify-center gap-3">
+                    <a
+                      href={profile.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} LinkedIn`}
+                      className="flex h-8 w-8 items-center justify-center rounded-full text-navy/60 transition-all duration-300 hover:bg-navy hover:text-navy-foreground"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                    <a
+                      href={profile.x}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} X`}
+                      className="flex h-8 w-8 items-center justify-center rounded-full text-navy/60 transition-all duration-300 hover:bg-navy hover:text-navy-foreground"
+                    >
+                      <XIcon className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                </article>
+              </Reveal>
             );
           })}
         </div>
