@@ -2,6 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { articleStore, type Article, ensureSeeded } from "../lib/mock-store";
 import { AtAGlance } from "../components/AtAGlance";
+import photoFeatured from "../assets/photo-signing.png";
+import photoCard1 from "../assets/photo-ecma-ceremony.png";
+import photoCard2 from "../assets/photo-team.png";
+import photoCard3 from "../assets/photo-ecma-trio.png";
+import photoCard4 from "../assets/photo-signing-alt.png";
+
+const ARTICLE_IMAGES = [photoCard1, photoCard2, photoCard3, photoCard4];
 
 export const Route = createFileRoute("/insights")({
   head: () => ({
@@ -41,7 +48,7 @@ function Insights() {
       <section className="hairline-b bg-background">
         <div className="container-editorial grid gap-12 py-20 md:grid-cols-12 md:py-24">
           <div className="md:col-span-8">
-            <div className="eyebrow">Insights & Newsroom</div>
+            <div className="eyebrow">News & Articles</div>
             <h1 className="mt-6 max-w-3xl font-serif text-5xl text-navy md:text-6xl">
               Research, commentary and announcements.
             </h1>
@@ -71,7 +78,11 @@ function Insights() {
           {featured && (
             <article onClick={() => setSelected(featured)} className="hairline-b group grid cursor-pointer gap-10 pb-16 md:grid-cols-12">
               <div className="md:col-span-4">
-                <div className="aspect-[4/5] bg-navy" />
+                <img
+                  src={photoFeatured}
+                  alt=""
+                  className="aspect-[4/5] w-full object-cover object-center transition group-hover:opacity-90"
+                />
               </div>
               <div className="flex flex-col justify-center md:col-span-8">
                 <span className="eyebrow">{featured.category}</span>
@@ -88,9 +99,13 @@ function Insights() {
 
           {rest.length > 0 && (
             <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-              {rest.map((a) => (
+              {rest.map((a, i) => (
                 <article key={a.id} onClick={() => setSelected(a)} className="group cursor-pointer">
-                  <div className="aspect-[4/3] bg-panel" />
+                  <img
+                    src={ARTICLE_IMAGES[i % ARTICLE_IMAGES.length]}
+                    alt=""
+                    className="aspect-[4/3] w-full object-cover object-center transition group-hover:opacity-90"
+                  />
                   <div className="mt-5">
                     <span className="eyebrow">{a.category}</span>
                     <h3 className="mt-2 font-serif text-2xl text-navy transition group-hover:opacity-80">{a.title}</h3>

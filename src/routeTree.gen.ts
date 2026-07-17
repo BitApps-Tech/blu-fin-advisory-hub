@@ -14,8 +14,14 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PortalRouteImport } from './routes/portal'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WhatWeDoIndexRouteImport } from './routes/what-we-do/index'
+import { Route as WhatWeDoMaDealsRouteImport } from './routes/what-we-do/ma-deals'
+import { Route as WhatWeDoListingCapitalMarketsRouteImport } from './routes/what-we-do/listing-capital-markets'
+import { Route as WhatWeDoCorporateFinanceRouteImport } from './routes/what-we-do/corporate-finance'
 
 const TrackRecordRoute = TrackRecordRouteImport.update({
   id: '/track-record',
@@ -42,9 +48,19 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -52,73 +68,137 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhatWeDoIndexRoute = WhatWeDoIndexRouteImport.update({
+  id: '/what-we-do/',
+  path: '/what-we-do/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatWeDoMaDealsRoute = WhatWeDoMaDealsRouteImport.update({
+  id: '/what-we-do/ma-deals',
+  path: '/what-we-do/ma-deals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatWeDoListingCapitalMarketsRoute =
+  WhatWeDoListingCapitalMarketsRouteImport.update({
+    id: '/what-we-do/listing-capital-markets',
+    path: '/what-we-do/listing-capital-markets',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoCorporateFinanceRoute =
+  WhatWeDoCorporateFinanceRouteImport.update({
+    id: '/what-we-do/corporate-finance',
+    path: '/what-we-do/corporate-finance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/portal': typeof PortalRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
+  '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
+  '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
+  '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
+  '/what-we-do/': typeof WhatWeDoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/portal': typeof PortalRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
+  '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
+  '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
+  '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
+  '/what-we-do': typeof WhatWeDoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/portal': typeof PortalRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
+  '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
+  '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
+  '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
+  '/what-we-do/': typeof WhatWeDoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/admin'
+    | '/careers'
     | '/contact'
     | '/insights'
     | '/portal'
     | '/services'
     | '/track-record'
+    | '/what-we-do/corporate-finance'
+    | '/what-we-do/listing-capital-markets'
+    | '/what-we-do/ma-deals'
+    | '/what-we-do/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/admin'
+    | '/careers'
     | '/contact'
     | '/insights'
     | '/portal'
     | '/services'
     | '/track-record'
+    | '/what-we-do/corporate-finance'
+    | '/what-we-do/listing-capital-markets'
+    | '/what-we-do/ma-deals'
+    | '/what-we-do'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/admin'
+    | '/careers'
     | '/contact'
     | '/insights'
     | '/portal'
     | '/services'
     | '/track-record'
+    | '/what-we-do/corporate-finance'
+    | '/what-we-do/listing-capital-markets'
+    | '/what-we-do/ma-deals'
+    | '/what-we-do/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
+  CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   InsightsRoute: typeof InsightsRoute
   PortalRoute: typeof PortalRoute
   ServicesRoute: typeof ServicesRoute
   TrackRecordRoute: typeof TrackRecordRoute
+  WhatWeDoCorporateFinanceRoute: typeof WhatWeDoCorporateFinanceRoute
+  WhatWeDoListingCapitalMarketsRoute: typeof WhatWeDoListingCapitalMarketsRoute
+  WhatWeDoMaDealsRoute: typeof WhatWeDoMaDealsRoute
+  WhatWeDoIndexRoute: typeof WhatWeDoIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -158,11 +238,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -172,18 +266,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/what-we-do/': {
+      id: '/what-we-do/'
+      path: '/what-we-do'
+      fullPath: '/what-we-do/'
+      preLoaderRoute: typeof WhatWeDoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/ma-deals': {
+      id: '/what-we-do/ma-deals'
+      path: '/what-we-do/ma-deals'
+      fullPath: '/what-we-do/ma-deals'
+      preLoaderRoute: typeof WhatWeDoMaDealsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/listing-capital-markets': {
+      id: '/what-we-do/listing-capital-markets'
+      path: '/what-we-do/listing-capital-markets'
+      fullPath: '/what-we-do/listing-capital-markets'
+      preLoaderRoute: typeof WhatWeDoListingCapitalMarketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/corporate-finance': {
+      id: '/what-we-do/corporate-finance'
+      path: '/what-we-do/corporate-finance'
+      fullPath: '/what-we-do/corporate-finance'
+      preLoaderRoute: typeof WhatWeDoCorporateFinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
+  CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   InsightsRoute: InsightsRoute,
   PortalRoute: PortalRoute,
   ServicesRoute: ServicesRoute,
   TrackRecordRoute: TrackRecordRoute,
+  WhatWeDoCorporateFinanceRoute: WhatWeDoCorporateFinanceRoute,
+  WhatWeDoListingCapitalMarketsRoute: WhatWeDoListingCapitalMarketsRoute,
+  WhatWeDoMaDealsRoute: WhatWeDoMaDealsRoute,
+  WhatWeDoIndexRoute: WhatWeDoIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

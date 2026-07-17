@@ -1,0 +1,20 @@
+export const CONTACT = {
+  phoneDisplay: "+251 995 884 955",
+  phoneHref: "tel:+251995884955",
+  email: "info@blufincapitaladvisory.com",
+  addressLines: [
+    "Kidus Building, 3rd Floor",
+    "Kazanchis, Jomo Kenyatta Street",
+    "Addis Ababa, Ethiopia",
+  ],
+  addressShort: "Kidus Building, Kazanchis — Jomo Kenyatta Street, 3rd Floor",
+} as const;
+
+/** Replace hrefs with official profile URLs when available. */
+export const SOCIAL = [
+  { name: "LinkedIn", href: "https://www.linkedin.com/" },
+  { name: "YouTube", href: "https://www.youtube.com/" },
+  { name: "Facebook", href: "https://www.facebook.com/" },
+  { name: "Instagram", href: "https://www.instagram.com/" },
+  { name: "X", href: "https://x.com/" },
+] as const;

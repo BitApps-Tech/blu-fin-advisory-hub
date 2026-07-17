@@ -3,6 +3,7 @@ import { useMemo, useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { txnStore, type Transaction, ensureSeeded } from "../lib/mock-store";
 import { AtAGlance } from "../components/AtAGlance";
+import photoTeamCert from "../assets/photo-team-certificate.png";
 
 export const Route = createFileRoute("/track-record")({
   head: () => ({
@@ -59,6 +60,14 @@ function TrackRecord() {
             <AtAGlance practice="Transaction Advisory" />
           </div>
         </div>
+      </section>
+
+      <section className="hairline-b bg-background">
+        <img
+          src={photoTeamCert}
+          alt="BluFin team celebrating a completed capital markets mandate"
+          className="h-[36vh] w-full object-cover object-center md:h-[44vh]"
+        />
       </section>
 
       {/* Filters */}

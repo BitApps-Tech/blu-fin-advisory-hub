@@ -4,6 +4,7 @@ import { Lock, ArrowLeft } from "lucide-react";
 import { authStore } from "../lib/mock-store";
 import { Logo } from "../components/Logo";
 import { toast } from "sonner";
+import photoPortal from "../assets/photo-team.png";
 
 export const Route = createFileRoute("/portal")({
   head: () => ({
@@ -33,19 +34,27 @@ function Portal() {
 
   return (
     <div className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
-      <div className="hidden bg-navy p-16 text-navy-foreground lg:flex lg:flex-col lg:justify-between">
-        <Logo variant="light" />
-        <div>
-          <div className="eyebrow text-white/60">Administrative Portal</div>
-          <h2 className="mt-4 max-w-md font-serif text-4xl leading-tight">
-            Secure workspace for BluFin partners and administrative staff.
-          </h2>
-          <p className="mt-6 max-w-md text-sm text-white/70">
-            Role-based access to the CMS, transaction ledger, and lead pipeline.
-            All activity is logged and audited.
-          </p>
+      <div className="relative hidden overflow-hidden lg:block">
+        <img
+          src={photoPortal}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-navy/75" />
+        <div className="relative flex h-full flex-col justify-between p-16 text-navy-foreground">
+          <Logo variant="light" />
+          <div>
+            <div className="eyebrow text-white/60">Administrative Portal</div>
+            <h2 className="mt-4 max-w-md font-serif text-4xl leading-tight">
+              Secure workspace for BluFin partners and administrative staff.
+            </h2>
+            <p className="mt-6 max-w-md text-sm text-white/70">
+              Role-based access to the CMS, transaction ledger, and lead pipeline.
+              All activity is logged and audited.
+            </p>
+          </div>
+          <div className="text-xs text-white/50">© {new Date().getFullYear()} BluFin Capital Advisory PLC</div>
         </div>
-        <div className="text-xs text-white/50">© {new Date().getFullYear()} BluFin Capital Advisory PLC</div>
       </div>
 
       <div className="flex items-center justify-center p-8">

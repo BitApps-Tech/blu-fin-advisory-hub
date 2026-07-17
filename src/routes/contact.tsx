@@ -3,6 +3,8 @@ import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { leadStore, uid } from "../lib/mock-store";
+import { CONTACT } from "../lib/contact";
+import { SocialLinks } from "../components/SocialLinks";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -81,15 +83,33 @@ function Contact() {
             <dl className="hairline-t mt-12 space-y-6 pt-10">
               <div>
                 <dt className="eyebrow">Office</dt>
-                <dd className="mt-2 text-base text-navy">Bole Road, Addis Ababa, Ethiopia</dd>
+                <dd className="mt-2 space-y-1 text-base text-navy">
+                  {CONTACT.addressLines.map((line) => (
+                    <div key={line}>{line}</div>
+                  ))}
+                </dd>
               </div>
               <div>
                 <dt className="eyebrow">Advisory desk</dt>
-                <dd className="mt-2 text-base text-navy">advisory@blufincapital.et</dd>
+                <dd className="mt-2 text-base text-navy">
+                  <a href={`mailto:${CONTACT.email}`} className="hover:underline">
+                    {CONTACT.email}
+                  </a>
+                </dd>
               </div>
               <div>
                 <dt className="eyebrow">Telephone</dt>
-                <dd className="mt-2 text-base text-navy">+251 11 000 0000</dd>
+                <dd className="mt-2 text-base text-navy">
+                  <a href={CONTACT.phoneHref} className="hover:underline">
+                    {CONTACT.phoneDisplay}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="eyebrow">Social</dt>
+                <dd className="mt-3 text-navy">
+                  <SocialLinks iconClassName="h-5 w-5" />
+                </dd>
               </div>
             </dl>
           </div>

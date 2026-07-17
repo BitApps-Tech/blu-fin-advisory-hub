@@ -1,3 +1,5 @@
+import { COMPANY } from "../lib/company";
+
 type Item = { label: string; value: string };
 
 type Props = {
@@ -5,10 +7,11 @@ type Props = {
   className?: string;
 };
 
-export function AtAGlance({ practice = "Institutional Advisory", className = "" }: Props) {
+export function AtAGlance({ practice = "Investment & Transaction Advisory", className = "" }: Props) {
   const items: Item[] = [
-    { label: "Regulatory", value: "ECMA-Licensed SIA" },
-    { label: "Headquarters", value: "Addis Ababa, Ethiopia" },
+    { label: "License", value: "Securities Investment Advisory" },
+    { label: "Legal form", value: COMPANY.legalForm },
+    { label: "Headquarters", value: COMPANY.registeredAddress },
     { label: "Practice Focus", value: practice },
   ];
   return (
