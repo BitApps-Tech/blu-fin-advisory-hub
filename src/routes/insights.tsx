@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { articleStore, type Article, ensureSeeded } from "../lib/mock-store";
 import { AtAGlance } from "../components/AtAGlance";
+import { useI18n } from "../i18n";
 import photoFeatured from "../assets/photo-signing.png";
 import photoCard1 from "../assets/photo-ecma-ceremony.png";
 import photoCard2 from "../assets/photo-team.png";
@@ -27,6 +28,7 @@ export const Route = createFileRoute("/insights")({
 const CATEGORIES = ["All", "Market Commentary", "Sector Research", "Announcement", "Regulatory"] as const;
 
 function Insights() {
+  const { t } = useI18n();
   const [articles, setArticles] = useState<Article[]>([]);
   const [cat, setCat] = useState<string>("All");
   const [selected, setSelected] = useState<Article | null>(null);
@@ -48,9 +50,9 @@ function Insights() {
       <section className="hairline-b bg-background">
         <div className="container-editorial grid gap-12 py-20 md:grid-cols-12 md:py-24">
           <div className="md:col-span-8">
-            <div className="eyebrow">News & Articles</div>
+            <div className="eyebrow">{t.insights.eyebrow}</div>
             <h1 className="mt-6 max-w-3xl font-serif text-5xl text-navy md:text-6xl">
-              Research, commentary and announcements.
+              {t.insights.headline}
             </h1>
           </div>
           <div className="hidden md:col-span-4 md:block">
@@ -67,7 +69,7 @@ function Insights() {
               onClick={() => setCat(c)}
               className={`text-xs uppercase tracking-widest transition ${cat === c ? "text-navy underline underline-offset-8" : "text-slate-warm hover:text-navy"}`}
             >
-              {c}
+              {c === "All" ? t.insights.all : c}
             </button>
           ))}
         </div>
@@ -91,7 +93,7 @@ function Insights() {
                 </h2>
                 <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{featured.excerpt}</p>
                 <div className="mt-6 text-xs uppercase tracking-widest text-slate-warm">
-                  {new Date(featured.publishedAt).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })} · {featured.readMinutes} min read
+                  {new Date(featured.publishedAt).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })} · {featured.readMinutes} {t.insights.minRead}
                 </div>
               </div>
             </article>
@@ -111,7 +113,7 @@ function Insights() {
                     <h3 className="mt-2 font-serif text-2xl text-navy transition group-hover:opacity-80">{a.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.excerpt}</p>
                     <div className="mt-4 text-xs uppercase tracking-widest text-slate-warm">
-                      {new Date(a.publishedAt).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })} · {a.readMinutes} min
+                      {new Date(a.publishedAt).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })} · {a.readMinutes} {t.insights.minRead}
                     </div>
                   </div>
                 </article>
@@ -120,7 +122,7 @@ function Insights() {
           )}
 
           {filtered.length === 0 && (
-            <div className="py-24 text-center text-slate-warm">No articles in this category yet.</div>
+            <div className="py-24 text-center text-slate-warm">{t.insights.empty}</div>
           )}
         </div>
       </section>
@@ -128,7 +130,7 @@ function Insights() {
       {selected && (
         <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-4 md:p-10" onClick={() => setSelected(null)}>
           <div className="w-full max-w-3xl bg-background p-8 md:p-12" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setSelected(null)} className="text-xs uppercase tracking-widest text-slate-warm hover:text-navy">← Close</button>
+            <button onClick={() => setSelected(null)} className="text-xs uppercase tracking-widest text-slate-warm hover:text-navy">← {t.common.close}</button>
             <span className="eyebrow mt-6 block">{selected.category}</span>
             <h2 className="mt-3 font-serif text-4xl text-navy">{selected.title}</h2>
             <div className="mt-4 text-xs uppercase tracking-widest text-slate-warm">

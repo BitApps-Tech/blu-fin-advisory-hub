@@ -2,28 +2,32 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Mail, ChevronDown } from "lucide-react";
 import { Logo } from "./Logo";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { CONTACT } from "../lib/contact";
-import { WHAT_WE_DO } from "../lib/what-we-do";
-
-const NAV = [
-  { to: "/", label: "Home", exact: true },
-  { to: "/about", label: "About Us" },
-  {
-    to: "/what-we-do",
-    label: "What We Do",
-    children: WHAT_WE_DO.map((s) => ({ to: s.to, label: s.label })),
-  },
-  { to: "/insights", label: "News & Articles" },
-  { to: "/careers", label: "Careers" },
-  { to: "/contact", label: "Contact Us" },
-] as const;
+import { useI18n } from "../i18n";
+import { getPractices } from "../lib/what-we-do";
 
 export function SiteHeader() {
+  const { t } = useI18n();
+  const practices = getPractices(t);
   const [open, setOpen] = useState(false);
   const [whatOpen, setWhatOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const whatActive = pathname.startsWith("/what-we-do");
+
+  const nav = [
+    { to: "/", label: t.nav.home, exact: true },
+    { to: "/about", label: t.nav.about },
+    {
+      to: "/what-we-do",
+      label: t.nav.whatWeDo,
+      children: practices.map((s) => ({ to: s.to, label: s.label })),
+    },
+    { to: "/insights", label: t.nav.news },
+    { to: "/careers", label: t.nav.careers },
+    { to: "/contact", label: t.nav.contact },
+  ] as const;
 
   useEffect(() => {
     function onDocClick(e: MouseEvent) {
@@ -46,7 +50,7 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-7 xl:flex">
-          {NAV.map((item) =>
+          {nav.map((item) =>
             "children" in item && item.children ? (
               <div key={item.to} className="relative" ref={dropdownRef}>
                 <button
@@ -65,7 +69,7 @@ export function SiteHeader() {
                       className="block px-4 py-2.5 text-[12px] font-medium text-foreground/80 transition hover:bg-panel hover:text-navy"
                       onClick={() => setWhatOpen(false)}
                     >
-                      Overview
+                      {t.nav.overview}
                     </Link>
                     {item.children.map((child) => (
                       <Link
@@ -87,7 +91,7 @@ export function SiteHeader() {
                 to={item.to}
                 className="text-[12px] font-medium uppercase tracking-wider text-foreground/80 transition-colors hover:text-navy"
                 activeProps={{ className: "text-navy" }}
-                activeOptions={{ exact: "exact" in item ? item.exact : false }}
+                activeOptions={{ exact: "exact" in item ? Boolean(item.exact) : false }}
               >
                 {item.label}
               </Link>
@@ -95,13 +99,14 @@ export function SiteHeader() {
           )}
         </nav>
 
-        <div className="hidden items-center gap-6 xl:flex">
+        <div className="hidden items-center gap-5 xl:flex">
+          <LanguageSwitcher />
           <a href={`mailto:${CONTACT.email}`} className="group flex items-center gap-3">
             <span className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy">
               <Mail className="h-4 w-4" />
             </span>
             <span className="leading-tight">
-              <span className="block text-[10px] font-medium uppercase tracking-widest text-slate-warm">Email Us</span>
+              <span className="block text-[10px] font-medium uppercase tracking-widest text-slate-warm">{t.nav.emailUs}</span>
               <span className="block text-[11px] font-medium uppercase tracking-wide text-navy group-hover:underline">
                 {CONTACT.email}
               </span>
@@ -109,19 +114,21 @@ export function SiteHeader() {
           </a>
         </div>
 
-        <button
-          className="xl:hidden"
-          aria-label="Menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-3 xl:hidden">
+          <LanguageSwitcher />
+          <button
+            aria-label={t.nav.menu}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {open && (
         <div className="hairline-t xl:hidden">
           <div className="container-editorial flex flex-col py-4">
-            {NAV.map((item) =>
+            {nav.map((item) =>
               "children" in item && item.children ? (
                 <div key={item.to} className="border-b border-hairline py-3">
                   <Link

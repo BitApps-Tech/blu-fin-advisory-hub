@@ -3,6 +3,7 @@ import { useMemo, useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { txnStore, type Transaction, ensureSeeded } from "../lib/mock-store";
 import { AtAGlance } from "../components/AtAGlance";
+import { useI18n } from "../i18n";
 import photoTeamCert from "../assets/photo-team-certificate.png";
 
 export const Route = createFileRoute("/track-record")({
@@ -23,6 +24,7 @@ const SECTORS = ["All", "Retail", "Logistics", "Tech", "Manufacturing", "Financi
 const SCALES = ["All", "Under $5M", "$5M–$25M", "$25M–$100M", "$100M+"] as const;
 
 function TrackRecord() {
+  const { t } = useI18n();
   const [txns, setTxns] = useState<Transaction[]>([]);
   const [sector, setSector] = useState<string>("All");
   const [scale, setScale] = useState<string>("All");
@@ -47,13 +49,12 @@ function TrackRecord() {
       <section className="hairline-b bg-background">
         <div className="container-editorial grid gap-12 py-20 md:grid-cols-12 md:py-24">
           <div className="md:col-span-8">
-            <div className="eyebrow">Track record</div>
+            <div className="eyebrow">{t.trackRecord.eyebrow}</div>
             <h1 className="mt-6 max-w-3xl font-serif text-5xl text-navy md:text-6xl">
-              A ledger of completed mandates.
+              {t.trackRecord.headline}
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-              Selected transactions on which BluFin has served as advisor. Filter by industry
-              vertical, transaction scale, or search by client or service.
+              {t.trackRecord.intro}
             </p>
           </div>
           <div className="hidden md:col-span-4 md:block">
@@ -78,24 +79,24 @@ function TrackRecord() {
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Search client, sector, or service"
+              placeholder={t.trackRecord.search}
               className="w-full border border-hairline bg-background py-3 pl-10 pr-3 text-sm outline-none transition focus:border-navy"
             />
           </div>
           <div className="md:col-span-3">
-            <label className="eyebrow mb-1 block">Industry</label>
+            <label className="eyebrow mb-1 block">{t.trackRecord.industry}</label>
             <select value={sector} onChange={(e) => setSector(e.target.value)} className="w-full border border-hairline bg-background py-3 px-3 text-sm outline-none focus:border-navy">
               {SECTORS.map((s) => <option key={s}>{s}</option>)}
             </select>
           </div>
           <div className="md:col-span-3">
-            <label className="eyebrow mb-1 block">Deal scale</label>
+            <label className="eyebrow mb-1 block">{t.trackRecord.dealScale}</label>
             <select value={scale} onChange={(e) => setScale(e.target.value)} className="w-full border border-hairline bg-background py-3 px-3 text-sm outline-none focus:border-navy">
               {SCALES.map((s) => <option key={s}>{s}</option>)}
             </select>
           </div>
           <div className="md:col-span-1 md:text-right">
-            <span className="text-xs text-slate-warm">{filtered.length} deals</span>
+            <span className="text-xs text-slate-warm">{filtered.length} {t.trackRecord.deals}</span>
           </div>
         </div>
       </section>
@@ -104,7 +105,7 @@ function TrackRecord() {
       <section className="bg-background">
         <div className="container-editorial py-16">
           {filtered.length === 0 ? (
-            <div className="py-24 text-center text-slate-warm">No transactions match the current filters.</div>
+            <div className="py-24 text-center text-slate-warm">{t.trackRecord.empty}</div>
           ) : (
             <div className="hairline-t grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {filtered.map((t, i) => (

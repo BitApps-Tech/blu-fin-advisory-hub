@@ -1,3 +1,27 @@
+import type { Dictionary } from "../i18n";
+
+export type PracticeKey = "listing" | "corporate" | "ma";
+
+export const PRACTICE_ROUTES: { key: PracticeKey; to: string }[] = [
+  { key: "listing", to: "/what-we-do/listing-capital-markets" },
+  { key: "corporate", to: "/what-we-do/corporate-finance" },
+  { key: "ma", to: "/what-we-do/ma-deals" },
+];
+
+export function getPractices(t: Dictionary) {
+  return PRACTICE_ROUTES.map(({ key, to }) => ({
+    key,
+    to,
+    ...t.practices[key],
+  }));
+}
+
+export function getPractice(t: Dictionary, key: PracticeKey) {
+  const route = PRACTICE_ROUTES.find((p) => p.key === key)!;
+  return { key, to: route.to, ...t.practices[key] };
+}
+
+/** @deprecated Prefer getPractices(t) for localized content */
 export const WHAT_WE_DO = [
   {
     to: "/what-we-do/listing-capital-markets",
@@ -51,5 +75,3 @@ export const WHAT_WE_DO = [
     ],
   },
 ] as const;
-
-export type WhatWeDoService = (typeof WHAT_WE_DO)[number];

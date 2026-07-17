@@ -1,10 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import type { WhatWeDoService } from "../lib/what-we-do";
-import { WHAT_WE_DO } from "../lib/what-we-do";
+import { useI18n } from "../i18n";
+import { getPractices, type PracticeKey } from "../lib/what-we-do";
 
-export function ServiceDetailPage({ service }: { service: WhatWeDoService }) {
-  const others = WHAT_WE_DO.filter((s) => s.to !== service.to);
+export function ServiceDetailPage({ practiceKey }: { practiceKey: PracticeKey }) {
+  const { t } = useI18n();
+  const practices = getPractices(t);
+  const service = practices.find((p) => p.key === practiceKey)!;
+  const others = practices.filter((s) => s.key !== practiceKey);
 
   return (
     <>
@@ -12,9 +15,7 @@ export function ServiceDetailPage({ service }: { service: WhatWeDoService }) {
         <div className="container-editorial grid gap-12 py-20 md:grid-cols-12 md:py-28">
           <div className="md:col-span-8">
             <div className="eyebrow">{service.eyebrow}</div>
-            <h1 className="mt-6 max-w-4xl font-serif text-5xl text-navy md:text-6xl">
-              {service.title}
-            </h1>
+            <h1 className="mt-6 max-w-4xl font-serif text-5xl text-navy md:text-6xl">{service.title}</h1>
             <p className="mt-4 italic text-slate-warm">{service.tagline}</p>
             <p className="mt-8 max-w-2xl text-lg text-muted-foreground">{service.summary}</p>
           </div>
@@ -24,7 +25,7 @@ export function ServiceDetailPage({ service }: { service: WhatWeDoService }) {
       <section className="bg-background">
         <div className="container-editorial grid gap-16 py-20 md:grid-cols-12">
           <div className="md:col-span-7">
-            <div className="eyebrow">Scope of work</div>
+            <div className="eyebrow">{t.whatWeDo.scope}</div>
             <ul className="mt-8 space-y-4">
               {service.points.map((p) => (
                 <li key={p} className="flex items-start gap-3 text-base text-foreground/85">
@@ -37,12 +38,12 @@ export function ServiceDetailPage({ service }: { service: WhatWeDoService }) {
               to="/contact"
               className="mt-12 inline-flex items-center gap-2 bg-navy px-6 py-3.5 text-xs font-medium uppercase tracking-widest text-navy-foreground transition hover:bg-navy/90"
             >
-              Request Consultation <ArrowUpRight className="h-4 w-4" />
+              {t.common.requestConsultation} <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
 
           <div className="md:col-span-5">
-            <div className="eyebrow">Related practices</div>
+            <div className="eyebrow">{t.whatWeDo.related}</div>
             <ul className="mt-6 space-y-4">
               {others.map((s) => (
                 <li key={s.to}>

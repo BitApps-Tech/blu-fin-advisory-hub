@@ -14,22 +14,22 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
+import { I18nProvider, useI18n } from "../i18n";
 import { Toaster } from "sonner";
 
 function NotFoundComponent() {
+  const { t } = useI18n();
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <div className="eyebrow">Error 404</div>
-        <h1 className="mt-4 font-serif text-5xl text-navy">Page not found</h1>
-        <p className="mt-3 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
+        <div className="eyebrow">{t.errors.notFoundEyebrow}</div>
+        <h1 className="mt-4 font-serif text-5xl text-navy">{t.errors.notFoundTitle}</h1>
+        <p className="mt-3 text-sm text-muted-foreground">{t.errors.notFoundBody}</p>
         <Link
           to="/"
           className="mt-8 inline-flex items-center bg-navy px-5 py-2.5 text-xs uppercase tracking-widest text-navy-foreground"
         >
-          Return home
+          {t.common.returnHome}
         </Link>
       </div>
     </div>
@@ -38,26 +38,25 @@ function NotFoundComponent() {
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
+  const { t } = useI18n();
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <div className="eyebrow">Something went wrong</div>
-        <h1 className="mt-4 font-serif text-3xl text-navy">This page didn't load</h1>
-        <p className="mt-3 text-sm text-muted-foreground">
-          You can try refreshing or head back home.
-        </p>
+        <div className="eyebrow">{t.errors.errorEyebrow}</div>
+        <h1 className="mt-4 font-serif text-3xl text-navy">{t.errors.errorTitle}</h1>
+        <p className="mt-3 text-sm text-muted-foreground">{t.errors.errorBody}</p>
         <div className="mt-6 flex justify-center gap-3">
           <button
             onClick={() => { router.invalidate(); reset(); }}
             className="bg-navy px-5 py-2.5 text-xs uppercase tracking-widest text-navy-foreground"
           >
-            Try again
+            {t.common.tryAgain}
           </button>
           <a href="/" className="border border-navy px-5 py-2.5 text-xs uppercase tracking-widest text-navy">
-            Go home
+            {t.common.goHome}
           </a>
         </div>
       </div>
@@ -78,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "BluFin Capital Advisory — Institutional Capital Markets Advisory" },
-      { name: "twitter:description", content: "ECMA-licensed Securities Investment Advisor. Corporate finance, listing solutions, transaction advisory and private equity for Ethiopia's next generation of issuers." },
+      { name: "twitter:description", content: "ECMA-licensed Securities Investment Advisor." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ab6ede28-2a8c-417d-81cb-b4323b147f53" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ab6ede28-2a8c-417d-81cb-b4323b147f53" },
     ],
@@ -89,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -117,14 +116,16 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
-        {!isAdmin && <SiteHeader />}
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        {!isAdmin && <SiteFooter />}
-      </div>
-      <Toaster position="top-right" />
+      <I18nProvider>
+        <div className="flex min-h-screen flex-col">
+          {!isAdmin && <SiteHeader />}
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          {!isAdmin && <SiteFooter />}
+        </div>
+        <Toaster position="top-right" />
+      </I18nProvider>
     </QueryClientProvider>
   );
 }

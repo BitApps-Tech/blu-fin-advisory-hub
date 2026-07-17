@@ -1,18 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceDetailPage } from "../../components/ServiceDetailPage";
-import { WHAT_WE_DO } from "../../lib/what-we-do";
-
-const service = WHAT_WE_DO[0];
 
 export const Route = createFileRoute("/what-we-do/listing-capital-markets")({
   head: () => ({
     meta: [
-      { title: `${service.title} — BluFin Capital Advisory` },
-      { name: "description", content: service.summary },
-      { property: "og:title", content: `${service.title} — BluFin Capital Advisory` },
-      { property: "og:url", content: service.to },
+      { title: "Listing & Capital Markets Solutions — BluFin Capital Advisory" },
+      { property: "og:url", content: "/what-we-do/listing-capital-markets" },
     ],
-    links: [{ rel: "canonical", href: service.to }],
+    links: [{ rel: "canonical", href: "/what-we-do/listing-capital-markets" }],
   }),
-  component: () => <ServiceDetailPage service={service} />,
+  component: () => <ServiceDetailPage practiceKey="listing" />,
 });

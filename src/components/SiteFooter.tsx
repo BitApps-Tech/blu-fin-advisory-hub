@@ -2,9 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 import { SocialLinks } from "./SocialLinks";
 import { CONTACT } from "../lib/contact";
-import { WHAT_WE_DO } from "../lib/what-we-do";
+import { useI18n } from "../i18n";
+import { getPractices } from "../lib/what-we-do";
 
 export function SiteFooter() {
+  const { t } = useI18n();
+  const practices = getPractices(t);
+
   return (
     <footer className="bg-navy text-navy-foreground">
       <div className="container-editorial grid gap-12 py-16 md:grid-cols-4">
@@ -13,15 +17,14 @@ export function SiteFooter() {
             <Logo variant="light" className="h-24 w-auto md:h-28" />
           </Link>
           <p className="-mt-8 max-w-xs text-sm leading-relaxed text-white/70 md:-mt-10">
-            A Private Limited Company licensed to operate as a Securities Investment Advisor
-            under the Ethiopian Capital Market Authority (ECMA).
+            {t.footer.blurb}
           </p>
         </div>
 
         <div>
-          <div className="eyebrow text-white/60">What We Do</div>
+          <div className="eyebrow text-white/60">{t.footer.whatWeDo}</div>
           <ul className="mt-4 space-y-2 text-sm text-white/85">
-            {WHAT_WE_DO.map((s) => (
+            {practices.map((s) => (
               <li key={s.to}>
                 <Link to={s.to} className="hover:text-white">{s.short}</Link>
               </li>
@@ -30,18 +33,18 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <div className="eyebrow text-white/60">Firm</div>
+          <div className="eyebrow text-white/60">{t.footer.firm}</div>
           <ul className="mt-4 space-y-2 text-sm text-white/85">
-            <li><Link to="/about" className="hover:text-white">About Us</Link></li>
-            <li><Link to="/insights" className="hover:text-white">News & Articles</Link></li>
-            <li><Link to="/careers" className="hover:text-white">Careers</Link></li>
-            <li><Link to="/track-record" className="hover:text-white">Track Record</Link></li>
-            <li><Link to="/contact" className="hover:text-white">Contact Us</Link></li>
+            <li><Link to="/about" className="hover:text-white">{t.footer.about}</Link></li>
+            <li><Link to="/insights" className="hover:text-white">{t.footer.news}</Link></li>
+            <li><Link to="/careers" className="hover:text-white">{t.footer.careers}</Link></li>
+            <li><Link to="/track-record" className="hover:text-white">{t.footer.trackRecord}</Link></li>
+            <li><Link to="/contact" className="hover:text-white">{t.footer.contact}</Link></li>
           </ul>
         </div>
 
         <div>
-          <div className="eyebrow text-white/60">Office</div>
+          <div className="eyebrow text-white/60">{t.footer.office}</div>
           <address className="mt-4 space-y-2 text-sm not-italic text-white/85">
             {CONTACT.addressLines.map((line) => (
               <div key={line}>{line}</div>
@@ -58,15 +61,15 @@ export function SiteFooter() {
             </div>
           </address>
 
-          <div className="eyebrow mt-8 text-white/60">Social</div>
+          <div className="eyebrow mt-8 text-white/60">{t.footer.social}</div>
           <SocialLinks className="mt-4 text-white" iconClassName="h-4 w-4" />
         </div>
       </div>
 
       <div className="border-t border-white/10">
         <div className="container-editorial flex flex-col items-start justify-between gap-3 py-6 text-xs text-white/60 md:flex-row md:items-center">
-          <div>© {new Date().getFullYear()} BluFin Capital Advisory PLC. All rights reserved.</div>
-          <div>Licensed by the Ethiopian Capital Market Authority · License #ECMA-SIA-2024</div>
+          <div>© {new Date().getFullYear()} BluFin Capital Advisory PLC. {t.footer.rights}</div>
+          <div>{t.footer.license}</div>
         </div>
       </div>
     </footer>
