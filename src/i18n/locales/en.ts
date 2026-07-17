@@ -61,6 +61,21 @@ export type Dictionary = {
     firmCta: string;
     engageEyebrow: string;
     engageTitle: string;
+    teamTitle: string;
+    teamIntro: string;
+    team: { name: string; title: string }[];
+    awards: {
+      eyebrow: string;
+      title: string;
+      intro: string;
+      issuer: string;
+      licenseTitle: string;
+      licenseBody: string;
+      refLabel: string;
+      refValue: string;
+      dateLabel: string;
+      dateValue: string;
+    };
   };
   about: {
     eyebrow: string;
@@ -213,7 +228,7 @@ export const en: Dictionary = {
     trackRecord: "Track Record",
     contact: "Contact Us",
     rights: "All rights reserved.",
-    license: "Licensed by the Ethiopian Capital Market Authority · License #ECMA-SIA-2024",
+    license: "Licensed by the Ethiopian Capital Market Authority · Ref. ECMA/LR/224/26",
     designedBy: "Designed & Developed by",
   },
   common: {
@@ -252,6 +267,29 @@ export const en: Dictionary = {
     firmCta: "Read our company profile",
     engageEyebrow: "Engage BluFin",
     engageTitle: "Empowering informed financial decisions for Ethiopia's capital market.",
+    teamTitle: "Senior Management Team",
+    teamIntro:
+      "Our senior leadership brings deep experience in corporate finance, compliance, research, and governance — guiding BluFin with integrity as Ethiopia's capital market grows.",
+    team: [
+      { name: "Dr. Yitbarek Takele Bayiley", title: "Chief Executive Officer" },
+      { name: "Mr. Bizuayehu Seyoum Tsehaye", title: "Chief Compliance Officer" },
+      { name: "Dr. Abebe Gule Girma", title: "Chief Research Officer" },
+      { name: "Mr. Abraham Ejigu Shiferaw", title: "Board Chairperson" },
+    ],
+    awards: {
+      eyebrow: "Awards & Accolades",
+      title: "Official recognition from Ethiopia's capital markets regulator.",
+      intro:
+        "BluFin Capital Advisory PLC is proud to hold an official Securities Investment Advisor License granted by the Ethiopian Capital Market Authority.",
+      issuer: "Ethiopian Capital Market Authority",
+      licenseTitle: "Securities Investment Advisor License",
+      licenseBody:
+        "Following confirmation that licensing conditions have been fulfilled, the Ethiopian Capital Market Authority granted BluFin Capital Advisory PLC a Securities Investment Advisor License — affirming our commitment to regulatory excellence, integrity, and professional standards in Ethiopia's capital market.",
+      refLabel: "Reference",
+      refValue: "ECMA/LR/224/26",
+      dateLabel: "Granted",
+      dateValue: "10 July 2026",
+    },
   },
   about: {
     eyebrow: "About Us",

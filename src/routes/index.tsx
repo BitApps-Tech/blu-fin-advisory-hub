@@ -3,6 +3,8 @@ import { ArrowUpRight, Landmark, Building2, Handshake } from "lucide-react";
 import { useI18n } from "../i18n";
 import { getPractices } from "../lib/what-we-do";
 import { COMPANY } from "../lib/company";
+import { TeamSection } from "../components/TeamSection";
+import { AwardsSection } from "../components/AwardsSection";
 import photoBanner from "../assets/photo-team-milestone.png";
 import photoEcma from "../assets/photo-ecma-license.png";
 import photoSigning from "../assets/photo-signing.png";
@@ -156,6 +158,10 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <TeamSection />
+
+      <AwardsSection />
 
       <section className="hairline-t hairline-b bg-panel">
         <div className="container-editorial grid gap-0 py-0 md:grid-cols-2">

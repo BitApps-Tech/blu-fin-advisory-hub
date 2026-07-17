@@ -25,7 +25,7 @@ export const om: Dictionary = {
     trackRecord: "Galmee hojii",
     contact: "Nu qunnamaa",
     rights: "Mirgi seeraan eegamaa dha.",
-    license: "Ajaja Gabaa Kaappitaalaa Itoophiyaatiin hayyamame · Hayyama #ECMA-SIA-2024",
+    license: "Ajaja Gabaa Kaappitaalaa Itoophiyaatiin hayyamame · Wabii ECMA/LR/224/26",
     designedBy: "Kan qophaa'e fi misoomsame",
   },
   common: {
@@ -64,6 +64,29 @@ export const om: Dictionary = {
     firmCta: "Ibsa dhaabbataa keenya dubbisaa",
     engageEyebrow: "BluFin qunnamaa",
     engageTitle: "Murtoowwan faayinaansii beekumsaan deeggaraman gabaa kaappitaalaa Itoophiyaaf cimsuu.",
+    teamTitle: "Garee Bulchiinsa Olaanaa",
+    teamIntro:
+      "Hoogganoonni keenya olaanaan muuxannoo gadi fagoo faayinaansii dhaabbataa, walabummaa seeraa, qorannoo fi bulchiinsa qabu — gabaa kaappitaalaa Itoophiyaa akkuma guddatutti BluFin amanamummaadhaan qajeelchu.",
+    team: [
+      { name: "Dr. Yitbarek Takele Bayiley", title: "Daarektara Hojiirra Oolmaa Olaanaa (CEO)" },
+      { name: "Mr. Bizuayehu Seyoum Tsehaye", title: "Ogeessa Walabummaa Seeraa Olaanaa" },
+      { name: "Dr. Abebe Gule Girma", title: "Ogeessa Qorannoo Olaanaa" },
+      { name: "Mr. Abraham Ejigu Shiferaw", title: "Pirezidaantii Boordii" },
+    ],
+    awards: {
+      eyebrow: "Badhaasaafi Kabaja",
+      title: "Beekamtii idilee ajaja gabaa kaappitaalaa Itoophiyaa irraa.",
+      intro:
+        "BluFin Capital Advisory PLC hayyama Gorsaa Investimantii Securitii idilee Ajaja Gabaa Kaappitaalaa Itoophiyaatiin kenname qabaachuu isaa ittiin boonu.",
+      issuer: "Ajaja Gabaa Kaappitaalaa Itoophiyaa",
+      licenseTitle: "Hayyama Gorsaa Investimantii Securitii",
+      licenseBody:
+        "Haalli hayyamaa guutuu ta'uu isaa mirkanaa'ee booda, Ajajni Gabaa Kaappitaalaa Itoophiyaa BluFin Capital Advisory PLC'tti Hayyama Gorsaa Investimantii Securitii kenneera — kutannoo keenya olaantummaa seeraa, amanamummaa fi sadarkaa ogummaa irratti mirkaneessa.",
+      refLabel: "Wabii",
+      refValue: "ECMA/LR/224/26",
+      dateLabel: "Guyyaa kenname",
+      dateValue: "Adoolessa 10, 2026",
+    },
   },
   about: {
     eyebrow: "Waa'ee keenya",
