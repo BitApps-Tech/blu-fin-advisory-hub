@@ -50,12 +50,18 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <p className="mt-3 text-sm text-muted-foreground">{t.errors.errorBody}</p>
         <div className="mt-6 flex justify-center gap-3">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="bg-navy px-5 py-2.5 text-xs uppercase tracking-widest text-navy-foreground"
           >
             {t.common.tryAgain}
           </button>
-          <a href="/" className="border border-navy px-5 py-2.5 text-xs uppercase tracking-widest text-navy">
+          <a
+            href="/"
+            className="border border-navy px-5 py-2.5 text-xs uppercase tracking-widest text-navy"
+          >
             {t.common.goHome}
           </a>
         </div>
@@ -70,16 +76,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "BluFin Capital Advisory — Institutional Capital Markets Advisory" },
-      { name: "description", content: "To deliver ethical, insightful, and compliant investment and transaction advisory services that empower informed financial decisions and contribute to the robust development of the Ethiopian capital market." },
-      { property: "og:title", content: "BluFin Capital Advisory — Institutional Capital Markets Advisory" },
-      { property: "og:description", content: "To deliver ethical, insightful, and compliant investment and transaction advisory services that empower informed financial decisions and contribute to the robust development of the Ethiopian capital market." },
+      {
+        name: "description",
+        content:
+          "To deliver ethical, insightful, and compliant investment and transaction advisory services that empower informed financial decisions and contribute to the robust development of the Ethiopian capital market.",
+      },
+      {
+        property: "og:title",
+        content: "BluFin Capital Advisory — Institutional Capital Markets Advisory",
+      },
+      {
+        property: "og:description",
+        content:
+          "To deliver ethical, insightful, and compliant investment and transaction advisory services that empower informed financial decisions and contribute to the robust development of the Ethiopian capital market.",
+      },
       { property: "og:site_name", content: "BluFin Capital Advisory" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "BluFin Capital Advisory — Institutional Capital Markets Advisory" },
+      {
+        name: "twitter:title",
+        content: "BluFin Capital Advisory — Institutional Capital Markets Advisory",
+      },
       { name: "twitter:description", content: "ECMA-licensed Securities Investment Advisor." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ab6ede28-2a8c-417d-81cb-b4323b147f53" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ab6ede28-2a8c-417d-81cb-b4323b147f53" },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ab6ede28-2a8c-417d-81cb-b4323b147f53",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ab6ede28-2a8c-417d-81cb-b4323b147f53",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -88,7 +116,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -100,10 +131,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head><HeadContent /></head>
+      <head>
+        <HeadContent />
+      </head>
       <body>
         {children}
         <Scripts />
+        <script src="https://code.tidio.co/vxue7ykeev7yoeznacaxqponmi6cdh9f.js" async />
       </body>
     </html>
   );

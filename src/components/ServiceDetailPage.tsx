@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { useI18n } from "../i18n";
 import { getPractices, type PracticeKey } from "../lib/what-we-do";
+import { MidContactBanner } from "./MidContactBanner";
 
 export function ServiceDetailPage({ practiceKey }: { practiceKey: PracticeKey }) {
   const { t } = useI18n();
@@ -15,12 +16,16 @@ export function ServiceDetailPage({ practiceKey }: { practiceKey: PracticeKey })
         <div className="container-editorial grid gap-12 py-20 md:grid-cols-12 md:py-28">
           <div className="md:col-span-8">
             <div className="eyebrow">{service.eyebrow}</div>
-            <h1 className="mt-6 max-w-4xl font-serif text-5xl text-navy md:text-6xl">{service.title}</h1>
+            <h1 className="mt-6 max-w-4xl font-serif text-5xl text-navy md:text-6xl">
+              {service.title}
+            </h1>
             <p className="mt-4 italic text-slate-warm">{service.tagline}</p>
             <p className="mt-8 max-w-2xl text-lg text-muted-foreground">{service.summary}</p>
           </div>
         </div>
       </section>
+
+      <MidContactBanner />
 
       <section className="bg-background">
         <div className="container-editorial grid gap-16 py-20 md:grid-cols-12">

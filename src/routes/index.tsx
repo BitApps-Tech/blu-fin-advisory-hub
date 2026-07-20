@@ -3,8 +3,8 @@ import { ArrowUpRight, Landmark, Building2, Handshake } from "lucide-react";
 import { useI18n } from "../i18n";
 import { getPractices } from "../lib/what-we-do";
 import { COMPANY } from "../lib/company";
-import { TeamSection } from "../components/TeamSection";
 import { AwardsSection } from "../components/AwardsSection";
+import { MidContactBanner } from "../components/MidContactBanner";
 import { Reveal } from "../components/Reveal";
 import photoBanner from "../assets/photo-team-milestone.png";
 import photoEcma from "../assets/photo-ecma-license.png";
@@ -66,15 +66,21 @@ function Home() {
             <div className="eyebrow">{t.common.atAGlance}</div>
             <dl className="mt-6 space-y-6">
               <div>
-                <dt className="text-xs uppercase tracking-widest text-slate-warm">{t.home.glanceLegal}</dt>
+                <dt className="text-xs uppercase tracking-widest text-slate-warm">
+                  {t.home.glanceLegal}
+                </dt>
                 <dd className="mt-1 font-serif text-xl text-navy">{c.legalForm}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-widest text-slate-warm">{t.home.glanceLicense}</dt>
+                <dt className="text-xs uppercase tracking-widest text-slate-warm">
+                  {t.home.glanceLicense}
+                </dt>
                 <dd className="mt-1 font-serif text-xl text-navy">{c.businessLicense}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-widest text-slate-warm">{t.home.glanceHq}</dt>
+                <dt className="text-xs uppercase tracking-widest text-slate-warm">
+                  {t.home.glanceHq}
+                </dt>
                 <dd className="mt-1 font-serif text-xl text-navy">{c.registeredAddress}</dd>
               </div>
             </dl>
@@ -113,7 +119,9 @@ function Home() {
               </div>
               <div className="md:col-span-8">
                 <p className="text-base leading-relaxed text-muted-foreground">{c.ownership}</p>
-                <p className="mt-6 text-base leading-relaxed text-muted-foreground">{c.foundingPhilosophy}</p>
+                <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                  {c.foundingPhilosophy}
+                </p>
               </div>
             </Reveal>
           </section>
@@ -151,7 +159,10 @@ function Home() {
                   <div className="eyebrow">{t.home.practicesEyebrow}</div>
                   <h2 className="mt-4 font-serif text-4xl text-navy">{t.home.practicesTitle}</h2>
                 </div>
-                <Link to="/what-we-do" className="link-more hidden text-xs uppercase tracking-widest text-navy md:inline-flex">
+                <Link
+                  to="/what-we-do"
+                  className="link-more hidden text-xs uppercase tracking-widest text-navy md:inline-flex"
+                >
                   {t.home.allServices}
                 </Link>
               </Reveal>
@@ -174,7 +185,9 @@ function Home() {
                         <span className="font-serif text-sm text-slate-warm">0{i + 1}</span>
                       </div>
                       <h3 className="mt-8 font-serif text-2xl text-navy">{s.short}</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.summary}</p>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                        {s.summary}
+                      </p>
                       <Link
                         to={s.to}
                         className="link-more mt-6 inline-flex items-center gap-1 text-xs uppercase tracking-widest text-navy"
@@ -189,7 +202,7 @@ function Home() {
             </div>
           </section>
 
-          <TeamSection />
+          <MidContactBanner />
 
           <AwardsSection />
 
@@ -198,7 +211,9 @@ function Home() {
               <Reveal className="flex flex-col justify-center py-16 pr-0 md:py-24 md:pr-12">
                 <div className="eyebrow">{t.home.firmEyebrow}</div>
                 <h2 className="mt-6 font-serif text-4xl text-navy">{t.home.firmTitle}</h2>
-                <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">{c.status}</p>
+                <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
+                  {c.status}
+                </p>
                 <Link
                   to="/about"
                   className="link-more mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-navy"
@@ -230,7 +245,9 @@ function Home() {
             <Reveal className="container-editorial grid gap-10 py-20 md:grid-cols-12 md:py-28">
               <div className="md:col-span-8">
                 <div className="eyebrow text-white/60">{t.home.engageEyebrow}</div>
-                <h2 className="mt-6 font-serif text-4xl leading-tight md:text-5xl">{t.home.engageTitle}</h2>
+                <h2 className="mt-6 font-serif text-4xl leading-tight md:text-5xl">
+                  {t.home.engageTitle}
+                </h2>
               </div>
               <div className="flex items-end md:col-span-4">
                 <Link

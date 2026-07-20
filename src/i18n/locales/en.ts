@@ -9,6 +9,9 @@ export type Dictionary = {
     contact: string;
     emailUs: string;
     menu: string;
+    mediaCenter: string;
+    search: string;
+    searchPlaceholder: string;
   };
   footer: {
     blurb: string;
@@ -63,7 +66,7 @@ export type Dictionary = {
     engageTitle: string;
     teamTitle: string;
     teamIntro: string;
-    team: { name: string; title: string; bio: string }[];
+    team: { id: string; name: string; title: string; bio: string }[];
     teamMore: string;
     awards: {
       eyebrow: string;
@@ -81,6 +84,13 @@ export type Dictionary = {
   about: {
     eyebrow: string;
     headline: string;
+    companyProfileTab: string;
+    teamTab: string;
+    teamPageTitle: string;
+    boardTitle: string;
+    boardIntro: string;
+    appointedTitle: string;
+    appointedIntro: string;
     legalEyebrow: string;
     legalTitle: string;
     ownershipEyebrow: string;
@@ -141,6 +151,14 @@ export type Dictionary = {
     all: string;
     empty: string;
     minRead: string;
+    resultsFor: string;
+    resultsCount: string;
+    noResults: string;
+    clearSearch: string;
+    kindArticle: string;
+    kindPage: string;
+    kindPractice: string;
+    kindTeam: string;
   };
   trackRecord: {
     eyebrow: string;
@@ -215,6 +233,9 @@ export const en: Dictionary = {
     contact: "Contact Us",
     emailUs: "Email Us",
     menu: "Menu",
+    mediaCenter: "Media Center",
+    search: "Search",
+    searchPlaceholder: "Search…",
   },
   footer: {
     blurb:
@@ -273,24 +294,52 @@ export const en: Dictionary = {
       "Our senior leadership brings deep experience in corporate finance, compliance, research, and governance — guiding BluFin with integrity as Ethiopia's capital market grows.",
     team: [
       {
+        id: "abraham",
+        name: "Mr. Abraham Ejigu Shiferaw",
+        title: "Board Chairperson",
+        bio: "Provides board oversight and governance stewardship, anchoring BluFin's commitment to professionalism, accountability, and long-term client trust.",
+      },
+      {
+        id: "guang",
+        name: "Mr. Guang Xue",
+        title: "Board Member — Director",
+        bio: "Serves on BluFin's Board of Directors, contributing strategic oversight as the firm grows within Ethiopia's regulated capital market.",
+      },
+      {
+        id: "yohannes",
+        name: "Dr. Yohannes Workeaferahu Elifneh",
+        title: "Director",
+        bio: "Brings academic and professional perspective to board deliberations, supporting sound governance and long-term institutional development.",
+      },
+      {
+        id: "daniel",
+        name: "Mr. Daniel Yared Hailemariam",
+        title: "Director",
+        bio: "Contributes board-level guidance on strategy and accountability as BluFin delivers licensed securities investment advisory services.",
+      },
+      {
+        id: "kindie",
+        name: "Mr. Kindie Abebe Alemayehu",
+        title: "Director",
+        bio: "Supports the Board's oversight of the firm's integrity, professionalism, and alignment with ECMA licensing standards.",
+      },
+      {
+        id: "yitbarek",
         name: "Dr. Yitbarek Takele Bayiley",
         title: "Chief Executive Officer",
         bio: "Leads BluFin's strategy and client engagements, bringing deep expertise in corporate finance and capital markets to Ethiopia's emerging advisory landscape.",
       },
       {
+        id: "bizuayehu",
         name: "Mr. Bizuayehu Seyoum Tsehaye",
         title: "Chief Compliance Officer",
         bio: "Safeguards regulatory integrity across every mandate, ensuring BluFin's advice remains ethical, suitable, and fully aligned with ECMA standards.",
       },
       {
+        id: "abebe",
         name: "Dr. Abebe Gule Girma",
         title: "Chief Research Officer",
         bio: "Drives independent, research-led insights that underpin our recommendations — turning rigorous analysis into clear guidance for clients.",
-      },
-      {
-        name: "Mr. Abraham Ejigu Shiferaw",
-        title: "Board Chairperson",
-        bio: "Provides board oversight and governance stewardship, anchoring BluFin's commitment to professionalism, accountability, and long-term client trust.",
       },
     ],
     teamMore: "More",
@@ -312,6 +361,15 @@ export const en: Dictionary = {
   about: {
     eyebrow: "About Us",
     headline: "Ethiopia's capital market, advised with integrity and objectivity.",
+    companyProfileTab: "Company Profile",
+    teamTab: "Our Team",
+    teamPageTitle: "Our Team",
+    boardTitle: "Board of Directors",
+    boardIntro:
+      "Independent board oversight that anchors BluFin's governance, accountability, and long-term stewardship — as approved by the Ethiopian Capital Market Authority.",
+    appointedTitle: "Appointed Representatives",
+    appointedIntro:
+      "Our appointed representatives — CEO, Chief Compliance Officer, and Chief Research Officer — lead strategy, regulatory integrity, and research-led advice.",
     legalEyebrow: "Corporate & legal details",
     legalTitle: "Formal company profile and legal status",
     ownershipEyebrow: "Ownership",
@@ -353,7 +411,8 @@ export const en: Dictionary = {
   contact: {
     eyebrow: "Contact",
     headline: "Confidential consultation with our senior team.",
-    intro: "Submissions are reviewed personally by a partner. Response typically within one business day.",
+    intro:
+      "Submissions are reviewed personally by a partner. Response typically within one business day.",
     office: "Office",
     advisoryDesk: "Advisory desk",
     telephone: "Telephone",
@@ -376,6 +435,14 @@ export const en: Dictionary = {
     all: "All",
     empty: "No articles in this category yet.",
     minRead: "min read",
+    resultsFor: "Results for",
+    resultsCount: "results",
+    noResults: "No results matched your search.",
+    clearSearch: "Clear search",
+    kindArticle: "Article",
+    kindPage: "Page",
+    kindPractice: "Service",
+    kindTeam: "Team",
   },
   trackRecord: {
     eyebrow: "Track record",

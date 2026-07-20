@@ -11,6 +11,9 @@ export const om: Dictionary = {
     contact: "Nu qunnamaa",
     emailUs: "Email nuuf ergaa",
     menu: "Tarree",
+    mediaCenter: "Wiirtuu Miidiyaa",
+    search: "Barbaadi",
+    searchPlaceholder: "Barbaadi…",
   },
   footer: {
     blurb:
@@ -45,7 +48,8 @@ export const om: Dictionary = {
   },
   home: {
     eyebrow: "Gorsaa Investimantii Securitii hayyamame · ECMA",
-    headline: "Gorsa amala qabeessa, hubannoo qabu fi seera qabeessa gabaa kaappitaalaa Itoophiyaaf.",
+    headline:
+      "Gorsa amala qabeessa, hubannoo qabu fi seera qabeessa gabaa kaappitaalaa Itoophiyaaf.",
     ctaPrimary: "Mariin gaafadhaa",
     ctaSecondary: "Waa'ee BluFin",
     glanceLegal: "Bifa seeraa",
@@ -63,30 +67,59 @@ export const om: Dictionary = {
     firmTitle: "Saffisaa, maamilaa xiyyeeffatee fi akeekota hundeeffamaa waliin walsimataa.",
     firmCta: "Ibsa dhaabbataa keenya dubbisaa",
     engageEyebrow: "BluFin qunnamaa",
-    engageTitle: "Murtoowwan faayinaansii beekumsaan deeggaraman gabaa kaappitaalaa Itoophiyaaf cimsuu.",
+    engageTitle:
+      "Murtoowwan faayinaansii beekumsaan deeggaraman gabaa kaappitaalaa Itoophiyaaf cimsuu.",
     teamTitle: "Garee Bulchiinsa Olaanaa",
     teamIntro:
       "Hoogganoonni keenya olaanaan muuxannoo gadi fagoo faayinaansii dhaabbataa, walabummaa seeraa, qorannoo fi bulchiinsa qabu — gabaa kaappitaalaa Itoophiyaa akkuma guddatutti BluFin amanamummaadhaan qajeelchu.",
     team: [
       {
+        id: "abraham",
+        name: "Mr. Abraham Ejigu Shiferaw",
+        title: "Pirezidaantii Boordii",
+        bio: "To'annoo boordii fi eegumsa bulchiinsa kenna, kutannoo BluFin ogummaa, itti gaafatamummaa fi amantaa maamilaa yeroo dheeraaf cimsa.",
+      },
+      {
+        id: "guang",
+        name: "Mr. Guang Xue",
+        title: "Miseensa Boordii — Dirreektara",
+        bio: "Boordii Dirreektaroota BluFin irratti tajaajila, gabaa kaappitaalaa Itoophiyaa seera qabeessa keessatti dhaabbanni akkuma guddatutti to'annoo tooftaa kenna.",
+      },
+      {
+        id: "yohannes",
+        name: "Dr. Yohannes Workeaferahu Elifneh",
+        title: "Dirreektara",
+        bio: "Mariin boordii irratti ilaalcha barnootaa fi ogummaa fidee, bulchiinsa gaarii fi misooma dhaabbataa yeroo dheeraa deeggara.",
+      },
+      {
+        id: "daniel",
+        name: "Mr. Daniel Yared Hailemariam",
+        title: "Dirreektara",
+        bio: "BluFin tajaajila gorsaa investimantii securitii hayyamame yeroo kennutti tooftaa fi itti gaafatamummaa irratti qajeelfama sadarkaa boordii kenna.",
+      },
+      {
+        id: "kindie",
+        name: "Mr. Kindie Abebe Alemayehu",
+        title: "Dirreektara",
+        bio: "To'annoo boordii amanamummaa, ogummaa fi sadarkaa hayyamaa ECMA waliin walsimu irratti deeggarsa kenna.",
+      },
+      {
+        id: "yitbarek",
         name: "Dr. Yitbarek Takele Bayiley",
         title: "Daarektara Hojiirra Oolmaa Olaanaa (CEO)",
         bio: "Tooftaa fi qunnamtii maamilaa BluFin qajeelcha, muuxannoo gadi fagoo faayinaansii dhaabbataafi gabaa kaappitaalaa gara gorsa guddachaa Itoophiyaatti fidee.",
       },
       {
+        id: "bizuayehu",
         name: "Mr. Bizuayehu Seyoum Tsehaye",
         title: "Ogeessa Walabummaa Seeraa Olaanaa",
         bio: "Amanamummaa seeraa hojii hundaa irratti eega, gorsi BluFin naamusaa, mijataa fi sadarkaa ECMA waliin walsimatu ta'uu mirkaneessa.",
       },
       {
+        id: "abebe",
         name: "Dr. Abebe Gule Girma",
         title: "Ogeessa Qorannoo Olaanaa",
         bio: "Hubannoo walabaa qorannoorratti hundaa'e kakaasa — xiinxala cimaa gara qajeelfama ifaa maamilaaatti jijjiira.",
-      },
-      {
-        name: "Mr. Abraham Ejigu Shiferaw",
-        title: "Pirezidaantii Boordii",
-        bio: "To'annoo boordii fi eegumsa bulchiinsa kenna, kutannoo BluFin ogummaa, itti gaafatamummaa fi amantaa maamilaa yeroo dheeraaf cimsa.",
       },
     ],
     teamMore: "Dabalataan",
@@ -108,6 +141,15 @@ export const om: Dictionary = {
   about: {
     eyebrow: "Waa'ee keenya",
     headline: "Gabaa kaappitaalaa Itoophiyaa — amanamummaa fi walabaa'inaan gorfama.",
+    companyProfileTab: "Ibsa dhaabbataa",
+    teamTab: "Garee keenya",
+    teamPageTitle: "Garee",
+    boardTitle: "Boodii Dirreektaroota",
+    boardIntro:
+      "To'annoo boordii walabaa kan bulchiinsa, itti gaafatamummaa fi eegumsa yeroo dheeraa BluFin cimsu — Ajaja Gabaa Kaappitaalaa Itoophiyaatiin mirkanaa'e.",
+    appointedTitle: "Itti gaafatamtoota ramadaman",
+    appointedIntro:
+      "Itti gaafatamtoonni keenya ramadaman — CEO, Ogeessa Walabummaa Seeraa Olaanaa, fi Ogeessa Qorannoo Olaanaa — tooftaa, amanamummaa seeraa fi gorsa qorannoorratti hundaa'e qajeelchu.",
     legalEyebrow: "Bal'ina dhaabbataa fi seeraa",
     legalTitle: "Ibsa dhaabbataa fi haala seeraa idilee",
     ownershipEyebrow: "Abbaa qabeenyaa",
@@ -137,7 +179,8 @@ export const om: Dictionary = {
   },
   careers: {
     eyebrow: "Carraa hojii",
-    headline: "Dhaabbata amanamummaa, walabaa'inaa fi olaantummaa ogummaa irratti ijaarameetti makamaa.",
+    headline:
+      "Dhaabbata amanamummaa, walabaa'inaa fi olaantummaa ogummaa irratti ijaarameetti makamaa.",
     intro:
       "Duubbee bu'uuraa keenya gochaalee fi amala hojjettootaa hunda geggeessa. Ogeessota gorsa amala qabeessa, hubannoo qabu fi seera qabeessa waliin qooddan barbaanna.",
     howWeWork: "Akkamitti hojjenna",
@@ -149,7 +192,8 @@ export const om: Dictionary = {
   contact: {
     eyebrow: "Nu qunnamaa",
     headline: "Garee olaanaa keenya waliin marii iccitii.",
-    intro: "Gaaffiin dhuunfaan michuun ilaalama. Deebiin yeroo baay'ee guyyaa hojii tokko keessatti kenna.",
+    intro:
+      "Gaaffiin dhuunfaan michuun ilaalama. Deebiin yeroo baay'ee guyyaa hojii tokko keessatti kenna.",
     office: "Waajjira",
     advisoryDesk: "Deeskii gorsaa",
     telephone: "Bilbila",
@@ -172,6 +216,14 @@ export const om: Dictionary = {
     all: "Hunda",
     empty: "Kutaalee kana keessatti ammaaf barruun hin jiru.",
     minRead: "daqiiqaa dubbisuu",
+    resultsFor: "Bu'aawwan barbaacha",
+    resultsCount: "bu'aawwan",
+    noResults: "Bu'aan barbaacha kee waliin walsimu hin argamne.",
+    clearSearch: "Barbaacha haqi",
+    kindArticle: "Barruu",
+    kindPage: "Fuula",
+    kindPractice: "Tajaajila",
+    kindTeam: "Garee",
   },
   trackRecord: {
     eyebrow: "Galmee hojii",
@@ -205,11 +257,11 @@ export const om: Dictionary = {
     vision:
       "Dhaabbata gorsaa investimantii Itoophiyaa keessatti baay'ee amanamuuf kabajamu, sadarkaa amanamummaa, ogummaa fi milkaa'ina maamilaa kaa'uu.",
     visionElaboration:
-      "Mul'anni keenya qooda gabaa olitti dheerata. \"Amanamuu\" jechuun amala seera qabeessa fi fayidaa maamilaa duratti kaa'uu jechuudha. \"Kabajamuu\" jechuun maqaa qulqullina qorannoo, walabaa'ina gorsaa fi gumaacha gabaa guddisuu irratti ijaarame jechuudha.",
+      'Mul\'anni keenya qooda gabaa olitti dheerata. "Amanamuu" jechuun amala seera qabeessa fi fayidaa maamilaa duratti kaa\'uu jechuudha. "Kabajamuu" jechuun maqaa qulqullina qorannoo, walabaa\'ina gorsaa fi gumaacha gabaa guddisuu irratti ijaarame jechuudha.',
     mission:
       "Tajaajila gorsaa investimantii fi daldalaa amala qabeessa, hubannoo qabu fi seera qabeessa kennuun murtoowwan faayinaansii beekumsaan deeggaraman cimsuu fi guddina gabaa kaappitaalaa Itoophiyaa cimsuu.",
     missionElaboration:
-      "Ergamni keenya gochaa irratti xiyyeeffata. \"Amala qabeessa\" dirqama amanamummaa keenya cimsa. \"Hubannoo qabu\" bu'uura xiinxala qorannoo cimaa irratti ijaarame agarsiisa. \"Seera qabeessa\" sirna hojii keenyaa fi kabaja cimaan qaawwa seeraa ibsa.",
+      'Ergamni keenya gochaa irratti xiyyeeffata. "Amala qabeessa" dirqama amanamummaa keenya cimsa. "Hubannoo qabu" bu\'uura xiinxala qorannoo cimaa irratti ijaarame agarsiisa. "Seera qabeessa" sirna hojii keenyaa fi kabaja cimaan qaawwa seeraa ibsa.',
     values: [
       {
         title: "Amanamummaa duratti",

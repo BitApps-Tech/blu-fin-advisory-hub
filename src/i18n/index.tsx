@@ -10,9 +10,12 @@ import {
 import { am } from "./locales/am";
 import { en, type Dictionary } from "./locales/en";
 import { om } from "./locales/om";
+import { so } from "./locales/so";
+import { ti } from "./locales/ti";
+import { zh } from "./locales/zh";
 import { isLocale, LOCALE_STORAGE_KEY, LOCALES, type Locale } from "./types";
 
-const dictionaries: Record<Locale, Dictionary> = { en, am, om };
+const dictionaries: Record<Locale, Dictionary> = { en, am, om, ti, so, zh };
 
 type I18nContextValue = {
   locale: Locale;
@@ -51,13 +54,13 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       /* ignore */
     }
     if (typeof document !== "undefined") {
-      document.documentElement.lang = next === "am" ? "am" : next === "om" ? "om" : "en";
+      document.documentElement.lang = next;
     }
   }, []);
 
   useEffect(() => {
     if (!ready) return;
-    document.documentElement.lang = locale === "am" ? "am" : locale === "om" ? "om" : "en";
+    document.documentElement.lang = locale;
   }, [locale, ready]);
 
   const value = useMemo<I18nContextValue>(

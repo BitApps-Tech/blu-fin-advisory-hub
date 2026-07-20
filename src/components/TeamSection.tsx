@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { Linkedin } from "lucide-react";
 import { useI18n } from "../i18n";
-import { TEAM_PROFILES } from "../lib/team";
+import { memberInitials, TEAM_PROFILES } from "../lib/team";
 import { Reveal } from "./Reveal";
 import { cn } from "../lib/utils";
+
+export type TeamMember = {
+  id: string;
+  name: string;
+  title: string;
+  bio: string;
+};
 
 function XIcon({ className }: { className?: string }) {
   return (
@@ -13,40 +20,72 @@ function XIcon({ className }: { className?: string }) {
   );
 }
 
-export function TeamSection() {
+type TeamSectionProps = {
+  title?: string;
+  intro?: string;
+  members?: TeamMember[];
+  hideHeading?: boolean;
+  hideIntro?: boolean;
+  sectionClassName?: string;
+};
+
+export function TeamSection({
+  title,
+  intro,
+  members,
+  hideHeading,
+  hideIntro,
+  sectionClassName = "hairline-b bg-background",
+}: TeamSectionProps) {
   const { t } = useI18n();
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const teamMembers = members ?? (t.home.team as TeamMember[]);
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  const gridCols =
+    teamMembers.length >= 5
+      ? "lg:grid-cols-5"
+      : teamMembers.length === 3
+        ? "lg:grid-cols-3"
+        : "lg:grid-cols-4";
 
   return (
-    <section className="hairline-b bg-background">
+    <section className={sectionClassName}>
       <div className="container-editorial py-20 md:py-24">
-        <Reveal>
-          <h2 className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-navy md:text-base">
-            {t.home.teamTitle}
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground md:text-base">
-            {t.home.teamIntro}
-          </p>
-        </Reveal>
+        {!hideHeading && (
+          <Reveal>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-navy md:text-base">
+              {title ?? t.home.teamTitle}
+            </h2>
+            {!hideIntro && (
+              <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground md:text-base">
+                {intro ?? t.home.teamIntro}
+              </p>
+            )}
+          </Reveal>
+        )}
 
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          {t.home.team.map((member, i) => {
-            const profile = TEAM_PROFILES[i] ?? TEAM_PROFILES[0];
-            const isOpen = openIndex === i;
+        <div className={cn("mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:gap-6", gridCols)}>
+          {teamMembers.map((member, i) => {
+            const profile = TEAM_PROFILES[member.id] ?? {
+              linkedin: "https://www.linkedin.com/",
+              x: "https://x.com/",
+            };
+            const isOpen = openId === member.id;
+            const hasAvatar = Boolean(profile.avatar);
 
             return (
-              <Reveal key={member.name + member.title} delayMs={i * 90}>
+              <Reveal key={member.id} delayMs={i * 90}>
                 <article
                   className="group flex flex-col items-stretch"
-                  onMouseLeave={() => setOpenIndex(null)}
+                  onMouseLeave={() => setOpenId(null)}
                 >
                   <div
-                    className="relative flex aspect-[3/4] w-full cursor-pointer items-center justify-center overflow-hidden bg-white"
-                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    className="relative flex aspect-[3/4] w-full cursor-pointer items-center justify-center overflow-hidden bg-panel"
+                    onClick={() => setOpenId(isOpen ? null : member.id)}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
-                        setOpenIndex(isOpen ? null : i);
+                        setOpenId(isOpen ? null : member.id);
                       }
                     }}
                     role="button"
@@ -54,13 +93,20 @@ export function TeamSection() {
                     aria-expanded={isOpen}
                     aria-label={`${member.name} — ${member.title}`}
                   >
-                    <img
-                      src={profile.avatar}
-                      alt=""
-                      className="h-[85%] w-auto object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                    />
+                    {hasAvatar ? (
+                      <img
+                        src={profile.avatar}
+                        alt=""
+                        className="h-[85%] w-auto object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-panel to-white">
+                        <span className="font-serif text-5xl tracking-wide text-navy/35 md:text-6xl">
+                          {memberInitials(member.name)}
+                        </span>
+                      </div>
+                    )}
 
-                    {/* Absa-style detail overlay — navy brand tint */}
                     <div
                       className={cn(
                         "absolute inset-0 flex flex-col justify-between bg-navy/92 p-5 text-navy-foreground transition-all duration-500 ease-out md:p-6",

@@ -11,17 +11,19 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TrackRecordRouteImport } from './routes/track-record'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as PortalRouteImport } from './routes/portal'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AdminRouteImport } from './routes/admin'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WhatWeDoIndexRouteImport } from './routes/what-we-do/index'
+import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as WhatWeDoMaDealsRouteImport } from './routes/what-we-do/ma-deals'
 import { Route as WhatWeDoListingCapitalMarketsRouteImport } from './routes/what-we-do/listing-capital-markets'
 import { Route as WhatWeDoCorporateFinanceRouteImport } from './routes/what-we-do/corporate-finance'
+import { Route as AboutTeamRouteImport } from './routes/about/team'
 
 const TrackRecordRoute = TrackRecordRouteImport.update({
   id: '/track-record',
@@ -31,6 +33,11 @@ const TrackRecordRoute = TrackRecordRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortalRoute = PortalRouteImport.update({
@@ -58,11 +65,6 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -71,6 +73,11 @@ const IndexRoute = IndexRouteImport.update({
 const WhatWeDoIndexRoute = WhatWeDoIndexRouteImport.update({
   id: '/what-we-do/',
   path: '/what-we-do/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutIndexRoute = AboutIndexRouteImport.update({
+  id: '/about/',
+  path: '/about/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WhatWeDoMaDealsRoute = WhatWeDoMaDealsRouteImport.update({
@@ -90,114 +97,133 @@ const WhatWeDoCorporateFinanceRoute =
     path: '/what-we-do/corporate-finance',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AboutTeamRoute = AboutTeamRouteImport.update({
+  id: '/about/team',
+  path: '/about/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/portal': typeof PortalRoute
+  '/search': typeof SearchRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
+  '/about/team': typeof AboutTeamRoute
   '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
   '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
+  '/about/': typeof AboutIndexRoute
   '/what-we-do/': typeof WhatWeDoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/portal': typeof PortalRoute
+  '/search': typeof SearchRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
+  '/about/team': typeof AboutTeamRoute
   '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
   '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
+  '/about': typeof AboutIndexRoute
   '/what-we-do': typeof WhatWeDoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/portal': typeof PortalRoute
+  '/search': typeof SearchRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
+  '/about/team': typeof AboutTeamRoute
   '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
   '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
+  '/about/': typeof AboutIndexRoute
   '/what-we-do/': typeof WhatWeDoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
     | '/admin'
     | '/careers'
     | '/contact'
     | '/insights'
     | '/portal'
+    | '/search'
     | '/services'
     | '/track-record'
+    | '/about/team'
     | '/what-we-do/corporate-finance'
     | '/what-we-do/listing-capital-markets'
     | '/what-we-do/ma-deals'
+    | '/about/'
     | '/what-we-do/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
     | '/admin'
     | '/careers'
     | '/contact'
     | '/insights'
     | '/portal'
+    | '/search'
     | '/services'
     | '/track-record'
+    | '/about/team'
     | '/what-we-do/corporate-finance'
     | '/what-we-do/listing-capital-markets'
     | '/what-we-do/ma-deals'
+    | '/about'
     | '/what-we-do'
   id:
     | '__root__'
     | '/'
-    | '/about'
     | '/admin'
     | '/careers'
     | '/contact'
     | '/insights'
     | '/portal'
+    | '/search'
     | '/services'
     | '/track-record'
+    | '/about/team'
     | '/what-we-do/corporate-finance'
     | '/what-we-do/listing-capital-markets'
     | '/what-we-do/ma-deals'
+    | '/about/'
     | '/what-we-do/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   InsightsRoute: typeof InsightsRoute
   PortalRoute: typeof PortalRoute
+  SearchRoute: typeof SearchRoute
   ServicesRoute: typeof ServicesRoute
   TrackRecordRoute: typeof TrackRecordRoute
+  AboutTeamRoute: typeof AboutTeamRoute
   WhatWeDoCorporateFinanceRoute: typeof WhatWeDoCorporateFinanceRoute
   WhatWeDoListingCapitalMarketsRoute: typeof WhatWeDoListingCapitalMarketsRoute
   WhatWeDoMaDealsRoute: typeof WhatWeDoMaDealsRoute
+  AboutIndexRoute: typeof AboutIndexRoute
   WhatWeDoIndexRoute: typeof WhatWeDoIndexRoute
 }
 
@@ -215,6 +241,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portal': {
@@ -252,13 +285,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -271,6 +297,13 @@ declare module '@tanstack/react-router' {
       path: '/what-we-do'
       fullPath: '/what-we-do/'
       preLoaderRoute: typeof WhatWeDoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/': {
+      id: '/about/'
+      path: '/about'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/what-we-do/ma-deals': {
@@ -294,22 +327,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhatWeDoCorporateFinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/team': {
+      id: '/about/team'
+      path: '/about/team'
+      fullPath: '/about/team'
+      preLoaderRoute: typeof AboutTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   InsightsRoute: InsightsRoute,
   PortalRoute: PortalRoute,
+  SearchRoute: SearchRoute,
   ServicesRoute: ServicesRoute,
   TrackRecordRoute: TrackRecordRoute,
+  AboutTeamRoute: AboutTeamRoute,
   WhatWeDoCorporateFinanceRoute: WhatWeDoCorporateFinanceRoute,
   WhatWeDoListingCapitalMarketsRoute: WhatWeDoListingCapitalMarketsRoute,
   WhatWeDoMaDealsRoute: WhatWeDoMaDealsRoute,
+  AboutIndexRoute: AboutIndexRoute,
   WhatWeDoIndexRoute: WhatWeDoIndexRoute,
 }
 export const routeTree = rootRouteImport

@@ -10,7 +10,7 @@ export function SiteFooter() {
   const practices = getPractices(t);
 
   return (
-    <footer className="bg-navy text-navy-foreground">
+    <footer className="bg-[#8A8886] text-navy-foreground">
       <div className="container-editorial grid gap-12 py-16 md:grid-cols-4">
         <div className="md:col-span-1">
           <Link to="/" className="inline-block">

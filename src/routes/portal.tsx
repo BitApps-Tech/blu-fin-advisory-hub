@@ -4,7 +4,7 @@ import { Lock, ArrowLeft } from "lucide-react";
 import { authStore } from "../lib/mock-store";
 import { Logo } from "../components/Logo";
 import { toast } from "sonner";
-import photoPortal from "../assets/photo-team.png";
+import photoPortal from "../assets/photo-ecma-ceremony.png";
 
 export const Route = createFileRoute("/portal")({
   head: () => ({

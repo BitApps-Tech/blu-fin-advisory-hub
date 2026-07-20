@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { useI18n } from "../../i18n";
 import { getPractices } from "../../lib/what-we-do";
-import photoTeam from "../../assets/photo-team.png";
+import photoTeam from "../../assets/photo-signing.png";
+import { MidContactBanner } from "../../components/MidContactBanner";
 
 export const Route = createFileRoute("/what-we-do/")({
   head: () => ({
@@ -24,14 +25,22 @@ function WhatWeDo() {
       <section className="hairline-b bg-background">
         <div className="container-editorial py-20 md:py-28">
           <div className="eyebrow">{t.whatWeDo.eyebrow}</div>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl text-navy md:text-6xl">{t.whatWeDo.headline}</h1>
+          <h1 className="mt-6 max-w-4xl font-serif text-5xl text-navy md:text-6xl">
+            {t.whatWeDo.headline}
+          </h1>
           <p className="mt-8 max-w-2xl text-lg text-muted-foreground">{t.whatWeDo.intro}</p>
         </div>
       </section>
 
       <section className="hairline-b bg-background">
-        <img src={photoTeam} alt="" className="h-[36vh] w-full object-cover object-center md:h-[44vh]" />
+        <img
+          src={photoTeam}
+          alt=""
+          className="h-[36vh] w-full object-cover object-center md:h-[44vh]"
+        />
       </section>
+
+      <MidContactBanner />
 
       <section className="bg-background">
         <div className="container-editorial hairline-t">
@@ -49,7 +58,9 @@ function WhatWeDo() {
                 <p className="mt-2 italic text-slate-warm">{s.tagline}</p>
               </div>
               <div className="flex items-end justify-between gap-4 md:col-span-6">
-                <p className="max-w-md text-sm leading-relaxed text-muted-foreground">{s.summary}</p>
+                <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+                  {s.summary}
+                </p>
                 <ArrowUpRight className="h-5 w-5 shrink-0 text-navy transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </Link>

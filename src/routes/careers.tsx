@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { useI18n } from "../i18n";
 import { CONTACT } from "../lib/contact";
+import { MidContactBanner } from "../components/MidContactBanner";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -22,7 +23,9 @@ function Careers() {
       <section className="hairline-b bg-background">
         <div className="container-editorial py-20 md:py-28">
           <div className="eyebrow">{t.careers.eyebrow}</div>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl text-navy md:text-6xl">{t.careers.headline}</h1>
+          <h1 className="mt-6 max-w-4xl font-serif text-5xl text-navy md:text-6xl">
+            {t.careers.headline}
+          </h1>
           <p className="mt-8 max-w-2xl text-lg text-muted-foreground">{t.careers.intro}</p>
         </div>
       </section>
@@ -41,6 +44,8 @@ function Careers() {
         </div>
       </section>
 
+      <MidContactBanner />
+
       <section className="bg-background">
         <div className="container-editorial grid gap-16 py-24 md:grid-cols-12">
           <div className="md:col-span-5">
@@ -51,7 +56,10 @@ function Careers() {
             <div className="hairline-t border-hairline py-10">
               <p className="text-base leading-relaxed text-muted-foreground">
                 {t.careers.openingsBody}{" "}
-                <a href={`mailto:${CONTACT.email}`} className="text-navy underline-offset-4 hover:underline">
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="text-navy underline-offset-4 hover:underline"
+                >
                   {CONTACT.email}
                 </a>
                 .

@@ -1,0 +1,326 @@
+import type { Dictionary } from "./en";
+import { en } from "./en";
+import { deepMerge } from "./deep-merge";
+
+export const so: Dictionary = deepMerge(en, {
+  nav: {
+    home: "Bogga Hore",
+    about: "Naga",
+    whatWeDo: "Waxa aan sameyno",
+    overview: "Dulmar",
+    news: "Wararka & Maqaalada",
+    careers: "Shaqooyin",
+    contact: "Nala soo xiriir",
+    emailUs: "Noo soo dir email",
+    menu: "Liiska",
+    mediaCenter: "Xarunta Warbaahinta",
+    search: "Raadi",
+    searchPlaceholder: "Raadi…",
+  },
+  footer: {
+    blurb:
+      "Shirkad xaddidan (PLC) oo ruqsad u leh inay ka shaqeyso La-taliye Maalgashi Suuq ah Marka Waarta ee Maamulka Suuqa Raasumaalka Itoobiya (ECMA).",
+    whatWeDo: "Waxa aan sameyno",
+    firm: "Shirkadda",
+    office: "Xafiiska",
+    social: "Baraha bulshada",
+    about: "Naga",
+    news: "Wararka & Maqaalada",
+    careers: "Shaqooyin",
+    trackRecord: "Diiwaanka Waxqabadyada",
+    contact: "Nala soo xiriir",
+    rights: "Dhammaan xuquuqdu way xafidan tahay.",
+    license: "Ruqsad ka baxday Maamulka Suuqa Raasumaalka Itoobiya · Tilmaame ECMA/LR/224/26",
+    designedBy: "Naqshadeeyey & Horumariyey",
+  },
+  common: {
+    requestConsultation: "Codso La-talin",
+    learnMore: "Wax badan ka ogaad",
+    speakWithPartner: "La hadal lammaane",
+    getInTouch: "Nala soo xiriir",
+    bookConsultation: "Ballan La-talin",
+    atAGlance: "Kooban",
+    readMore: "Akhri wax dheeraad ah",
+    close: "Xir",
+    submitInquiry: "Dir Codsi",
+    sending: "Waa la dirayaa…",
+    returnHome: "Ku noqo bogga hore",
+    tryAgain: "Isku day mar kale",
+    goHome: "Tag bogga hore",
+  },
+  home: {
+    eyebrow: "La-taliye Maalgashi Suuq ah oo Ruqsad leh · ECMA",
+    headline:
+      "La-talin anshax leh, aragti leh, oo sharciyeysan oo loogu talagalay suuqa raasumaalka Itoobiya.",
+    ctaPrimary: "Codso La-talin",
+    ctaSecondary: "Ku saabsan BluFin",
+    glanceLegal: "Qaabka sharci",
+    glanceLicense: "Ruqsad",
+    glanceHq: "Xarunta guud",
+    visionLabel: "Aragtideenna",
+    foundingEyebrow: "Falsafadda aasaasiga",
+    foundingTitle: "La-talin madaxbannaan oo loogu talagalay suuq hal-jiil ah.",
+    valuesEyebrow: "Qiyamka asaasiga ah",
+    valuesTitle: "Aaminaado aan la muransan karin oo hageysa hawl kasta.",
+    practicesEyebrow: "Waxa aan sameyno",
+    practicesTitle: "Saddex dhaqan. Hal heer aamin.",
+    allServices: "Dhammaan adeegyada →",
+    firmEyebrow: "Shirkadda",
+    firmTitle: "Degdeg, macaamiisha diiradda saaraya, oo u dhigma mabaadi'da aasaasiga ah.",
+    firmCta: "Akhri astaanta shirkadeena",
+    engageEyebrow: "La shaqee BluFin",
+    engageTitle: "Xoojinta go'aamada maaliyadeed ee la ogsoon yahay ee suuqa raasumaalka Itoobiya.",
+    teamTitle: "Kooxda Maamulka Sare",
+    teamIntro:
+      "Hogaankayaga sare waxay keenaan khibrad qoto dheer oo maaliyadda shirkadaha, waafaqsanaanta, cilmi-baarista, iyo maamulka — iyagoo BluFin ku hoggaamiya anshax marka suuqa raasumaalka Itoobiya uu korayo.",
+    team: [
+      {
+        id: "abraham",
+        name: "Mr. Abraham Ejigu Shiferaw",
+        title: "Guddoomiyaha Guddiga",
+        bio: "Wuxuu bixiyaa kormeerka guddiga iyo ilaalinta maamulka, isagoo xoojinaya kaalinka BluFin ee xirfadeednimada, mas'uuliyadda, iyo kalsoonida macmiilka muddada dheer.",
+      },
+      {
+        id: "guang",
+        name: "Mr. Guang Xue",
+        title: "Xubin Guddi — Agaasime",
+        bio: "Wuxuu ka shaqeeyaa Guddiga Agaasimayaasha BluFin, isagoo keena kormeer istiraatiiji ah marka shirkaddu ka korayso suuqa raasumaalka ee la maamulo ee Itoobiya.",
+      },
+      {
+        id: "yohannes",
+        name: "Dr. Yohannes Workeaferahu Elifneh",
+        title: "Agaasime",
+        bio: "Wuxuu keenayaa aragti tacliimeed iyo xirfadeed doodaha guddiga, isagoo taageeraya maamul wanaagsan iyo horumar hay'adeed muddada-dheer.",
+      },
+      {
+        id: "daniel",
+        name: "Mr. Daniel Yared Hailemariam",
+        title: "Agaasime",
+        bio: "Wuxuu bixiyaa hagitaan heer guddi ah oo ku saabsan istiraatiijiyadda iyo xisaabtanka marka BluFin bixiso adeegyada la-talinta maalgashiga suuqaha ee ruqsadda leh.",
+      },
+      {
+        id: "kindie",
+        name: "Mr. Kindie Abebe Alemayehu",
+        title: "Agaasime",
+        bio: "Wuxuu taageeraa kormeerka Guddiga ee daacadnimada, xirfadeednimada, iyo waafaqsanaanta heerarka ruqsadda ECMA.",
+      },
+      {
+        id: "yitbarek",
+        name: "Dr. Yitbarek Takele Bayiley",
+        title: "Madaxa Fulinta (CEO)",
+        bio: "Wuxuu hogaamiyaa istiraatiijiyadda BluFin iyo hawlgallada macaamiisha, isagoo keenaya khibrad qoto dheer oo maaliyadda shirkadaha iyo suuqyada raasumaalka ah ee muuqaalka la-talinta ee soo koraya ee Itoobiya.",
+      },
+      {
+        id: "bizuayehu",
+        name: "Mr. Bizuayehu Seyoum Tsehaye",
+        title: "Madaxa Waafaqsanaanta Sharciga",
+        bio: "Wuxuu ilaaliyaa daacadnimada sharciyeed ee waajibaad kasta, isagoo hubinaya in talooyinka BluFin ay yihiin anshax leh, ku habboon, oo si buuxda u waafaqsan heerarka ECMA.",
+      },
+      {
+        id: "abebe",
+        name: "Dr. Abebe Gule Girma",
+        title: "Madaxa Cilmi-baarista",
+        bio: "Wuxuu kiciyaa aragtiyo madaxbannaan oo cilmi-baaris ku saleysan oo lagu taageeray talooyinka — isagoo falanqayn adag u beddelaya hagitaan cad macaamiisha.",
+      },
+    ],
+    teamMore: "Wax dheeraad ah",
+    awards: {
+      eyebrow: "Abaalmarino & Sharaf",
+      title: "Aqoonsi rasmi ah oo ka yimid maamulaha suuqyada raasumaalka Itoobiya.",
+      intro:
+        "BluFin Capital Advisory PLC waxay ku faantaa inay haysato Ruqsad Rasmi ah oo La-taliye Maalgashi Suuq ah Marka Waarta oo ay siisay Maamulka Suuqa Raasumaalka Itoobiya.",
+      issuer: "Maamulka Suuqa Raasumaalka Itoobiya",
+      licenseTitle: "Ruqsadda La-taliye Maalgashi Suuq ah Marka Waarta",
+      licenseBody:
+        "Kadib xaqiijinta in shuruudaha ruqsadda la buuxiyay, Maamulka Suuqa Raasumaalka Itoobiya wuxuu BluFin Capital Advisory PLC siiyay Ruqsad La-taliye Maalgashi Suuq ah Marka Waarta — taasoo xaqiijinaysa kaalinkayaga heerka sare ee sharciyeed, daacadnimada, iyo heerarka xirfadeed ee suuqa raasumaalka Itoobiya.",
+      refLabel: "Tilmaame",
+      refValue: "ECMA/LR/224/26",
+      dateLabel: "La siiyay",
+      dateValue: "10 Luulyo 2026",
+    },
+  },
+  about: {
+    eyebrow: "Naga",
+    headline: "Suuqa raasumaalka Itoobiya, oo lagu taliyay daacadnimo iyo madaxbannaan.",
+    companyProfileTab: "Astaanta Shirkadda",
+    teamTab: "Kooxdeena",
+    teamPageTitle: "Kooxda",
+    boardTitle: "Guddiga Agaasimayaasha",
+    boardIntro:
+      "Kormeer madax-bannaan oo xoojiya maamulka, xisaabtanka, iyo ilaalinta muddada-dheer ee BluFin — oo ay ansixisay Maamulka Suuqa Raasumaalka Itoobiya.",
+    appointedTitle: "Wakiillada La Magacaabay",
+    appointedIntro:
+      "Wakiilladayada la magacaabay — CEO, Madaxa Waafaqsanaanta, iyo Madaxa Cilmi-baarista — waxay hoggaamiyaan istiraatiijiyadda, daacadnimada sharciyeed, iyo talo cilmi-baaris ku saleysan.",
+    legalEyebrow: "Faahfaahinta shirkadda & sharciga",
+    legalTitle: "Astaanta shirkadda iyo xaaladda sharciga ee rasmi ah",
+    ownershipEyebrow: "Lahaanshaha",
+    ownershipTitle: "Waxaa aasaasay xirfadlayaal maaliyadeed oo Itoobiyaan ah.",
+    vision: "Aragti",
+    mission: "Himil",
+    valuesEyebrow: "Qiyamka asaasiga ah",
+    valuesTitle: "Mabaadi'da hagta ee ku dhex jirta dhaqankeenna.",
+    legalLabels: {
+      legalName: "Magaca Sharciga",
+      tradingName: "Magaca Ganacsiga",
+      legalForm: "Qaabka Sharciga",
+      regNo: "Lambarka Diiwaangelinta Ganacsiga",
+      tin: "Lambarka Aqoonsiga Canshuurta (TIN)",
+      registeredAddress: "Cinwaanka Diiwaangashan",
+      businessLicense: "Ruqsadda Ganacsiga",
+      office: "Xafiiska",
+    },
+  },
+  whatWeDo: {
+    eyebrow: "Waxa aan sameyno",
+    headline: "Saddex dhaqan, oo loogu talagalay macaamilka qeexaya hay'adaha.",
+    intro:
+      "Hawl kasta waxaa hogaamiya lammaane sare. Waajibaad kasta wuxuu qaataa culeyska buuxa ee nidaamka hay'adeed iyo khibradda sharciyeed ee shirkadeena.",
+    scope: "Baaxadda shaqada",
+    related: "Dhaqamada la xiriira",
+  },
+  careers: {
+    eyebrow: "Shaqooyin",
+    headline: "Ku biir shirkad ku dhisan daacadnimo, madaxbannaan, iyo heer sare oo xirfadeed.",
+    intro:
+      "Qiyamkayaga asaasiga ah waxay hagayaan ficillada iyo dhaqanka shaqaale kasta. Waxaan raadineynaa xirfadlayaal la wadaaga kaalinkayaga la-talin anshax leh, aragti leh, oo sharciyeysan.",
+    howWeWork: "Sida aan u shaqeyno",
+    openings: "Fursadaha",
+    openingsTitle: "Waxaan dib u eegnaa muujinta xiisaha si joogto ah.",
+    openingsBody:
+      "Waqtigan ma jiraan fursado shaqo oo rasmi ah oo la liistay. Haddii khibradaadu u dhigmaan dhaqankeenna la-talinta maalgashiga iyo macaamilka, u dir soo bandhigid qarsoodi ah",
+  },
+  contact: {
+    eyebrow: "Nala soo xiriir",
+    headline: "La-talin qarsoodi ah oo lala yeesho kooxdayada sare.",
+    intro:
+      "Codsiyada waxaa si shaqsi ah u eegaa lammaane. Jawaabtu waxay caadi ahaan ku timaadaa hal maalin shaqo gudahood.",
+    office: "Xafiiska",
+    advisoryDesk: "Miiska la-talinta",
+    telephone: "Telefoonka",
+    social: "Baraha bulshada",
+    fullName: "Magaca buuxa",
+    email: "Email",
+    company: "Shirkadda",
+    capitalNeeds: "Baahida raasumaalka ee la qiyaasay",
+    sector: "Qaybta",
+    service: "Adeegga la codsaday",
+    message: "Sideen kuu caawin karnaa?",
+    select: "Dooro…",
+    consent:
+      "Markaad dirto, waxaad ogolaatay in BluFin kaydiso codsigaaga si ay uga jawaabto. Macluumaadka waxaa loo daaweeyaa si qarsoodi ah.",
+    success: "Codsigaaga waa la helay. Lammaane sare ayaa dhawaan kula soo xiriiri doona.",
+  },
+  insights: {
+    eyebrow: "Wararka & Maqaalada",
+    headline: "Cilmi-baaris, faallo, iyo ogeysiisyo.",
+    all: "Dhammaan",
+    empty: "Weli ma jiraan maqaallo qaybtan ku jira.",
+    minRead: "daqiiqo akhris",
+  },
+  trackRecord: {
+    eyebrow: "Diiwaanka waxqabadyada",
+    headline: "Diiwaan macaamil la dhammeeyay.",
+    intro:
+      "Macaamil la doortay oo BluFin ay ka shaqeyneysay la-taliye ahaan. Ku shaandhee qaybta warshadaha, baaxadda macaamilka, ama raadi macmiil ama adeeg.",
+    search: "Raadi macmiil, qayb, ama adeeg",
+    industry: "Warshadaha",
+    dealScale: "Baaxadda macaamilka",
+    deals: "macaamil",
+    empty: "Ma jiraan macaamil u dhigma shaandhaynta hadda.",
+  },
+  errors: {
+    notFoundEyebrow: "Khalad 404",
+    notFoundTitle: "Bogga lama helin",
+    notFoundBody: "Bogga aad raadinayso ma jiro ama waa la raray.",
+    errorEyebrow: "Waxbaa khaldamay",
+    errorTitle: "Boggan ma soo bixin",
+    errorBody: "Waxaad isku dayi kartaa inaad cusbooneysiiso ama aad ku noqoto bogga hore.",
+  },
+  company: {
+    legalForm: "Shirkad Xaddidan (PLC)",
+    businessLicense: "La-talin Maalgashi Suuq ah Marka Waarta",
+    registeredAddress: "Addis Ababa, Itoobiya",
+    status:
+      "BluFin Capital Advisory PLC waa Shirkad Xaddidan (PLC) oo si rasmi ah loo aasaasay, ruqsad loo siiyay, oo xaalad wanaagsan ku jirta sharciyada Itoobiya. Shirkadda waxaa si gaar ah loogu aasaasay inay ka shaqeyso La-taliye Maalgashi Suuq ah Marka Waarta oo ruqsad leh gudaha qaab-dhismeedka sharciyeed ee Maamulka Suuqa Raasumaalka Itoobiya (ECMA).",
+    ownership:
+      "BluFin Capital Advisory PLC waxaa aasaasay oo iska leh koox u heellan oo ka mid ah xirfadlayaal maaliyadeed oo Itoobiyaan ah oo khibrad leh. Lamaanayaasha aasaasayaashu waxay keenaan isku-dhaf khibrad ballaaran oo gacanta ku jirta oo ku saabsan maaliyadda shirkadaha, la-talinta macaamilka, maalgashiga gaarka ah, iyo muuqaalka sharciyeed ee Itoobiya.",
+    foundingPhilosophy:
+      "Shirkaddu waxay ka dhalatay falsafad wadaag ah in bilowga suuqa raasumaalka Itoobiya uu yahay fursad hal-jiil ah oo lagu dhiso hay'ad ku saleysan daacadnimo, madaxbannaan, iyo kaalinka qoto dheer ee guusha macmiilka. Aasaasayaashu waxay aqoonsadeen farqi muhiim ah oo ku jira suuqa soo koraya ee shirkad la-talin takhasus leh oo madaxbannaan oo ka shaqeysa iyada oo aan lahayn khilaafaadka danaha ee ku jira hay'adaha maaliyadeed ee waaweyn ee isku dhafan. Qaab-dhismeedkeenna lahaanshaha wuxuu hubiyaa in shirkaddu ay ahaato mid degdeg ah, macaamiisha diiradda saaraysa, oo si buuxda ugu dhigma mabaadi'da aasaasiga ah.",
+    vision:
+      "Inaan noqono shirkadda la-talinta maalgashiga ee Itoobiya ugu kalsoonida badan uguna ixtiraamka badan, oo dejisa heerka daacadnimada, xirfadeednimada, iyo guusha macmiilka.",
+    visionElaboration:
+      'Aragtideennu waxay ka baxdaa saamiga suuqa. "Kalsooni" waxay ka dhigan tahay kaalinka aan la jilcin ee dhaqanka anshaxa leh iyo danaha macmiilka marka hore. "Ixtiraam" waxay ka dhigan tahay sumcad ku dhisan tayada cilmi-baaristayaga, madaxbannaanida talooyinkayaga, iyo gacan-qaadashadeenna horumarinta suuqa. Waxaan higsaneynaa inaan noqono shirkadda macaamiisha, maamulayaasha, iyo asxaabtu u eegaan sidii tusaalaha heerka sare.',
+    mission:
+      "Inaan bixino adeegyo la-talin maalgashi iyo macaamil oo anshax leh, aragti leh, oo sharciyeysan oo xoojiya go'aamada maaliyadeed ee la ogsoon yahay isla markaana gacan ka geysta horumarinta adag ee suuqa raasumaalka Itoobiya.",
+    missionElaboration:
+      'Himilkeennu wuxuu ku saleysan yahay ficil. "Anshax" wuxuu xoojiyaa kaalinkayaga waajibaadka aamin. "Aragti" waxay muujinaysaa aasaaskeenna falanqayn adag oo cilmi-baaris ku saleysan. "Sharciyeysan" waxay ka hadlaysaa nidaamka hawlgalkayaga iyo ixtiraamka qoto dheer ee qaab-dhismeedka sharciyeed. "Xoojin" ayaa ah ujeeddadeenna dhexe; waxaan ku guuleysannaa markaan macaamiisheenna ku qalabeyno aqoonta iyo talada ay u baahan yihiin si ay u guuleystaan.',
+    values: [
+      {
+        title: "Daacadnimo Marka Hore",
+        body: "Daacadnimadu waa aasaaska shirkadeenna. Waxay ka dhigan tahay in dhammaan xiriiradayada lagu dhaqmo daacadnimo iyo hufnaan, iyo in la raaco labadaba qoraalka iyo ujeeddada dhammaan sharciyada. Waxaan haynaa siyaasad eber u ah dhaqanka aan anshaxa lahayn, kaalinkayaga daacadnimaduna waa ilaalinta ugu dambeysa ee danaha macaamiisheenna.",
+      },
+      {
+        title: "Madaxbannaan aan la dhimayn",
+        body: "Taladeennu waa badeecadeenna, qiimaheeduna wuxuu ka yimaadaa madaxbannaanideeda. Dhammaan talooyinkayaga waxay ku saleysan yihiin cilmi-baaris madaxbannaan, adag, oo aan dareen lahayn. Guusha macaamiisheenna waxay ku xiran tahay caddaynta iyo dhexdhexaadnimada aragtiyadayada.",
+      },
+      {
+        title: "Heerka Aamin ee Macmiilka Diiradda Saaraya",
+        body: "Waxaan isu haynaa heerka aamin. Tani waxay ka dhigan tahay in danaha ugu wanaagsan ee macmiilka ay yihiin muraayadda kaliya ee aan ku sameyno dhammaan go'aamada. Mabda'kani wuxuu ku dhaqan yahay nidaamkeenna adag ee ku habboonaanta, isagoo hubinaya in talo kasta ay u dhigmaan baahiyaha, yoolalka, iyo muuqaalka khatarta ee macmiilka.",
+      },
+      {
+        title: "Heer Sare oo Xirfadeed",
+        body: "Waxaan ka go'an nahay inaan bixino heer adeeg oo ka tarjumaya himiladeenna inaan noqono hogaamiyaha suuqa. Tani waxay u baahan tahay dhaqan barasho joogto ah, horumar xirfadeed, iyo raadinta aan joogsanayn ee heerka sare ee wax kasta oo aan sameyno.",
+      },
+    ],
+  },
+  practices: {
+    listing: {
+      label: "Xalka Liiska & Suuqyada Raasumaalka",
+      short: "Liiska & Suuqyada Raasumaalka",
+      eyebrow: "Waxa aan sameyno · 01",
+      title: "Xalka Liiska & Suuqyada Raasumaalka",
+      tagline: "Waddada qeexan ee suuqyada dadweynaha.",
+      summary:
+        "Diyaarinta iyo fulinta dhamaadka-ilaa-dhamaadka ee soo saarayaasha raadinaya liiska iyo marin joogto ah oo suuqyada raasumaalka ah ee Ethiopian Securities Exchange (ESX) iyo wixii ka baxsan.",
+      points: [
+        "Baaritaanka diyaar garowga liiska ESX",
+        "Dukumeentiyada prospaktuska iyo dalabka",
+        "Naqshadeynta maamulka, shaacinta & xiriirka maalgashadayaasha",
+        "Taageerada suuqyada raasumaalka ka dib liiska",
+        "Dalabyada xigta iyo dib-u-eegista qaab-dhismeedka raasumaalka",
+      ],
+    },
+    corporate: {
+      label: "Maaliyadda Shirkadaha & La-talinta",
+      short: "Maaliyadda Shirkadaha & La-talinta",
+      eyebrow: "Waxa aan sameyno · 02",
+      title: "Maaliyadda Shirkadaha & La-talinta",
+      tagline: "Qaab-dhismeedka raasumaalka, oo la kor u qaaday ujeeddo.",
+      summary:
+        "La-talin lammaane sare hogaamiyo oo ku saabsan qaab-dhismeedka raasumaalka, ururinta maalgashiga, iyo istiraatiijiyadda miisaaniyadda ee hay'adaha Itoobiya ee marxaladda koritaanka iyo kuwa la aasaasay.",
+      points: [
+        "Raasumaalka koritaanka & ururinta saamiyada la qaabeeyay",
+        "Qaabeynta deynta, dib-u-maalgelinta, iyo isku-dhafka",
+        "La-talinta miisaaniyadda & qoondaynta raasumaalka",
+        "Ra'yiga cadaaladda iyo qiimaynta madaxbannaan",
+        "Istiraatiijiyadda suuqyada raasumaalka ee heerka guddiga",
+      ],
+    },
+    ma: {
+      label: "M&A iyo Macaamilka",
+      short: "M&A iyo Macaamilka",
+      eyebrow: "Waxa aan sameyno · 03",
+      title: "M&A iyo Macaamilka",
+      tagline: "Fulinta qarsoodi ah ee macaamil adag.",
+      summary:
+        "M&A dhinaca iibsiga iyo iibinta, iskaashiga, iyo macaamilka xuduudaha ka gudba oo lagu fuliyo nidaamka hay'adeed laga bilaabo waajibaadka ilaa xiritaanka.",
+      points: [
+        "Fulinta M&A dhinaca iibinta & iibsiga",
+        "Qaabeynta iskaashiga & wada-shaqeynta istiraatiijiga ah",
+        "La-talinta macaamilka xuduudaha ka gudba",
+        "Isku-xirka baaritaanka iyo taageerada wadahadalada",
+        "La-talinta isku-dhafka ka dib isku-darka",
+      ],
+    },
+  },
+});
