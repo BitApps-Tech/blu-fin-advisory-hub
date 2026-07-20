@@ -82,6 +82,8 @@ function Insights() {
         </div>
       </section>
 
+      <MidContactBanner />
+
       <section className="hairline-b bg-background">
         <div className="container-editorial flex flex-wrap gap-6 py-5">
           {CATEGORIES.map((c) => (
@@ -95,8 +97,6 @@ function Insights() {
           ))}
         </div>
       </section>
-
-      <MidContactBanner />
 
       <section className="bg-background">
         <div className="container-editorial py-16">

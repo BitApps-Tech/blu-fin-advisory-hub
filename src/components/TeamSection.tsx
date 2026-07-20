@@ -101,7 +101,7 @@ export function TeamSection({
                       <img
                         src={profile.avatar}
                         alt=""
-                        className="h-[85%] w-auto object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                        className="h-[85%] w-auto object-contain object-bottom transition-transform duration-300 ease-out group-hover:scale-[1.02]"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-panel to-white">
@@ -113,25 +113,25 @@ export function TeamSection({
 
                     <div
                       className={cn(
-                        "absolute inset-0 flex flex-col justify-between bg-navy/92 p-5 text-navy-foreground transition-all duration-500 ease-out md:p-6",
-                        "pointer-events-none translate-y-2 opacity-0",
-                        "group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100",
-                        isOpen && "pointer-events-auto translate-y-0 opacity-100",
+                        "absolute inset-x-0 bottom-0 flex h-[55%] flex-col justify-end bg-gradient-to-t from-[#1F3E72]/75 via-[#1F3E72]/45 to-transparent px-4 pb-4 pt-10 text-white transition-opacity duration-200 ease-out md:px-5 md:pb-5",
+                        "pointer-events-none opacity-0",
+                        "group-hover:pointer-events-auto group-hover:opacity-100",
+                        isOpen && "pointer-events-auto opacity-100",
                       )}
                     >
                       <div className="min-h-0 overflow-hidden">
-                        <h3 className="font-serif text-xl leading-snug text-white md:text-2xl">
+                        <h3 className="font-serif text-lg leading-snug text-white md:text-xl">
                           {member.title}
                         </h3>
-                        <div className="mt-4 h-px w-full bg-white/80" />
-                        <p className="mt-4 text-sm leading-relaxed text-white/90 line-clamp-6">
+                        <div className="mt-2 h-px w-10 bg-white/70" />
+                        <p className="mt-2 text-xs leading-relaxed text-white/95 line-clamp-4 md:text-sm">
                           {hoverBio}
                         </p>
                       </div>
                       <Link
                         to="/about/team/$memberId"
                         params={{ memberId: member.id }}
-                        className="mt-6 inline-flex w-fit text-xs font-semibold uppercase tracking-[0.18em] text-white transition-opacity hover:opacity-80"
+                        className="mt-3 inline-flex w-fit text-[11px] font-semibold uppercase tracking-[0.16em] text-white transition-opacity hover:opacity-80"
                         onClick={(e) => e.stopPropagation()}
                       >
                         {t.home.teamMore}

@@ -77,7 +77,9 @@ export function SiteHeader() {
       to: "/about",
       label: t.nav.about,
       children: [
-        { to: "/about", label: t.about.companyProfileTab },
+        { to: "/about", label: t.about.aboutTab },
+        { to: "/about/company-profile", label: t.about.companyProfileTab },
+        { to: "/about/governance", label: t.about.governanceTab },
         {
           to: "/about/team/board",
           label: t.about.teamTab,

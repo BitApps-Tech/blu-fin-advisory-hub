@@ -75,9 +75,23 @@ export function searchSite(query: string, t: Dictionary, articles: Article[]): S
     },
     {
       id: "page-about",
-      title: t.about.companyProfileTab,
+      title: t.about.aboutTab,
       excerpt: t.about.headline,
       to: "/about",
+      kind: "page",
+    },
+    {
+      id: "page-company-profile",
+      title: t.about.companyProfileTab,
+      excerpt: t.about.companyProfileIntro,
+      to: "/about/company-profile",
+      kind: "page",
+    },
+    {
+      id: "page-governance",
+      title: t.about.governanceTab,
+      excerpt: t.about.organogramTitle,
+      to: "/about/governance",
       kind: "page",
     },
     {

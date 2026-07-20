@@ -90,6 +90,14 @@ export type Dictionary = {
     eyebrow: string;
     headline: string;
     companyProfileTab: string;
+    aboutTab: string;
+    governanceTab: string;
+    companyProfileIntro: string;
+    exploreEyebrow: string;
+    exploreTitle: string;
+    hubCompanyBody: string;
+    hubGovernanceBody: string;
+    hubTeamBody: string;
     teamTab: string;
     teamPageTitle: string;
     boardTitle: string;
@@ -392,6 +400,15 @@ export const en: Dictionary = {
     eyebrow: "About Us",
     headline: "Ethiopia's capital market, advised with integrity and objectivity.",
     companyProfileTab: "Company Profile",
+    aboutTab: "About Us",
+    governanceTab: "Governance",
+    companyProfileIntro:
+      "Legal status, ownership, core services, and how BluFin is structured as an ECMA-licensed Securities Investment Advisor.",
+    exploreEyebrow: "Explore",
+    exploreTitle: "Go deeper into the firm.",
+    hubCompanyBody: "Legal details, ownership, services, and organizational structure.",
+    hubGovernanceBody: "Interactive organogram, reporting lines, and board committees.",
+    hubTeamBody: "Board of Directors and Appointed Representatives.",
     teamTab: "Our Team",
     teamPageTitle: "Our Team",
     boardTitle: "Board of Directors",

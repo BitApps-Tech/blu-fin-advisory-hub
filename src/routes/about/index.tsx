@@ -2,19 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { useI18n } from "../../i18n";
 import { COMPANY } from "../../lib/company";
-import { CONTACT } from "../../lib/contact";
-import {
-  BOARD_COMMITTEES,
-  BOARD_COMPOSITION,
-  CORE_SERVICES,
-  GOVERNANCE_INTRO,
-  STRUCTURE_INTRO,
-} from "../../lib/organogram";
 import photoEcma from "../../assets/photo-ecma-license.png";
 import photoTeam from "../../assets/photo-team-milestone.png";
 import { MidContactBanner } from "../../components/MidContactBanner";
 import { AboutPageNav } from "../../components/AboutPageNav";
-import { Organogram } from "../../components/Organogram";
 
 export const Route = createFileRoute("/about/")({
   head: () => ({
@@ -32,17 +23,23 @@ export const Route = createFileRoute("/about/")({
 function About() {
   const { t } = useI18n();
   const c = t.company;
-  const labels = t.about.legalLabels;
 
-  const legalDetails = [
-    { label: labels.legalName, value: COMPANY.legalName },
-    { label: labels.tradingName, value: COMPANY.tradingName },
-    { label: labels.legalForm, value: c.legalForm },
-    { label: labels.regNo, value: COMPANY.commercialRegistrationNo },
-    { label: labels.tin, value: COMPANY.tin },
-    { label: labels.registeredAddress, value: c.registeredAddress },
-    { label: labels.businessLicense, value: c.businessLicense },
-    { label: labels.office, value: CONTACT.addressShort },
+  const hubs = [
+    {
+      to: "/about/company-profile" as const,
+      label: t.about.companyProfileTab,
+      body: t.about.hubCompanyBody,
+    },
+    {
+      to: "/about/governance" as const,
+      label: t.about.governanceTab,
+      body: t.about.hubGovernanceBody,
+    },
+    {
+      to: "/about/team/board" as const,
+      label: t.about.teamTab,
+      body: t.about.hubTeamBody,
+    },
   ];
 
   return (
@@ -77,150 +74,7 @@ function About() {
         </div>
       </section>
 
-      <section className="hairline-b bg-panel">
-        <div className="container-editorial py-20 md:py-24">
-          <div className="eyebrow">{t.about.servicesEyebrow}</div>
-          <h2 className="mt-4 max-w-2xl font-serif text-3xl text-navy md:text-4xl">
-            {t.about.servicesTitle}
-          </h2>
-          <ol className="mt-12 hairline-t">
-            {CORE_SERVICES.map((service, i) => (
-              <li
-                key={service}
-                className="hairline-b grid gap-2 py-6 md:grid-cols-[4rem_1fr] md:items-baseline md:gap-8"
-              >
-                <span className="font-serif text-2xl text-navy/40">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="text-lg text-navy md:text-xl">{service}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="hairline-b bg-background">
-        <div className="container-editorial py-20 md:py-24">
-          <div className="eyebrow">{t.about.legalEyebrow}</div>
-          <h2 className="mt-4 max-w-2xl font-serif text-3xl text-navy md:text-4xl">
-            {t.about.legalTitle}
-          </h2>
-          <dl className="mt-12 grid gap-0 hairline-t md:grid-cols-2">
-            {legalDetails.map((row) => (
-              <div
-                key={row.label}
-                className="hairline-b grid gap-1 py-5 md:grid-cols-2 md:gap-6 md:pr-8"
-              >
-                <dt className="text-xs uppercase tracking-widest text-slate-warm">{row.label}</dt>
-                <dd className="text-sm text-navy md:text-base">{row.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
       <MidContactBanner />
-
-      <section className="hairline-b bg-background">
-        <div className="container-editorial grid gap-16 py-24 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <div className="eyebrow">{t.about.ownershipEyebrow}</div>
-            <h2 className="mt-6 font-serif text-4xl text-navy">{t.about.ownershipTitle}</h2>
-          </div>
-          <div className="space-y-6 md:col-span-8">
-            <p className="text-base leading-relaxed text-muted-foreground">{c.ownership}</p>
-            <p className="text-base leading-relaxed text-muted-foreground">
-              {c.foundingPhilosophy}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="hairline-b bg-panel">
-        <div className="container-editorial grid gap-12 py-20 md:grid-cols-12 md:py-24">
-          <div className="md:col-span-4">
-            <div className="eyebrow">{t.about.structureEyebrow}</div>
-            <h2 className="mt-4 font-serif text-3xl text-navy md:text-4xl">
-              {t.about.structureTitle}
-            </h2>
-          </div>
-          <div className="space-y-8 md:col-span-8">
-            <p className="text-base leading-relaxed text-muted-foreground">{STRUCTURE_INTRO}</p>
-            <div>
-              <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-navy">
-                {t.about.boardCompositionTitle}
-              </h3>
-              <p className="mt-4 border-t border-hairline pt-4 text-sm leading-relaxed text-foreground/85">
-                {BOARD_COMPOSITION}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="hairline-b bg-background">
-        <div className="container-editorial py-20 md:py-24">
-          <div className="eyebrow">{t.about.governanceEyebrow}</div>
-          <h2 className="mt-4 max-w-3xl font-serif text-3xl text-navy md:text-4xl">
-            {t.about.governanceTitle}
-          </h2>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
-            {GOVERNANCE_INTRO}
-          </p>
-        </div>
-      </section>
-
-      <section className="hairline-b bg-background">
-        <div className="container-editorial py-20 md:py-24">
-          <div className="eyebrow">{t.about.organogramEyebrow}</div>
-          <h2 className="mt-4 max-w-3xl font-serif text-3xl text-navy md:text-4xl">
-            {t.about.organogramTitle}
-          </h2>
-          <Organogram />
-        </div>
-      </section>
-
-      <section className="hairline-b bg-panel">
-        <div className="container-editorial py-20 md:py-24">
-          <div className="eyebrow">{t.about.committeesEyebrow}</div>
-          <h2 className="mt-4 max-w-3xl font-serif text-3xl text-navy md:text-4xl">
-            {t.about.committeesTitle}
-          </h2>
-          <div className="mt-12 hairline-t">
-            {BOARD_COMMITTEES.map((committee) => (
-              <article key={committee.id} className="hairline-b py-10">
-                <h3 className="font-serif text-2xl text-navy md:text-3xl">{committee.title}</h3>
-                <div className="mt-6 grid gap-8 md:grid-cols-12">
-                  <div className="md:col-span-4">
-                    <h4 className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-warm">
-                      {t.about.committeeComposition}
-                    </h4>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {committee.composition}
-                    </p>
-                  </div>
-                  <div className="md:col-span-8">
-                    <h4 className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-warm">
-                      {t.about.committeeResponsibilities}
-                    </h4>
-                    <ul className="mt-3 space-y-2">
-                      {committee.responsibilities.map((item) => (
-                        <li
-                          key={item}
-                          className="flex gap-3 text-sm leading-relaxed text-foreground/85"
-                        >
-                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-navy" aria-hidden />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="hairline-b bg-background">
         <div className="container-editorial grid gap-12 py-24 md:grid-cols-2">
@@ -237,6 +91,32 @@ function About() {
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
               {c.missionElaboration}
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="hairline-b bg-panel">
+        <div className="container-editorial py-20 md:py-24">
+          <div className="eyebrow">{t.about.exploreEyebrow}</div>
+          <h2 className="mt-4 max-w-2xl font-serif text-3xl text-navy md:text-4xl">
+            {t.about.exploreTitle}
+          </h2>
+          <div className="mt-12 hairline-t">
+            {hubs.map((hub) => (
+              <Link
+                key={hub.to}
+                to={hub.to}
+                className="group hairline-b flex items-start justify-between gap-6 py-8 transition-colors hover:bg-background/60 md:px-2"
+              >
+                <div>
+                  <h3 className="font-serif text-2xl text-navy md:text-3xl">{hub.label}</h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                    {hub.body}
+                  </p>
+                </div>
+                <ArrowUpRight className="mt-2 h-4 w-4 shrink-0 text-navy transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -23,6 +23,8 @@ import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as WhatWeDoMaDealsRouteImport } from './routes/what-we-do/ma-deals'
 import { Route as WhatWeDoListingCapitalMarketsRouteImport } from './routes/what-we-do/listing-capital-markets'
 import { Route as WhatWeDoCorporateFinanceRouteImport } from './routes/what-we-do/corporate-finance'
+import { Route as AboutGovernanceRouteImport } from './routes/about/governance'
+import { Route as AboutCompanyProfileRouteImport } from './routes/about/company-profile'
 import { Route as AboutTeamIndexRouteImport } from './routes/about/team/index'
 import { Route as AboutTeamBoardRouteImport } from './routes/about/team/board'
 import { Route as AboutTeamAppointedRouteImport } from './routes/about/team/appointed'
@@ -100,6 +102,16 @@ const WhatWeDoCorporateFinanceRoute =
     path: '/what-we-do/corporate-finance',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AboutGovernanceRoute = AboutGovernanceRouteImport.update({
+  id: '/about/governance',
+  path: '/about/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutCompanyProfileRoute = AboutCompanyProfileRouteImport.update({
+  id: '/about/company-profile',
+  path: '/about/company-profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutTeamIndexRoute = AboutTeamIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -131,6 +143,8 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
+  '/about/company-profile': typeof AboutCompanyProfileRoute
+  '/about/governance': typeof AboutGovernanceRoute
   '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
   '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
@@ -151,6 +165,8 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
+  '/about/company-profile': typeof AboutCompanyProfileRoute
+  '/about/governance': typeof AboutGovernanceRoute
   '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
   '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
@@ -172,6 +188,8 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
+  '/about/company-profile': typeof AboutCompanyProfileRoute
+  '/about/governance': typeof AboutGovernanceRoute
   '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
   '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
@@ -194,6 +212,8 @@ export interface FileRouteTypes {
     | '/search'
     | '/services'
     | '/track-record'
+    | '/about/company-profile'
+    | '/about/governance'
     | '/what-we-do/corporate-finance'
     | '/what-we-do/listing-capital-markets'
     | '/what-we-do/ma-deals'
@@ -214,6 +234,8 @@ export interface FileRouteTypes {
     | '/search'
     | '/services'
     | '/track-record'
+    | '/about/company-profile'
+    | '/about/governance'
     | '/what-we-do/corporate-finance'
     | '/what-we-do/listing-capital-markets'
     | '/what-we-do/ma-deals'
@@ -234,6 +256,8 @@ export interface FileRouteTypes {
     | '/search'
     | '/services'
     | '/track-record'
+    | '/about/company-profile'
+    | '/about/governance'
     | '/what-we-do/corporate-finance'
     | '/what-we-do/listing-capital-markets'
     | '/what-we-do/ma-deals'
@@ -255,6 +279,8 @@ export interface RootRouteChildren {
   SearchRoute: typeof SearchRoute
   ServicesRoute: typeof ServicesRoute
   TrackRecordRoute: typeof TrackRecordRoute
+  AboutCompanyProfileRoute: typeof AboutCompanyProfileRoute
+  AboutGovernanceRoute: typeof AboutGovernanceRoute
   WhatWeDoCorporateFinanceRoute: typeof WhatWeDoCorporateFinanceRoute
   WhatWeDoListingCapitalMarketsRoute: typeof WhatWeDoListingCapitalMarketsRoute
   WhatWeDoMaDealsRoute: typeof WhatWeDoMaDealsRoute
@@ -365,6 +391,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhatWeDoCorporateFinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/governance': {
+      id: '/about/governance'
+      path: '/about/governance'
+      fullPath: '/about/governance'
+      preLoaderRoute: typeof AboutGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/company-profile': {
+      id: '/about/company-profile'
+      path: '/about/company-profile'
+      fullPath: '/about/company-profile'
+      preLoaderRoute: typeof AboutCompanyProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/team/': {
       id: '/about/team/'
       path: '/'
@@ -406,6 +446,8 @@ const rootRouteChildren: RootRouteChildren = {
   SearchRoute: SearchRoute,
   ServicesRoute: ServicesRoute,
   TrackRecordRoute: TrackRecordRoute,
+  AboutCompanyProfileRoute: AboutCompanyProfileRoute,
+  AboutGovernanceRoute: AboutGovernanceRoute,
   WhatWeDoCorporateFinanceRoute: WhatWeDoCorporateFinanceRoute,
   WhatWeDoListingCapitalMarketsRoute: WhatWeDoListingCapitalMarketsRoute,
   WhatWeDoMaDealsRoute: WhatWeDoMaDealsRoute,
