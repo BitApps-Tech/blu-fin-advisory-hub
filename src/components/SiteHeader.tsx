@@ -145,19 +145,32 @@ export function SiteHeader() {
       {/* Thin utility bar */}
       <div className="bg-[#1F3E72] text-white">
         <div className="container-editorial flex h-9 items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85">
-            <Link to="/insights" className="transition-colors hover:text-white">
+          <div className="flex min-w-0 items-center gap-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85">
+            <Link to="/insights" className="shrink-0 transition-colors hover:text-white">
               {t.nav.mediaCenter}
             </Link>
             <span className="text-white/35" aria-hidden>
               |
             </span>
-            <Link to="/contact" className="transition-colors hover:text-white">
+            <Link to="/contact" className="shrink-0 transition-colors hover:text-white">
               {t.nav.contact}
             </Link>
+            <span className="text-white/35" aria-hidden>
+              |
+            </span>
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="inline-flex min-w-0 items-center gap-1.5 transition-colors hover:text-white"
+            >
+              <Mail className="h-3 w-3 shrink-0" />
+              <span className="truncate">
+                <span className="sm:hidden">{t.nav.emailUs}</span>
+                <span className="hidden sm:inline">{CONTACT.email}</span>
+              </span>
+            </a>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-3">
             <div className="relative" ref={searchRef}>
               {searchOpen ? (
                 <form onSubmit={submitSearch} className="flex items-center">
@@ -303,19 +316,6 @@ export function SiteHeader() {
 
           <div className="hidden items-center gap-5 xl:flex">
             <LanguageSwitcher />
-            <a href={`mailto:${CONTACT.email}`} className="group flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy transition-all duration-300 group-hover:border-navy group-hover:bg-navy group-hover:text-navy-foreground">
-                <Mail className="h-4 w-4" />
-              </span>
-              <span className="leading-tight">
-                <span className="block text-[10px] font-medium uppercase tracking-widest text-slate-warm">
-                  {t.nav.emailUs}
-                </span>
-                <span className="link-more block text-[11px] font-medium uppercase tracking-wide text-navy">
-                  {CONTACT.email}
-                </span>
-              </span>
-            </a>
           </div>
 
           <div className="flex items-center gap-3 xl:hidden">
@@ -374,14 +374,6 @@ export function SiteHeader() {
               </Link>
             ),
           )}
-          <div className="mt-4 space-y-3 text-sm">
-            <a
-              href={`mailto:${CONTACT.email}`}
-              className="flex items-center gap-2 text-navy transition-opacity hover:opacity-80"
-            >
-              <Mail className="h-4 w-4" /> {CONTACT.email}
-            </a>
-          </div>
         </div>
       </div>
     </header>
