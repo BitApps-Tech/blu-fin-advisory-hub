@@ -1,0 +1,1 @@
+var e=`/assets/photo-ecma-license-BvZ4euSe.png`,t=`/assets/photo-team-milestone-DMlxeC7i.png`;export{e as n,t};

@@ -23,7 +23,9 @@ import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as WhatWeDoMaDealsRouteImport } from './routes/what-we-do/ma-deals'
 import { Route as WhatWeDoListingCapitalMarketsRouteImport } from './routes/what-we-do/listing-capital-markets'
 import { Route as WhatWeDoCorporateFinanceRouteImport } from './routes/what-we-do/corporate-finance'
-import { Route as AboutTeamRouteImport } from './routes/about/team'
+import { Route as AboutTeamIndexRouteImport } from './routes/about/team/index'
+import { Route as AboutTeamBoardRouteImport } from './routes/about/team/board'
+import { Route as AboutTeamAppointedRouteImport } from './routes/about/team/appointed'
 
 const TrackRecordRoute = TrackRecordRouteImport.update({
   id: '/track-record',
@@ -97,9 +99,19 @@ const WhatWeDoCorporateFinanceRoute =
     path: '/what-we-do/corporate-finance',
     getParentRoute: () => rootRouteImport,
   } as any)
-const AboutTeamRoute = AboutTeamRouteImport.update({
-  id: '/about/team',
-  path: '/about/team',
+const AboutTeamIndexRoute = AboutTeamIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AboutTeamRoute,
+} as any)
+const AboutTeamBoardRoute = AboutTeamBoardRouteImport.update({
+  id: '/about/team/board',
+  path: '/about/team/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutTeamAppointedRoute = AboutTeamAppointedRouteImport.update({
+  id: '/about/team/appointed',
+  path: '/about/team/appointed',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -113,12 +125,14 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
-  '/about/team': typeof AboutTeamRoute
   '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
   '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
   '/about/': typeof AboutIndexRoute
   '/what-we-do/': typeof WhatWeDoIndexRoute
+  '/about/team/appointed': typeof AboutTeamAppointedRoute
+  '/about/team/board': typeof AboutTeamBoardRoute
+  '/about/team/': typeof AboutTeamIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -130,12 +144,14 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
-  '/about/team': typeof AboutTeamRoute
   '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
   '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
   '/about': typeof AboutIndexRoute
   '/what-we-do': typeof WhatWeDoIndexRoute
+  '/about/team/appointed': typeof AboutTeamAppointedRoute
+  '/about/team/board': typeof AboutTeamBoardRoute
+  '/about/team': typeof AboutTeamIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -148,12 +164,14 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/services': typeof ServicesRoute
   '/track-record': typeof TrackRecordRoute
-  '/about/team': typeof AboutTeamRoute
   '/what-we-do/corporate-finance': typeof WhatWeDoCorporateFinanceRoute
   '/what-we-do/listing-capital-markets': typeof WhatWeDoListingCapitalMarketsRoute
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
   '/about/': typeof AboutIndexRoute
   '/what-we-do/': typeof WhatWeDoIndexRoute
+  '/about/team/appointed': typeof AboutTeamAppointedRoute
+  '/about/team/board': typeof AboutTeamBoardRoute
+  '/about/team/': typeof AboutTeamIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -167,12 +185,14 @@ export interface FileRouteTypes {
     | '/search'
     | '/services'
     | '/track-record'
-    | '/about/team'
     | '/what-we-do/corporate-finance'
     | '/what-we-do/listing-capital-markets'
     | '/what-we-do/ma-deals'
     | '/about/'
     | '/what-we-do/'
+    | '/about/team/appointed'
+    | '/about/team/board'
+    | '/about/team/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -184,12 +204,14 @@ export interface FileRouteTypes {
     | '/search'
     | '/services'
     | '/track-record'
-    | '/about/team'
     | '/what-we-do/corporate-finance'
     | '/what-we-do/listing-capital-markets'
     | '/what-we-do/ma-deals'
     | '/about'
     | '/what-we-do'
+    | '/about/team/appointed'
+    | '/about/team/board'
+    | '/about/team'
   id:
     | '__root__'
     | '/'
@@ -201,12 +223,14 @@ export interface FileRouteTypes {
     | '/search'
     | '/services'
     | '/track-record'
-    | '/about/team'
     | '/what-we-do/corporate-finance'
     | '/what-we-do/listing-capital-markets'
     | '/what-we-do/ma-deals'
     | '/about/'
     | '/what-we-do/'
+    | '/about/team/appointed'
+    | '/about/team/board'
+    | '/about/team/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -219,12 +243,13 @@ export interface RootRouteChildren {
   SearchRoute: typeof SearchRoute
   ServicesRoute: typeof ServicesRoute
   TrackRecordRoute: typeof TrackRecordRoute
-  AboutTeamRoute: typeof AboutTeamRoute
   WhatWeDoCorporateFinanceRoute: typeof WhatWeDoCorporateFinanceRoute
   WhatWeDoListingCapitalMarketsRoute: typeof WhatWeDoListingCapitalMarketsRoute
   WhatWeDoMaDealsRoute: typeof WhatWeDoMaDealsRoute
   AboutIndexRoute: typeof AboutIndexRoute
   WhatWeDoIndexRoute: typeof WhatWeDoIndexRoute
+  AboutTeamAppointedRoute: typeof AboutTeamAppointedRoute
+  AboutTeamBoardRoute: typeof AboutTeamBoardRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -327,11 +352,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhatWeDoCorporateFinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about/team': {
-      id: '/about/team'
-      path: '/about/team'
-      fullPath: '/about/team'
-      preLoaderRoute: typeof AboutTeamRouteImport
+    '/about/team/': {
+      id: '/about/team/'
+      path: '/'
+      fullPath: '/about/team/'
+      preLoaderRoute: typeof AboutTeamIndexRouteImport
+      parentRoute: typeof AboutTeamRoute
+    }
+    '/about/team/board': {
+      id: '/about/team/board'
+      path: '/about/team/board'
+      fullPath: '/about/team/board'
+      preLoaderRoute: typeof AboutTeamBoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/team/appointed': {
+      id: '/about/team/appointed'
+      path: '/about/team/appointed'
+      fullPath: '/about/team/appointed'
+      preLoaderRoute: typeof AboutTeamAppointedRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -347,12 +386,13 @@ const rootRouteChildren: RootRouteChildren = {
   SearchRoute: SearchRoute,
   ServicesRoute: ServicesRoute,
   TrackRecordRoute: TrackRecordRoute,
-  AboutTeamRoute: AboutTeamRoute,
   WhatWeDoCorporateFinanceRoute: WhatWeDoCorporateFinanceRoute,
   WhatWeDoListingCapitalMarketsRoute: WhatWeDoListingCapitalMarketsRoute,
   WhatWeDoMaDealsRoute: WhatWeDoMaDealsRoute,
   AboutIndexRoute: AboutIndexRoute,
   WhatWeDoIndexRoute: WhatWeDoIndexRoute,
+  AboutTeamAppointedRoute: AboutTeamAppointedRoute,
+  AboutTeamBoardRoute: AboutTeamBoardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -18,7 +18,8 @@ import { useI18n } from "../i18n";
 import { getPractices } from "../lib/what-we-do";
 import { cn } from "../lib/utils";
 
-type NavChild = { to: string; label: string };
+type NavLeaf = { to: string; label: string };
+type NavChild = NavLeaf & { children?: readonly NavLeaf[] };
 type NavItem = {
   to: string;
   label: string;
@@ -48,6 +49,7 @@ export function SiteHeader() {
   const practices = getPractices(t);
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -76,7 +78,14 @@ export function SiteHeader() {
       label: t.nav.about,
       children: [
         { to: "/about", label: t.about.companyProfileTab },
-        { to: "/about/team", label: t.about.teamTab },
+        {
+          to: "/about/team/board",
+          label: t.about.teamTab,
+          children: [
+            { to: "/about/team/board", label: t.about.boardTitle },
+            { to: "/about/team/appointed", label: t.about.appointedTitle },
+          ],
+        },
       ],
     },
     {
@@ -112,6 +121,7 @@ export function SiteHeader() {
   useEffect(() => {
     setOpen(false);
     setOpenMenu(null);
+    setOpenSubMenu(null);
     setSearchOpen(false);
   }, [pathname]);
 
@@ -251,7 +261,17 @@ export function SiteHeader() {
                 >
                   <button
                     type="button"
-                    onClick={() => setOpenMenu((v) => (v === item.to ? null : item.to))}
+                    onClick={() => {
+                      setOpenMenu((v) => {
+                        const next = v === item.to ? null : item.to;
+                        if (next === "/about" && pathname.startsWith("/about/team")) {
+                          setOpenSubMenu("/about/team/board");
+                        } else {
+                          setOpenSubMenu(null);
+                        }
+                        return next;
+                      });
+                    }}
                     className={cn(
                       "nav-link inline-flex items-center gap-1 text-[12px] font-medium uppercase tracking-wider",
                       isItemActive(item)
@@ -286,18 +306,74 @@ export function SiteHeader() {
                         {t.nav.overview}
                       </Link>
                     )}
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.to}
-                        to={child.to}
-                        className="block px-4 py-2.5 text-[12px] font-medium text-foreground/80 transition-colors hover:bg-panel hover:text-navy"
-                        activeProps={{ className: "bg-panel text-navy" }}
-                        activeOptions={{ exact: true }}
-                        onClick={() => setOpenMenu(null)}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                    {item.children.map((child) =>
+                      child.children ? (
+                        <div key={child.to} className="relative">
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setOpenSubMenu((v) => (v === child.to ? null : child.to));
+                            }}
+                            className={cn(
+                              "flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-[12px] font-medium transition-colors hover:bg-panel hover:text-navy",
+                              openSubMenu === child.to ||
+                                pathname.startsWith("/about/team")
+                                ? "bg-panel text-navy"
+                                : "text-foreground/80",
+                            )}
+                            aria-expanded={openSubMenu === child.to}
+                          >
+                            {child.label}
+                            <ChevronDown
+                              className={cn(
+                                "h-3.5 w-3.5 shrink-0 transition-transform duration-300",
+                                openSubMenu === child.to && "rotate-180",
+                              )}
+                            />
+                          </button>
+                          <div
+                            className={cn(
+                              "overflow-hidden transition-all duration-300",
+                              openSubMenu === child.to
+                                ? "max-h-40 opacity-100"
+                                : "max-h-0 opacity-0",
+                            )}
+                            aria-hidden={openSubMenu !== child.to}
+                          >
+                            {child.children.map((sub) => (
+                              <Link
+                                key={sub.to}
+                                to={sub.to}
+                                className="block px-4 py-2.5 pl-7 text-[12px] font-medium text-foreground/80 transition-colors hover:bg-panel hover:text-navy"
+                                activeProps={{ className: "bg-panel text-navy" }}
+                                activeOptions={{ exact: true }}
+                                onClick={() => {
+                                  setOpenMenu(null);
+                                  setOpenSubMenu(null);
+                                }}
+                              >
+                                {sub.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <Link
+                          key={child.to}
+                          to={child.to}
+                          className="block px-4 py-2.5 text-[12px] font-medium text-foreground/80 transition-colors hover:bg-panel hover:text-navy"
+                          activeProps={{ className: "bg-panel text-navy" }}
+                          activeOptions={{ exact: true }}
+                          onClick={() => {
+                            setOpenMenu(null);
+                            setOpenSubMenu(null);
+                          }}
+                        >
+                          {child.label}
+                        </Link>
+                      ),
+                    )}
                   </div>
                 </div>
               ) : (
@@ -350,16 +426,57 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
                 <div className="mt-2 space-y-2 pl-3">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.to}
-                      to={child.to}
-                      onClick={() => setOpen(false)}
-                      className="block text-sm text-foreground/75 transition-colors hover:text-navy"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
+                  {item.children.map((child) =>
+                    child.children ? (
+                      <div key={child.to} className="space-y-1">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setOpenSubMenu((v) => (v === child.to ? null : child.to))
+                          }
+                          className="flex w-full items-center justify-between gap-2 py-1 text-left text-sm font-medium text-navy"
+                          aria-expanded={openSubMenu === child.to}
+                        >
+                          {child.label}
+                          <ChevronDown
+                            className={cn(
+                              "h-4 w-4 transition-transform duration-300",
+                              openSubMenu === child.to && "rotate-180",
+                            )}
+                          />
+                        </button>
+                        <div
+                          className={cn(
+                            "space-y-2 overflow-hidden pl-3 transition-all duration-300",
+                            openSubMenu === child.to
+                              ? "max-h-40 opacity-100"
+                              : "max-h-0 opacity-0",
+                          )}
+                          aria-hidden={openSubMenu !== child.to}
+                        >
+                          {child.children.map((sub) => (
+                            <Link
+                              key={sub.to}
+                              to={sub.to}
+                              onClick={() => setOpen(false)}
+                              className="block text-sm text-foreground/75 transition-colors hover:text-navy"
+                            >
+                              {sub.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        key={child.to}
+                        to={child.to}
+                        onClick={() => setOpen(false)}
+                        className="block text-sm text-foreground/75 transition-colors hover:text-navy"
+                      >
+                        {child.label}
+                      </Link>
+                    ),
+                  )}
                 </div>
               </div>
             ) : (

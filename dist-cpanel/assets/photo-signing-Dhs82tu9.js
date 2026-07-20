@@ -1,0 +1,1 @@
+var e=`/assets/photo-signing-alMfwnFc.png`;export{e as t};

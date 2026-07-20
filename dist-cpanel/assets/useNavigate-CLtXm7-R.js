@@ -1,0 +1,1 @@
+import{a as e,r as t}from"./jsx-runtime-Dyurfefh.js";import{r as n}from"./link-YD2SLsat.js";var r=e(t(),1);function i(e){let t=n();return r.useCallback(n=>t.navigate({...n,from:n.from??e?.from}),[e?.from,t])}export{i as t};

@@ -6,6 +6,7 @@ import { CONTACT } from "../../lib/contact";
 import photoEcma from "../../assets/photo-ecma-license.png";
 import photoTeam from "../../assets/photo-team-milestone.png";
 import { MidContactBanner } from "../../components/MidContactBanner";
+import { AboutPageNav } from "../../components/AboutPageNav";
 
 export const Route = createFileRoute("/about/")({
   head: () => ({
@@ -45,26 +46,7 @@ function About() {
             {t.about.headline}
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">{c.status}</p>
-        </div>
-      </section>
-
-      <section className="hairline-b bg-background">
-        <div className="container-editorial flex flex-wrap items-center justify-center gap-8 py-6 md:justify-start">
-          <Link
-            to="/about"
-            activeOptions={{ exact: true }}
-            className="nav-link text-sm font-medium text-foreground/80 hover:text-navy"
-            activeProps={{ className: "nav-link is-active text-sm font-medium text-navy" }}
-          >
-            {t.about.companyProfileTab}
-          </Link>
-          <Link
-            to="/about/team"
-            className="nav-link text-sm font-medium text-foreground/80 hover:text-navy"
-            activeProps={{ className: "nav-link is-active text-sm font-medium text-navy" }}
-          >
-            {t.about.teamTab}
-          </Link>
+          <AboutPageNav />
         </div>
       </section>
 

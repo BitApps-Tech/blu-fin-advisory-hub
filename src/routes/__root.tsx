@@ -154,6 +154,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      {/* HeadContent also covers SPA/cPanel (no RootShell / Scripts) */}
+      <HeadContent />
       <I18nProvider>
         <div className="flex min-h-screen flex-col">
           {!isAdmin && <SiteHeader />}

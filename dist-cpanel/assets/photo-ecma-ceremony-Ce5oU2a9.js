@@ -1,0 +1,1 @@
+var e=`/assets/photo-ecma-ceremony-i5lEJgxA.png`;export{e as t};

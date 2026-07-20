@@ -1,7 +1,7 @@
 import avatar0 from "../assets/avatar-team-0.png";
-import avatar1 from "../assets/avatar-team-1.png";
 import avatar2 from "../assets/avatar-team-2.png";
-import avatar3 from "../assets/avatar-team-3.png";
+import avatarAbraham from "../assets/avatar-team-abraham.png";
+import avatarBizuayehu from "../assets/avatar-team-bizuayehu.png";
 import avatarGuang from "../assets/avatar-team-guang.png";
 import avatarYohannes from "../assets/avatar-team-yohannes.png";
 import avatarDaniel from "../assets/avatar-team-daniel.png";
@@ -30,7 +30,7 @@ export const TEAM_PROFILES: Record<string, TeamProfile> = {
     x: "https://x.com/",
   },
   bizuayehu: {
-    avatar: avatar1,
+    avatar: avatarBizuayehu,
     linkedin: "https://www.linkedin.com/",
     x: "https://x.com/",
   },
@@ -40,7 +40,7 @@ export const TEAM_PROFILES: Record<string, TeamProfile> = {
     x: "https://x.com/",
   },
   abraham: {
-    avatar: avatar3,
+    avatar: avatarAbraham,
     linkedin: "https://www.linkedin.com/",
     x: "https://x.com/",
   },
