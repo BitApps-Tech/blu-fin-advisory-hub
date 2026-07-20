@@ -123,6 +123,11 @@ export const om: Dictionary = {
       },
     ],
     teamMore: "Dabalataan",
+    teamBack: "Gara gareetti deebi'i",
+    teamEducation: "Barnoota",
+    teamExperience: "Muuxannoo ijoo",
+    teamProfile: "Ibsa guutuu",
+    teamNotFound: "Ibsi miseensa garee hin argamne.",
     awards: {
       eyebrow: "Badhaasaafi Kabaja",
       title: "Beekamtii idilee ajaja gabaa kaappitaalaa Itoophiyaa irraa.",

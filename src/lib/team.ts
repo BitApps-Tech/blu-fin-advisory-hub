@@ -1,5 +1,5 @@
 import avatar0 from "../assets/avatar-team-0.png";
-import avatar2 from "../assets/avatar-team-2.png";
+import avatarAbebe from "../assets/avatar-team-abebe.png";
 import avatarAbraham from "../assets/avatar-team-abraham.png";
 import avatarBizuayehu from "../assets/avatar-team-bizuayehu.png";
 import avatarGuang from "../assets/avatar-team-guang.png";
@@ -35,7 +35,7 @@ export const TEAM_PROFILES: Record<string, TeamProfile> = {
     x: "https://x.com/",
   },
   abebe: {
-    avatar: avatar2,
+    avatar: avatarAbebe,
     linkedin: "https://www.linkedin.com/",
     x: "https://x.com/",
   },

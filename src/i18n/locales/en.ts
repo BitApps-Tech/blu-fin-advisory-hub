@@ -68,6 +68,11 @@ export type Dictionary = {
     teamIntro: string;
     team: { id: string; name: string; title: string; bio: string }[];
     teamMore: string;
+    teamBack: string;
+    teamEducation: string;
+    teamExperience: string;
+    teamProfile: string;
+    teamNotFound: string;
     awards: {
       eyebrow: string;
       title: string;
@@ -297,52 +302,57 @@ export const en: Dictionary = {
         id: "abraham",
         name: "Mr. Abraham Ejigu Shiferaw",
         title: "Board Chairperson",
-        bio: "Provides board oversight and governance stewardship, anchoring BluFin's commitment to professionalism, accountability, and long-term client trust.",
+        bio: "25+ years in banking — currently Chief Credit Officer at Abay Bank S.C., with prior leadership across corporate banking, operations, and internal audit.",
       },
       {
         id: "guang",
         name: "Mr. Guang Xue",
         title: "Board Member — Director",
-        bio: "Serves on BluFin's Board of Directors, contributing strategic oversight as the firm grows within Ethiopia's regulated capital market.",
+        bio: "Founder & Managing Director of four manufacturing companies in Ethiopia, with an MBA track record spanning Singapore and Addis Ababa University.",
       },
       {
         id: "yohannes",
         name: "Dr. Yohannes Workeaferahu Elifneh",
         title: "Director",
-        bio: "Brings academic and professional perspective to board deliberations, supporting sound governance and long-term institutional development.",
+        bio: "Associate Professor of Management at Addis Ababa University — PhD in CSR (Tilburg), specializing in governance, curriculum development, and financial literacy.",
       },
       {
         id: "daniel",
         name: "Mr. Daniel Yared Hailemariam",
         title: "Director",
-        bio: "Contributes board-level guidance on strategy and accountability as BluFin delivers licensed securities investment advisory services.",
+        bio: "Business law attorney (LL.M, AAU) with extensive public-enterprise legal leadership — including Chief of Staff at Agricultural Businesses Corporation.",
       },
       {
         id: "kindie",
         name: "Mr. Kindie Abebe Alemayehu",
         title: "Director",
-        bio: "Supports the Board's oversight of the firm's integrity, professionalism, and alignment with ECMA licensing standards.",
+        bio: "FCCA-certified finance executive with 20+ years in banking leadership, including Acting CEO at Wegagen Bank and VP Corporate Services at ZamZam Bank.",
       },
       {
         id: "yitbarek",
         name: "Dr. Yitbarek Takele Bayiley",
         title: "Chief Executive Officer",
-        bio: "Leads BluFin's strategy and client engagements, bringing deep expertise in corporate finance and capital markets to Ethiopia's emerging advisory landscape.",
+        bio: "Founder & CEO with 25+ years of senior leadership across Africa and Europe — Associate Professor and Chair of Management at Addis Ababa University.",
       },
       {
         id: "bizuayehu",
         name: "Mr. Bizuayehu Seyoum Tsehaye",
         title: "Chief Compliance Officer",
-        bio: "Safeguards regulatory integrity across every mandate, ensuring BluFin's advice remains ethical, suitable, and fully aligned with ECMA standards.",
+        bio: "Chief Compliance Officer with 26+ years in banking — former Chief Banking Business Officer at Amhara Bank and Director-level leadership at CBE.",
       },
       {
         id: "abebe",
         name: "Dr. Abebe Gule Girma",
         title: "Chief Research Officer",
-        bio: "Drives independent, research-led insights that underpin our recommendations — turning rigorous analysis into clear guidance for clients.",
+        bio: "Chief Research Officer — PhD in Financial Economics; published researcher in FinTech, financial inclusion, and capital market development.",
       },
     ],
     teamMore: "More",
+    teamBack: "Back to team",
+    teamEducation: "Education",
+    teamExperience: "Key experience",
+    teamProfile: "Full profile",
+    teamNotFound: "This team member profile could not be found.",
     awards: {
       eyebrow: "Awards & Accolades",
       title: "Official recognition from Ethiopia's capital markets regulator.",

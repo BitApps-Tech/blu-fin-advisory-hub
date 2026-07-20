@@ -121,6 +121,11 @@ export const am: Dictionary = {
       },
     ],
     teamMore: "ተጨማሪ",
+    teamBack: "ወደ ቡድን ተመለስ",
+    teamEducation: "ትምህርት",
+    teamExperience: "ዋና ልምድ",
+    teamProfile: "ሙሉ መገለጫ",
+    teamNotFound: "የቡድን አባሉ መገለጫ አልተገኘም።",
     awards: {
       eyebrow: "ሽልማቶች እና እውቅናዎች",
       title: "ከኢትዮጵያ ካፒታል ገበያ ተቆጣጣሪ ይፋዊ እውቅና።",

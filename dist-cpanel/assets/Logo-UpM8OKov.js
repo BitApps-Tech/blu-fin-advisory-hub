@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-Dyurfefh.js";import{r as t}from"./dist-Dst_MW5J.js";var n=`/assets/blufin-logo-D8Ie0OAL.png`,r=e();function i({variant:e=`dark`,className:i}){return(0,r.jsx)(`img`,{src:n,alt:`BluFin Capital Advisory`,className:t(`h-24 w-auto object-contain md:h-32`,e===`light`&&`brightness-0 invert`,i)})}export{i as t};

@@ -1,7 +1,6 @@
 import type { Dictionary } from "../i18n";
 import type { Article } from "./mock-store";
 import { getPractices } from "./what-we-do";
-import { BOARD_IDS } from "./team";
 
 export type SearchHit = {
   id: string;
@@ -56,12 +55,11 @@ export function searchSite(query: string, t: Dictionary, articles: Article[]): S
   for (const member of t.home.team) {
     const blob = `${member.name} ${member.title} ${member.bio}`;
     if (matches(blob, q)) {
-      const isBoard = (BOARD_IDS as readonly string[]).includes(member.id);
       hits.push({
         id: `team-${member.id}`,
         title: member.name,
         excerpt: `${member.title} — ${member.bio}`,
-        to: isBoard ? "/about/team/board" : "/about/team/appointed",
+        to: `/about/team/${member.id}`,
         kind: "team",
       });
     }

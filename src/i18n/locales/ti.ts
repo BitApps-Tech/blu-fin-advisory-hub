@@ -123,6 +123,11 @@ export const ti: Dictionary = deepMerge(en, {
       },
     ],
     teamMore: "ተወሳኺ",
+    teamBack: "ናብ ጋንታ ተመለስ",
+    teamEducation: "ትምህርቲ",
+    teamExperience: "ቀንዲ ተመክሮ",
+    teamProfile: "ምሉእ መግለጺ",
+    teamNotFound: "ናይ ጋንታ ኣባል መግለጺ ኣይተረኽበን።",
     awards: {
       eyebrow: "ሽልማታትን ክብርን",
       title: "ካብ ኢትዮጵያ ካፒታል ማርኬት ተቆጣጣሪ ዝተረኸበ ይፋዊ ክብር።",

@@ -124,6 +124,11 @@ export const so: Dictionary = deepMerge(en, {
       },
     ],
     teamMore: "Wax dheeraad ah",
+    teamBack: "Ku noqo kooxda",
+    teamEducation: "Waxbarasho",
+    teamExperience: "Khibrad muhiim ah",
+    teamProfile: "Profile buuxa",
+    teamNotFound: "Profile-ka xubinta kooxda lama helin.",
     awards: {
       eyebrow: "Abaalmarino & Sharaf",
       title: "Aqoonsi rasmi ah oo ka yimid maamulaha suuqyada raasumaalka Itoobiya.",

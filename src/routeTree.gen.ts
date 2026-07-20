@@ -26,6 +26,7 @@ import { Route as WhatWeDoCorporateFinanceRouteImport } from './routes/what-we-d
 import { Route as AboutTeamIndexRouteImport } from './routes/about/team/index'
 import { Route as AboutTeamBoardRouteImport } from './routes/about/team/board'
 import { Route as AboutTeamAppointedRouteImport } from './routes/about/team/appointed'
+import { Route as AboutTeamMemberIdRouteImport } from './routes/about/team/$memberId'
 
 const TrackRecordRoute = TrackRecordRouteImport.update({
   id: '/track-record',
@@ -114,6 +115,11 @@ const AboutTeamAppointedRoute = AboutTeamAppointedRouteImport.update({
   path: '/about/team/appointed',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutTeamMemberIdRoute = AboutTeamMemberIdRouteImport.update({
+  id: '/about/team/$memberId',
+  path: '/about/team/$memberId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
   '/about/': typeof AboutIndexRoute
   '/what-we-do/': typeof WhatWeDoIndexRoute
+  '/about/team/$memberId': typeof AboutTeamMemberIdRoute
   '/about/team/appointed': typeof AboutTeamAppointedRoute
   '/about/team/board': typeof AboutTeamBoardRoute
   '/about/team/': typeof AboutTeamIndexRoute
@@ -149,6 +156,7 @@ export interface FileRoutesByTo {
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
   '/about': typeof AboutIndexRoute
   '/what-we-do': typeof WhatWeDoIndexRoute
+  '/about/team/$memberId': typeof AboutTeamMemberIdRoute
   '/about/team/appointed': typeof AboutTeamAppointedRoute
   '/about/team/board': typeof AboutTeamBoardRoute
   '/about/team': typeof AboutTeamIndexRoute
@@ -169,6 +177,7 @@ export interface FileRoutesById {
   '/what-we-do/ma-deals': typeof WhatWeDoMaDealsRoute
   '/about/': typeof AboutIndexRoute
   '/what-we-do/': typeof WhatWeDoIndexRoute
+  '/about/team/$memberId': typeof AboutTeamMemberIdRoute
   '/about/team/appointed': typeof AboutTeamAppointedRoute
   '/about/team/board': typeof AboutTeamBoardRoute
   '/about/team/': typeof AboutTeamIndexRoute
@@ -190,6 +199,7 @@ export interface FileRouteTypes {
     | '/what-we-do/ma-deals'
     | '/about/'
     | '/what-we-do/'
+    | '/about/team/$memberId'
     | '/about/team/appointed'
     | '/about/team/board'
     | '/about/team/'
@@ -209,6 +219,7 @@ export interface FileRouteTypes {
     | '/what-we-do/ma-deals'
     | '/about'
     | '/what-we-do'
+    | '/about/team/$memberId'
     | '/about/team/appointed'
     | '/about/team/board'
     | '/about/team'
@@ -228,6 +239,7 @@ export interface FileRouteTypes {
     | '/what-we-do/ma-deals'
     | '/about/'
     | '/what-we-do/'
+    | '/about/team/$memberId'
     | '/about/team/appointed'
     | '/about/team/board'
     | '/about/team/'
@@ -248,6 +260,7 @@ export interface RootRouteChildren {
   WhatWeDoMaDealsRoute: typeof WhatWeDoMaDealsRoute
   AboutIndexRoute: typeof AboutIndexRoute
   WhatWeDoIndexRoute: typeof WhatWeDoIndexRoute
+  AboutTeamMemberIdRoute: typeof AboutTeamMemberIdRoute
   AboutTeamAppointedRoute: typeof AboutTeamAppointedRoute
   AboutTeamBoardRoute: typeof AboutTeamBoardRoute
 }
@@ -373,6 +386,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutTeamAppointedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/team/$memberId': {
+      id: '/about/team/$memberId'
+      path: '/about/team/$memberId'
+      fullPath: '/about/team/$memberId'
+      preLoaderRoute: typeof AboutTeamMemberIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -391,6 +411,7 @@ const rootRouteChildren: RootRouteChildren = {
   WhatWeDoMaDealsRoute: WhatWeDoMaDealsRoute,
   AboutIndexRoute: AboutIndexRoute,
   WhatWeDoIndexRoute: WhatWeDoIndexRoute,
+  AboutTeamMemberIdRoute: AboutTeamMemberIdRoute,
   AboutTeamAppointedRoute: AboutTeamAppointedRoute,
   AboutTeamBoardRoute: AboutTeamBoardRoute,
 }

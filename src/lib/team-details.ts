@@ -1,0 +1,232 @@
+export type TeamDetailSection = {
+  title: string;
+  body: string;
+};
+
+export type TeamDetail = {
+  id: string;
+  /** Short overlay text on hover (1–3 sentences). */
+  hoverBio: string;
+  /** Opening narrative on the profile page. */
+  overview: string;
+  education: string[];
+  experience: string[];
+  sections?: TeamDetailSection[];
+};
+
+/**
+ * Detailed team profiles sourced from BluFin Corporate Profile & Organogram
+ * (submitted to ECMA, June 2026, Version 2.00).
+ */
+export const TEAM_DETAILS: Record<string, TeamDetail> = {
+  abraham: {
+    id: "abraham",
+    hoverBio:
+      "25+ years in banking — currently Chief Credit Officer at Abay Bank S.C., with prior leadership across corporate banking, operations, and internal audit.",
+    overview:
+      "Mr. Abraham Ejigu Shiferaw brings more than 25 years of banking industry experience to BluFin's Board. He currently serves as Chief Credit Officer at Abay Bank S.C. (2022–present), and previously held senior roles including Chief Corporate Banking Officer, Vice President Operations, Director of Internal Audit, and Branch Manager at Abay Bank and the Commercial Bank of Ethiopia.",
+    education: [
+      "PhD Candidate, International Business & Strategy (Addis Ababa University)",
+      "MBA",
+      "MSc in Accounting & Finance",
+      "MA in Journalism & Communication",
+      "BA in Accounting",
+      "BA in Journalism & Communication",
+    ],
+    experience: [
+      "Chief Credit Officer, Abay Bank S.C. (2022–present)",
+      "Chief Corporate Banking Officer, Abay Bank",
+      "Vice President Operations, Abay Bank",
+      "Director Internal Audit; Branch Manager roles at Abay Bank and Commercial Bank of Ethiopia",
+    ],
+  },
+  guang: {
+    id: "guang",
+    hoverBio:
+      "Founder & Managing Director of four manufacturing companies in Ethiopia, with an MBA track record spanning Singapore and Addis Ababa University.",
+    overview:
+      "Mr. Guang Xue is an industrial entrepreneur and Board Director of BluFin Capital Advisory PLC. He is Founder & Managing Director of four manufacturing companies in Ethiopia (2011–present) — J&S Metal, Eastern Dragon Package Tech, CWW Pipe Manufacturing, and Duoley Food Processing — and previously served as Deputy General Manager – Operations at Best Hard Ware Ltd in China.",
+    education: [
+      "MBA (National University of Singapore, 2023–2025)",
+      "Executive MBA (Addis Ababa University, 2023–2025)",
+      "BA in Economic Information Management (Lanzhou Commercial College, China, 1997)",
+    ],
+    experience: [
+      "Founder & Managing Director: J&S Metal; Eastern Dragon Package Tech; CWW Pipe Manufacturing; Duoley Food Processing (2011–present)",
+      "Deputy General Manager – Operations, Best Hard Ware Ltd, China (from 2008)",
+    ],
+  },
+  yohannes: {
+    id: "yohannes",
+    hoverBio:
+      "Associate Professor of Management at Addis Ababa University — PhD in CSR (Tilburg), specializing in governance, curriculum development, and financial literacy.",
+    overview:
+      "Dr. Yohannes Workeaferahu Elifneh is Associate Professor of Management at Addis Ababa University (2021–present). He holds a PhD in Corporate Social Responsibility from Tilburg University (Netherlands, 2017) and an MSc in Management Studies from Wageningen University (Netherlands, 2005). His work spans research, curriculum development for the Ministry of Education, consultancy on CSR, governance and financial literacy, and PhD thesis examination.",
+    education: [
+      "PhD in Corporate Social Responsibility (Tilburg University, Netherlands, 2017)",
+      "MSc in Management Studies (Wageningen University, Netherlands, 2005)",
+      "BA in Management (Addis Ababa University, 2000)",
+    ],
+    experience: [
+      "Associate Professor of Management, Addis Ababa University (2021–present)",
+      "Assistant Professor, Addis Ababa University (2017–2021)",
+      "Lecturer, Addis Ababa University (2005–2012)",
+      "Research, MoE curriculum development, CSR/governance consultancy, and PhD thesis examination",
+    ],
+  },
+  daniel: {
+    id: "daniel",
+    hoverBio:
+      "Business law attorney (LL.M, AAU) with extensive public-enterprise legal leadership — including Chief of Staff at Agricultural Businesses Corporation.",
+    overview:
+      "Mr. Daniel Yared Hailemariam is an Attorney at Law & Consultant (January 2016–present) and serves on BluFin's Board of Directors. He holds an LL.M in Business Law (Addis Ababa University, 2022), an LL.B in Law (AAU, 2008), and a Diploma in Law (Unity College, 2001). His career includes Legal Advisor & Chief of Staff at Agricultural Businesses Corporation and progressive leadership roles at Agricultural Inputs Supply Enterprise (2001–2016).",
+    education: [
+      "LL.M in Business Law (Addis Ababa University, 2022)",
+      "LL.B in Law (Addis Ababa University, 2008)",
+      "Diploma in Law (Unity College, 2001)",
+    ],
+    experience: [
+      "Attorney at Law & Consultant (January 2016–present)",
+      "Legal Advisor & Chief of Staff, Agricultural Businesses Corporation (February–December 2016)",
+      "Attorney, Team Leader, Acting Director, and Director roles at Agricultural Inputs Supply Enterprise (2001–2016)",
+    ],
+  },
+  kindie: {
+    id: "kindie",
+    hoverBio:
+      "FCCA-certified finance executive with 20+ years in banking leadership, including Acting CEO at Wegagen Bank and VP Corporate Services at ZamZam Bank.",
+    overview:
+      "Mr. Kindie Abebe Alemayehu, FCCA, brings over 20 years of banking leadership to BluFin's Board. He is currently Vice President, Corporate Services at ZamZam Bank (May 2024–present). Previously he served as Project Manager (bank formation) and Chief Corporate Services Officer at Amhara Bank, held various VP roles at Wegagen Bank (including Acting CEO), and earlier leadership roles at Lion International Bank and the National Bank of Ethiopia.",
+    education: [
+      "Fellow Chartered Certified Accountant (FCCA), UK (2015)",
+      "Executive MBA (Addis Ababa University, 2023)",
+      "BA in Accounting (Addis Ababa University, 2004)",
+    ],
+    experience: [
+      "Vice President, Corporate Services, ZamZam Bank (May 2024–present)",
+      "Project Manager (bank formation) and Chief Corporate Services Officer, Amhara Bank",
+      "VP roles at Wegagen Bank, including Acting CEO; Director roles at Wegagen",
+      "Earlier leadership at Lion International Bank and National Bank of Ethiopia",
+    ],
+  },
+  yitbarek: {
+    id: "yitbarek",
+    hoverBio:
+      "Founder & CEO with 25+ years of senior leadership across Africa and Europe — Associate Professor and Chair of Management at Addis Ababa University.",
+    overview:
+      "Dr. Yitbarek Takele Bayiley is Founder & Chief Executive Officer of BluFin Capital Advisory PLC. With 25+ years of senior leadership across Africa and Europe, he is a seasoned strategist and institutional reform advisor who has led over 50 transformation programs in the public and financial sectors. As Associate Professor and Chair of the Department of Management at Addis Ababa University, he has contributed to Ethiopia's financial sector through academic research and practical consultancy — including work on treasury bills in bank asset portfolios and the interplay between insurance industry performance and capital market development.",
+    education: [
+      "PhD in Commerce and Management Studies",
+      "MBA, Delhi School of Economics",
+      "MA in Industrial Economics",
+      "BA in Management and Public Administration",
+      "SAP ERP Proficiency Certificate (SAP University Alliances — Otto von Guericke Universität, University of Cape Town, AAU)",
+    ],
+    experience: [
+      "Founder & Chief Executive Officer, BluFin Capital Advisory PLC",
+      "Associate Professor and Chair, Department of Management, Addis Ababa University",
+      "Partner, BiS Consulting; Former CEO, OVID Venture Capital; Former Dean of Faculty, AAU",
+      "Led 50+ transformation programs across public and financial sectors in Africa and Europe",
+    ],
+    sections: [
+      {
+        title: "Banking & finance sector experience",
+        body: "Supported 15+ financial institutions in strategic advisory, including Dashen Bank, Wegagen Bank, Bank of Abyssinia, Enat Bank, Hibret Bank, Berhan Bank, Tsehay Bank, Amhara Bank, and Oromia Bank.",
+      },
+      {
+        title: "Relevant projects",
+        body: "Abay, Amhara & Oromia Banks — senior advisor on strategic alignment, leadership development, and human capital transformation. OVID Construction — Project Director for company-wide diagnosis and strategy formulation. Ayat Real Estate — strategic restructuring into a multi-venture group. OVID Venture Capital — CEO role directing strategy and execution advisory for high-growth start-ups. Executive development courses for C-suites across Ethiopia, Sweden, Rwanda, and Mozambique.",
+      },
+      {
+        title: "Specialized expertise",
+        body: "Leadership enablement & capacity building (C-Suite to frontline); coaching, facilitation, and train-the-trainer programs; HR strategy, organizational design, job evaluation & grading; strategy design and execution, change management, and performance systems.",
+      },
+      {
+        title: "Notable achievements",
+        body: "Delivered leadership development programs for more than 1,000 Ethiopian bank staff. Proven thought leader with 25+ international journal publications on strategy, decision-making, and institutional performance.",
+      },
+    ],
+  },
+  bizuayehu: {
+    id: "bizuayehu",
+    hoverBio:
+      "Chief Compliance Officer with 26+ years in banking — former Chief Banking Business Officer at Amhara Bank and Director-level leadership at CBE.",
+    overview:
+      "Mr. Bizuayehu Seyoum Tsehaye is Chief Compliance Officer of BluFin Capital Advisory PLC. He brings over 26 years of extensive banking experience spanning operations, credit processing, monitoring, and strategic leadership. Having served as Chief Banking Business Officer at Amhara Bank S.C. and in various Director positions at the Commercial Bank of Ethiopia, he brings deep understanding of financial sector governance, resource mobilization, and market strategy. His background in credit appraisal, project analysis, and risk management ensures BluFin's service delivery aligns with ECMA regulatory standards.",
+    education: [
+      "MBA, Jimma University",
+      "BA in Management, Bahir Dar University",
+      "Harvard-certified in Leadership, Negotiation & Communication",
+      "Professional Competence Certificate, Ethiopian Management Institute (management consultancy)",
+    ],
+    experience: [
+      "Chief Compliance Officer, BluFin Capital Advisory PLC",
+      "Chief Banking Business Officer, Amhara Bank S.C. (founding executive)",
+      "Director-level roles at Commercial Bank of Ethiopia, including district management (e.g. Bahir Dar)",
+      "Organizational Capacity Assessments for NGOs; sector programs for Ministry of Finance and Economic Development",
+    ],
+    sections: [
+      {
+        title: "Banking & finance sector experience",
+        body: "Supported institutions including Bank of Abyssinia, Abay Bank, and Barclays Bank, alongside a long career at Commercial Bank of Ethiopia and Amhara Bank.",
+      },
+      {
+        title: "Relevant projects",
+        body: "As a founding executive of Amhara Bank, led core banking business functions in the bank's early years — resource mobilization, credit portfolio management, and branch operations. At CBE, managed entire banking districts (including Bahir Dar), overseeing dozens of branches, thousands of employees, and significant balance sheets with accountability for profitability, risk management, and operational excellence.",
+      },
+      {
+        title: "Specialized expertise",
+        body: "Large-scale credit facilities for public enterprises and cooperative unions; Director, Institutions & Development Partners Relationship Management (government institutions and partners such as the World Bank and African Development Bank); full-cycle credit appraisal including project analysis, loan workout and NPL management, and credit monitoring.",
+      },
+      {
+        title: "Notable achievements",
+        body: "Delivered strategy and institutional strengthening programs for 30+ public and private organizations. National market strategy and roadmap for renewable energy scale-up with GOGLA and government agencies. Facilitated benchmarking and strategic reform across 12+ organizations.",
+      },
+    ],
+  },
+  abebe: {
+    id: "abebe",
+    hoverBio:
+      "Chief Research Officer — PhD in Financial Economics; published researcher in FinTech, financial inclusion, and capital market development.",
+    overview:
+      "Dr. Abebe Gule Girma is Chief Research Officer of BluFin Capital Advisory PLC. He is an accomplished Ethiopian scholar with over four years of teaching experience in Accounting, Finance, Economics, Research Methodology, and Business Statistics at public and private universities. He has fostered collaborative partnerships between Ethiopian and international universities and is developing an innovative financial model for Ethiopian higher education institutions to address sector financial constraints.",
+    education: [
+      "Ph.D. in Financial Economics | Khazar University, Baku, Azerbaijan",
+      "MSc in Finance | Central University of Finance and Economics, Beijing, China",
+      "BA in Accounting and Finance | Wollo University, Dessie, Ethiopia",
+      "Certified TOT in Entrepreneurship | AHC-AAU | EDI, Addis Ababa",
+    ],
+    experience: [
+      "Chief Research Officer, BluFin Capital Advisory PLC",
+      "University teaching in Accounting, Finance, Economics, Research Methodology, and Business Statistics",
+      "International academic partnerships and conference presentations (Antalya, Turkey; Baku, Azerbaijan)",
+    ],
+    sections: [
+      {
+        title: "Banking & finance sector experience",
+        body: "Trained Dashen Bank HR professionals in data analytics and ethics.",
+      },
+      {
+        title: "Relevant projects",
+        body: "University enterprise implementation strategy — designed Ethiopian public university enterprise adoption strategy under the Ministry of Education. Block project — developed rules and strategy for block-project adoption for autonomous public universities under the Ministry of Education.",
+      },
+      {
+        title: "Specialized expertise",
+        body: "Financial modelling (FMVA), corporate governance, risk management, investment analysis, and financial markets. Governance & compliance: institutional reforms, tax compliance, and audit frameworks. Academic research: 7+ papers on financial development, FinTech, financial inclusion, financial performance, remittances, income inequality, and economic growth.",
+      },
+      {
+        title: "Notable achievements",
+        body: "Trained banking HR professionals in data analytics & ethics. Presented and published 4+ research papers in international conferences. Awarded Entrepreneurship TOT certificate (AHC-AAU | EDI, Addis Ababa).",
+      },
+    ],
+  },
+};
+
+export function getTeamDetail(id: string): TeamDetail | undefined {
+  return TEAM_DETAILS[id];
+}
+
+export function teamGroupPath(id: string): "/about/team/board" | "/about/team/appointed" {
+  const appointed = new Set(["yitbarek", "bizuayehu", "abebe"]);
+  return appointed.has(id) ? "/about/team/appointed" : "/about/team/board";
+}

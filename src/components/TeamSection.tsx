@@ -1,7 +1,9 @@
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Linkedin } from "lucide-react";
 import { useI18n } from "../i18n";
 import { memberInitials, TEAM_PROFILES } from "../lib/team";
+import { getTeamDetail } from "../lib/team-details";
 import { Reveal } from "./Reveal";
 import { cn } from "../lib/utils";
 
@@ -70,6 +72,8 @@ export function TeamSection({
               linkedin: "https://www.linkedin.com/",
               x: "https://x.com/",
             };
+            const detail = getTeamDetail(member.id);
+            const hoverBio = detail?.hoverBio ?? member.bio;
             const isOpen = openId === member.id;
             const hasAvatar = Boolean(profile.avatar);
 
@@ -115,22 +119,23 @@ export function TeamSection({
                         isOpen && "pointer-events-auto translate-y-0 opacity-100",
                       )}
                     >
-                      <div>
+                      <div className="min-h-0 overflow-hidden">
                         <h3 className="font-serif text-xl leading-snug text-white md:text-2xl">
                           {member.title}
                         </h3>
                         <div className="mt-4 h-px w-full bg-white/80" />
-                        <p className="mt-4 text-sm leading-relaxed text-white/90">{member.bio}</p>
+                        <p className="mt-4 text-sm leading-relaxed text-white/90 line-clamp-6">
+                          {hoverBio}
+                        </p>
                       </div>
-                      <a
-                        href={profile.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        to="/about/team/$memberId"
+                        params={{ memberId: member.id }}
                         className="mt-6 inline-flex w-fit text-xs font-semibold uppercase tracking-[0.18em] text-white transition-opacity hover:opacity-80"
                         onClick={(e) => e.stopPropagation()}
                       >
                         {t.home.teamMore}
-                      </a>
+                      </Link>
                     </div>
                   </div>
 

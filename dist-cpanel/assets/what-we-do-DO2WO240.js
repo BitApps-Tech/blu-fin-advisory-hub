@@ -1,1 +1,0 @@
-var e=[{key:`listing`,to:`/what-we-do/listing-capital-markets`},{key:`corporate`,to:`/what-we-do/corporate-finance`},{key:`ma`,to:`/what-we-do/ma-deals`}];function t(t){return e.map(({key:e,to:n})=>({key:e,to:n,...t.practices[e]}))}export{t};

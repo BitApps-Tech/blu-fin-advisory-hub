@@ -123,6 +123,11 @@ export const zh: Dictionary = deepMerge(en, {
       },
     ],
     teamMore: "更多",
+    teamBack: "返回团队",
+    teamEducation: "教育背景",
+    teamExperience: "主要经历",
+    teamProfile: "完整简介",
+    teamNotFound: "未找到该团队成员资料。",
     awards: {
       eyebrow: "奖项与荣誉",
       title: "来自埃塞俄比亚资本市场监管机构的官方认可。",
