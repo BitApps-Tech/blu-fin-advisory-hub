@@ -156,7 +156,11 @@ export function SiteHeader() {
       <div className="bg-[#1F3E72] text-white">
         <div className="container-editorial flex h-9 items-center justify-between gap-4">
           <div className="flex min-w-0 items-center gap-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85">
-            <Link to="/insights" className="shrink-0 transition-colors hover:text-white">
+            <Link
+              to="/insights"
+              search={{ article: undefined }}
+              className="shrink-0 transition-colors hover:text-white"
+            >
               {t.nav.mediaCenter}
             </Link>
             <span className="text-white/35" aria-hidden>

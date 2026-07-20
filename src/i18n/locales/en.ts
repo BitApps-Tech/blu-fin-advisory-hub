@@ -96,6 +96,26 @@ export type Dictionary = {
     boardIntro: string;
     appointedTitle: string;
     appointedIntro: string;
+    overviewEyebrow: string;
+    overviewTitle: string;
+    overviewBody: string;
+    servicesEyebrow: string;
+    servicesTitle: string;
+    governanceEyebrow: string;
+    governanceTitle: string;
+    structureEyebrow: string;
+    structureTitle: string;
+    boardCompositionTitle: string;
+    organogramEyebrow: string;
+    organogramTitle: string;
+    organogramHint: string;
+    organogramIndependence: string;
+    organogramAdminLine: string;
+    organogramViewPeople: string;
+    committeesEyebrow: string;
+    committeesTitle: string;
+    committeeComposition: string;
+    committeeResponsibilities: string;
     legalEyebrow: string;
     legalTitle: string;
     ownershipEyebrow: string;
@@ -380,6 +400,27 @@ export const en: Dictionary = {
     appointedTitle: "Appointed Representatives",
     appointedIntro:
       "Our appointed representatives — CEO, Chief Compliance Officer, and Chief Research Officer — lead strategy, regulatory integrity, and research-led advice.",
+    overviewEyebrow: "Company overview",
+    overviewTitle: "A licensed securities investment advisor for Ethiopia.",
+    overviewBody:
+      "BluFin Capital Advisory PLC is a financial services firm dedicated to becoming a premier provider of Securities Investment Advisory services in Ethiopia. We are committed to ethical conduct, professional excellence, and playing a constructive role in the development of Ethiopia's capital markets.",
+    servicesEyebrow: "Core services",
+    servicesTitle: "How we advise clients and the market.",
+    governanceEyebrow: "Management & governance",
+    governanceTitle: "Independent oversight with clear lines of defence.",
+    structureEyebrow: "Organizational structure",
+    structureTitle: "Founding partners and strategic investors.",
+    boardCompositionTitle: "Board composition",
+    organogramEyebrow: "Organogram",
+    organogramTitle: "How BluFin is organized to serve clients and the regulator.",
+    organogramHint: "Select a role to explore responsibilities and reporting lines.",
+    organogramIndependence: "Direct solid reporting line to the Board on compliance matters",
+    organogramAdminLine: "CCO administrative (dashed) reporting line to the CEO",
+    organogramViewPeople: "View people",
+    committeesEyebrow: "Board committees",
+    committeesTitle: "Specialized oversight under formal written charters.",
+    committeeComposition: "Composition",
+    committeeResponsibilities: "Responsibilities",
     legalEyebrow: "Corporate & legal details",
     legalTitle: "Formal company profile and legal status",
     ownershipEyebrow: "Ownership",

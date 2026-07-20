@@ -36,7 +36,15 @@ export function SiteFooter() {
           <div className="eyebrow text-white/60">{t.footer.firm}</div>
           <ul className="mt-4 space-y-2 text-sm text-white/85">
             <li><Link to="/about" className="footer-link text-white/85 hover:text-white">{t.footer.about}</Link></li>
-            <li><Link to="/insights" className="footer-link text-white/85 hover:text-white">{t.footer.news}</Link></li>
+            <li>
+              <Link
+                to="/insights"
+                search={{ article: undefined }}
+                className="footer-link text-white/85 hover:text-white"
+              >
+                {t.footer.news}
+              </Link>
+            </li>
             <li><Link to="/careers" className="footer-link text-white/85 hover:text-white">{t.footer.careers}</Link></li>
             <li><Link to="/track-record" className="footer-link text-white/85 hover:text-white">{t.footer.trackRecord}</Link></li>
             <li><Link to="/contact" className="footer-link text-white/85 hover:text-white">{t.footer.contact}</Link></li>

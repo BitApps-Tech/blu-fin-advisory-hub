@@ -12,18 +12,13 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute("/search")({
   validateSearch: (search) => searchSchema.parse(search),
-  head: ({ search }) => {
-    const q = search.q?.trim();
-    return {
-      meta: [
-        {
-          title: q ? `Search: ${q} — BluFin Capital Advisory` : "Search — BluFin Capital Advisory",
-        },
-        { property: "og:url", content: "/search" },
-      ],
-      links: [{ rel: "canonical", href: "/search" }],
-    };
-  },
+  head: () => ({
+    meta: [
+      { title: "Search — BluFin Capital Advisory" },
+      { property: "og:url", content: "/search" },
+    ],
+    links: [{ rel: "canonical", href: "/search" }],
+  }),
   component: SearchPage,
 });
 
