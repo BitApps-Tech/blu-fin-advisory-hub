@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-Dyurfefh.js";import{t}from"./ServiceDetailPage-CpXtsoyP.js";var n=e(),r=()=>(0,n.jsx)(t,{practiceKey:`ma`});export{r as component};

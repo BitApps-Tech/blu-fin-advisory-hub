@@ -55,6 +55,7 @@ export function SiteHeader() {
   const [query, setQuery] = useState("");
   const dropdownRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const searchRef = useRef<HTMLDivElement>(null);
+  const mobileSearchRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchParams = useRouterState({ select: (s) => s.location.search });
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -114,7 +115,9 @@ export function SiteHeader() {
       const target = e.target as Node;
       const inside = Object.values(dropdownRefs.current).some((el) => el?.contains(target));
       if (!inside) setOpenMenu(null);
-      if (searchRef.current && !searchRef.current.contains(target)) setSearchOpen(false);
+      if (searchRef.current && !searchRef.current.contains(target)) {
+        if (!mobileSearchRef.current?.contains(target)) setSearchOpen(false);
+      }
     }
     document.addEventListener("mousedown", onDocClick);
     return () => document.removeEventListener("mousedown", onDocClick);
@@ -155,9 +158,47 @@ export function SiteHeader() {
       )}
     >
       {/* Thin utility bar */}
-      <div className="bg-[#1F3E72] text-white">
-        <div className="container-editorial flex h-9 items-center justify-between gap-4">
-          <div className="flex min-w-0 items-center gap-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85">
+      <div className="relative bg-[#1F3E72] text-white">
+        {searchOpen && (
+          <div
+            ref={mobileSearchRef}
+            className="absolute inset-0 z-10 flex items-center px-3 sm:hidden"
+          >
+            <form onSubmit={submitSearch} className="flex w-full items-center gap-1.5">
+              <input
+                ref={searchInputRef}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={t.nav.searchPlaceholder}
+                aria-label={t.nav.search}
+                className="h-7 min-w-0 flex-1 border border-white/25 bg-white px-2 text-[11px] text-[#1F3E72] outline-none placeholder:text-[#1F3E72]/50 focus:border-white"
+              />
+              <button
+                type="submit"
+                aria-label={t.nav.search}
+                className="flex h-7 w-7 shrink-0 items-center justify-center text-white/85 transition-colors hover:text-white"
+              >
+                <Search className="h-3.5 w-3.5" />
+              </button>
+              <button
+                type="button"
+                aria-label={t.common.close}
+                onClick={() => setSearchOpen(false)}
+                className="flex h-7 w-7 shrink-0 items-center justify-center text-white/85 transition-colors hover:text-white"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            </form>
+          </div>
+        )}
+
+        <div
+          className={cn(
+            "container-editorial flex h-9 items-center justify-between gap-2 sm:gap-4",
+            searchOpen && "max-sm:pointer-events-none max-sm:opacity-0",
+          )}
+        >
+          <div className="flex min-w-0 items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85 sm:gap-2.5">
             <Link
               to="/insights"
               search={{ article: undefined }}
@@ -165,13 +206,7 @@ export function SiteHeader() {
             >
               {t.nav.mediaCenter}
             </Link>
-            <span className="text-white/35" aria-hidden>
-              |
-            </span>
-            <Link to="/contact" className="shrink-0 transition-colors hover:text-white">
-              {t.nav.contact}
-            </Link>
-            <span className="text-white/35" aria-hidden>
+            <span className="shrink-0 text-white/35" aria-hidden>
               |
             </span>
             <a
@@ -186,8 +221,8 @@ export function SiteHeader() {
             </a>
           </div>
 
-          <div className="flex shrink-0 items-center gap-3">
-            <div className="relative" ref={searchRef}>
+          <div className="flex shrink-0 items-center gap-1 sm:gap-2 md:gap-3">
+            <div className="relative hidden sm:block" ref={searchRef}>
               {searchOpen ? (
                 <form onSubmit={submitSearch} className="flex items-center">
                   <input
@@ -196,7 +231,7 @@ export function SiteHeader() {
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder={t.nav.searchPlaceholder}
                     aria-label={t.nav.search}
-                    className="h-7 w-36 border border-white/25 bg-white px-2 text-[11px] text-[#1F3E72] outline-none placeholder:text-[#1F3E72]/50 focus:border-white sm:w-48"
+                    className="h-7 w-36 border border-white/25 bg-white px-2 text-[11px] text-[#1F3E72] outline-none placeholder:text-[#1F3E72]/50 focus:border-white md:w-48"
                   />
                   <button
                     type="submit"
@@ -218,8 +253,17 @@ export function SiteHeader() {
               )}
             </div>
 
-            <div className="flex items-center gap-1.5">
-              {UTILITY_SOCIAL.map(({ name, Icon }) => {
+            <button
+              type="button"
+              aria-label={t.nav.search}
+              onClick={() => setSearchOpen(true)}
+              className="flex h-6 w-6 items-center justify-center text-white/85 transition-colors hover:text-white sm:hidden"
+            >
+              <Search className="h-3.5 w-3.5" />
+            </button>
+
+            <div className="flex items-center gap-0.5 sm:gap-1 md:gap-1.5">
+              {UTILITY_SOCIAL.map(({ name, Icon }, index) => {
                 const href = SOCIAL.find((s) => s.name === name)?.href ?? "#";
                 return (
                   <a
@@ -228,9 +272,13 @@ export function SiteHeader() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={name}
-                    className="flex h-7 w-7 items-center justify-center text-white/85 transition-colors hover:text-white"
+                    className={cn(
+                      "flex h-6 w-6 items-center justify-center text-white/85 transition-colors hover:text-white sm:h-7 sm:w-7",
+                      index >= 2 && "hidden min-[400px]:flex",
+                      index >= 4 && "hidden sm:flex",
+                    )}
                   >
-                    <Icon className="h-3.5 w-3.5" />
+                    <Icon className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                   </a>
                 );
               })}

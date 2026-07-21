@@ -1,4 +1,4 @@
-import avatar0 from "../assets/avatar-team-0.png";
+import avatarYitbarek from "../assets/avatar-team-yitbarek.png";
 import avatarAbebe from "../assets/avatar-team-abebe.png";
 import avatarAbraham from "../assets/avatar-team-abraham.png";
 import avatarBizuayehu from "../assets/avatar-team-bizuayehu.png";
@@ -25,7 +25,7 @@ export const APPOINTED_IDS = ["yitbarek", "bizuayehu", "abebe"] as const;
  */
 export const TEAM_PROFILES: Record<string, TeamProfile> = {
   yitbarek: {
-    avatar: avatar0,
+    avatar: avatarYitbarek,
     linkedin: "https://www.linkedin.com/",
     x: "https://x.com/",
   },
