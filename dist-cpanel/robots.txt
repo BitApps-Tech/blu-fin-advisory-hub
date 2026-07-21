@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# App / portal surfaces — not for indexing
+Disallow: /admin
+Disallow: /portal
+Disallow: /search
+
+Sitemap: https://blufincapitaladvisory.com/sitemap.xml

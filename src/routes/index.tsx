@@ -46,23 +46,45 @@ function Home() {
   );
 
   const [heroIndex, setHeroIndex] = useState(0);
+  const [heroReady, setHeroReady] = useState(false);
 
+  // Delay slideshow so the first paint / LCP isn't competing with extra images.
   useEffect(() => {
     const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
     if (reducedMotion || heroSlides.length <= 1) return;
 
-    const id = window.setInterval(() => {
-      setHeroIndex((v) => (v + 1) % heroSlides.length);
-    }, 5500);
+    let intervalId: number | undefined;
+    let started = false;
 
-    return () => window.clearInterval(id);
+    const start = () => {
+      if (started) return;
+      started = true;
+      setHeroReady(true);
+      intervalId = window.setInterval(() => {
+        setHeroIndex((v) => (v + 1) % heroSlides.length);
+      }, 5500);
+    };
+
+    const idleId =
+      "requestIdleCallback" in window
+        ? window.requestIdleCallback(start, { timeout: 4000 })
+        : undefined;
+    const timeoutId = window.setTimeout(start, 3200);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      if (intervalId) window.clearInterval(intervalId);
+      if (idleId !== undefined && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+      }
+    };
   }, [heroSlides.length]);
 
   return (
     <>
       <section className="hairline-b bg-background">
         <div className="container-editorial grid gap-12 py-20 md:grid-cols-12 md:py-32">
-          <Reveal className="md:col-span-8">
+          <Reveal priority className="md:col-span-8">
             <div className="eyebrow flex items-center gap-3">
               <span className="inline-block h-px w-8 bg-slate-warm" />
               {t.home.eyebrow}
@@ -89,7 +111,7 @@ function Home() {
               </Link>
             </div>
           </Reveal>
-          <Reveal className="hairline-l hidden md:col-span-4 md:block md:pl-10" delayMs={120}>
+          <Reveal priority className="hairline-l hidden md:col-span-4 md:block md:pl-10">
             <div className="eyebrow">{t.common.atAGlance}</div>
             <dl className="mt-6 space-y-6">
               <div>
@@ -117,15 +139,25 @@ function Home() {
 
       {/* Sticky banner: image stays in the background while page content scrolls over it */}
       <div className="relative isolate">
-        <section className="sticky top-0 z-0 h-[100svh] overflow-hidden bg-navy">
-          <img
-            key={heroIndex}
-            src={heroSlides[heroIndex]?.src}
-            alt={heroSlides[heroIndex]?.alt ?? ""}
-            className={`absolute inset-0 h-full w-full object-cover object-[center_30%] ${
-              heroSlides[heroIndex]?.effect ?? ""
-            }`}
-          />
+        <section className="sticky top-0 z-0 h-[100svh] overflow-hidden bg-navy" aria-hidden={false}>
+          {heroSlides.map((slide, i) => {
+            const shouldLoad = i === 0 || heroReady;
+            if (!shouldLoad) return null;
+            const active = i === heroIndex;
+            return (
+              <img
+                key={slide.src}
+                src={slide.src}
+                alt={active ? slide.alt : ""}
+                decoding={i === 0 ? "sync" : "async"}
+                loading={i === 0 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "low"}
+                className={`absolute inset-0 h-full w-full object-cover object-[center_30%] transition-opacity duration-1000 ease-out ${
+                  active ? `opacity-100 ${slide.effect}` : "opacity-0"
+                }`}
+              />
+            );
+          })}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-navy/10" />
           <div className="absolute inset-x-0 bottom-0">
             <Reveal className="container-editorial py-8 md:py-12">
@@ -164,7 +196,9 @@ function Home() {
                 <div className="media-zoom mt-10">
                   <img
                     src={photoEcma}
-                    alt=""
+                    alt="BluFin ECMA licensing ceremony"
+                    loading="lazy"
+                    decoding="async"
                     className="aspect-[3/4] w-full object-cover object-top"
                   />
                 </div>
@@ -256,14 +290,18 @@ function Home() {
                 <div className="media-zoom">
                   <img
                     src={photoSigning}
-                    alt=""
+                    alt="BluFin signing ceremony"
+                    loading="lazy"
+                    decoding="async"
                     className="aspect-[3/4] h-full w-full object-cover object-center"
                   />
                 </div>
                 <div className="media-zoom">
                   <img
                     src={photoCeremony}
-                    alt=""
+                    alt="BluFin ECMA ceremony"
+                    loading="lazy"
+                    decoding="async"
                     className="aspect-[3/4] h-full w-full object-cover object-center"
                   />
                 </div>

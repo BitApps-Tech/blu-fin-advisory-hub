@@ -354,6 +354,7 @@ export function SiteHeader() {
                         : "pointer-events-none invisible -translate-y-1 opacity-0",
                     )}
                     aria-hidden={openMenu !== item.to}
+                    inert={openMenu !== item.to ? true : undefined}
                   >
                     {item.to === "/what-we-do" && (
                       <Link
@@ -398,6 +399,7 @@ export function SiteHeader() {
                                 : "max-h-0 opacity-0",
                             )}
                             aria-hidden={openSubMenu !== child.to}
+                            inert={openSubMenu !== child.to ? true : undefined}
                           >
                             {child.children.map((sub) => (
                               <Link
@@ -455,7 +457,10 @@ export function SiteHeader() {
           <div className="flex items-center gap-3 xl:hidden">
             <LanguageSwitcher />
             <button
+              type="button"
               aria-label={t.nav.menu}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
               className="rounded-sm p-1 transition-colors hover:bg-panel"
               onClick={() => setOpen((v) => !v)}
             >
@@ -466,11 +471,13 @@ export function SiteHeader() {
       </div>
 
       <div
+        id="mobile-nav"
         className={cn(
           "hairline-t overflow-hidden transition-all duration-300 xl:hidden",
           open ? "max-h-[40rem] opacity-100" : "pointer-events-none max-h-0 opacity-0",
         )}
         aria-hidden={!open}
+        inert={!open ? true : undefined}
       >
         <div className="container-editorial flex flex-col py-4">
           {nav.map((item) =>
@@ -511,6 +518,7 @@ export function SiteHeader() {
                               : "max-h-0 opacity-0",
                           )}
                           aria-hidden={openSubMenu !== child.to}
+                          inert={openSubMenu !== child.to ? true : undefined}
                         >
                           {child.children.map((sub) => (
                             <Link

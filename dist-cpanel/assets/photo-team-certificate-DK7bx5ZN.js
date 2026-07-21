@@ -1,0 +1,1 @@
+var e=`/assets/photo-team-certificate-M92qQArv.png`;export{e as t};

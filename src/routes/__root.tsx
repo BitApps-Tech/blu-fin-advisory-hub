@@ -19,6 +19,8 @@ import { Toaster } from "sonner";
 import { absoluteUrl, SITE_URL } from "../lib/seo";
 import { CONTACT } from "../lib/contact";
 import { COMPANY } from "../lib/company";
+import { DeferredTidio } from "../components/DeferredTidio";
+import { FontLoader } from "../components/FontLoader";
 
 const ORG_JSON_LD = {
   "@context": "https://schema.org",
@@ -144,10 +146,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap",
-      },
+      { rel: "dns-prefetch", href: "https://code.tidio.co" },
     ],
     scripts: [
       {
@@ -171,7 +170,6 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
-        <script src="https://code.tidio.co/vxue7ykeev7yoeznacaxqponmi6cdh9f.js" async />
       </body>
     </html>
   );
@@ -191,6 +189,8 @@ function RootComponent() {
       {/* HeadContent also covers SPA/cPanel (no RootShell / Scripts) */}
       <HeadContent />
       <I18nProvider>
+        <FontLoader />
+        {!isAdmin && <DeferredTidio />}
         <div className="flex min-h-screen flex-col">
           {!isAdmin && <SiteHeader />}
           <main className="flex-1">

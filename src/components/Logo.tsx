@@ -12,6 +12,9 @@ export function Logo({ variant = "dark", className }: LogoProps) {
     <img
       src={darkLogo}
       alt="BluFin Capital Advisory"
+      width={320}
+      height={128}
+      decoding="async"
       className={cn(
         "h-24 w-auto object-contain md:h-32",
         variant === "light" && "brightness-0 invert",
