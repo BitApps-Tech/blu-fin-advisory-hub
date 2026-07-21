@@ -5,6 +5,7 @@ import { AboutPageNav } from "../../../components/AboutPageNav";
 import { MidContactBanner } from "../../../components/MidContactBanner";
 import { TEAM_PROFILES, memberInitials } from "../../../lib/team";
 import { getTeamDetail, teamGroupPath, TEAM_DETAILS } from "../../../lib/team-details";
+import { pageLinks, pageOgUrl } from "../../../lib/seo";
 import type { TeamMember } from "../../../components/TeamSection";
 
 const MEMBER_PAGE_NAMES: Record<string, string> = {
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/about/team/$memberId")({
   },
   head: ({ params }) => {
     const name = MEMBER_PAGE_NAMES[params.memberId] ?? "Team member";
+    const path = `/about/team/${params.memberId}`;
     return {
       meta: [
         { title: `${name} — BluFin Capital Advisory` },
@@ -34,9 +36,9 @@ export const Route = createFileRoute("/about/team/$memberId")({
           content: getTeamDetail(params.memberId)?.hoverBio ?? "",
         },
         { property: "og:title", content: `${name} — BluFin Capital Advisory` },
-        { property: "og:url", content: `/about/team/${params.memberId}` },
+        pageOgUrl(path),
       ],
-      links: [{ rel: "canonical", href: `/about/team/${params.memberId}` }],
+      links: pageLinks(path),
     };
   },
   component: TeamMemberPage,

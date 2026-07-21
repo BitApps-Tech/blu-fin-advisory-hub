@@ -9,6 +9,7 @@ import photoCard1 from "../assets/photo-ecma-ceremony.png";
 import photoCard2 from "../assets/photo-team-certificate.png";
 import photoCard3 from "../assets/photo-ecma-trio.png";
 import photoCard4 from "../assets/photo-signing-alt.png";
+import { pageLinks, pageOgUrl } from "../lib/seo";
 
 const ARTICLE_IMAGES = [photoCard1, photoCard2, photoCard3, photoCard4];
 
@@ -26,9 +27,9 @@ export const Route = createFileRoute("/insights")({
       },
       { property: "og:title", content: "Insights & Newsroom — BluFin Capital Advisory" },
       { property: "og:description", content: "Research, commentary, and announcements." },
-      { property: "og:url", content: "/insights" },
+      pageOgUrl("/insights"),
     ],
-    links: [{ rel: "canonical", href: "/insights" }],
+    links: pageLinks("/insights"),
   }),
   component: Insights,
 });

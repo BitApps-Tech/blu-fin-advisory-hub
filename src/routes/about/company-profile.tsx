@@ -5,6 +5,7 @@ import { CONTACT } from "../../lib/contact";
 import { BOARD_COMPOSITION, CORE_SERVICES, STRUCTURE_INTRO } from "../../lib/organogram";
 import { MidContactBanner } from "../../components/MidContactBanner";
 import { AboutPageNav } from "../../components/AboutPageNav";
+import { pageLinks, pageOgUrl } from "../../lib/seo";
 
 export const Route = createFileRoute("/about/company-profile")({
   head: () => ({
@@ -15,9 +16,9 @@ export const Route = createFileRoute("/about/company-profile")({
         content: "Legal details, ownership, services, and organizational structure of BluFin Capital Advisory PLC.",
       },
       { property: "og:title", content: "Company Profile — BluFin Capital Advisory" },
-      { property: "og:url", content: "/about/company-profile" },
+      pageOgUrl("/about/company-profile"),
     ],
-    links: [{ rel: "canonical", href: "/about/company-profile" }],
+    links: pageLinks("/about/company-profile"),
   }),
   component: CompanyProfile,
 });

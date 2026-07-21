@@ -6,6 +6,7 @@ import { leadStore, uid } from "../lib/mock-store";
 import { CONTACT } from "../lib/contact";
 import { SocialLinks } from "../components/SocialLinks";
 import { useI18n } from "../i18n";
+import { pageLinks, pageOgUrl } from "../lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -13,9 +14,9 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact — BluFin Capital Advisory" },
       { name: "description", content: "Request a confidential consultation with a senior partner at BluFin Capital Advisory." },
       { property: "og:title", content: "Contact — BluFin Capital Advisory" },
-      { property: "og:url", content: "/contact" },
+      pageOgUrl("/contact"),
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: pageLinks("/contact"),
   }),
   component: Contact,
 });

@@ -1,8 +1,14 @@
 Options -MultiViews
 RewriteEngine On
 
+# Serve real files (robots.txt, sitemap.xml, assets, etc.) as-is
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
+# Explicit SEO files (in case rewrite rules otherwise catch them)
+RewriteRule ^robots\.txt$ - [L]
+RewriteRule ^sitemap\.xml$ - [L]
+
+# SPA fallback
 RewriteRule ^ index.html [L]

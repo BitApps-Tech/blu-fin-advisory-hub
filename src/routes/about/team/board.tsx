@@ -5,6 +5,7 @@ import { TeamSection, type TeamMember } from "../../../components/TeamSection";
 import { AboutPageNav } from "../../../components/AboutPageNav";
 import { MidContactBanner } from "../../../components/MidContactBanner";
 import { BOARD_IDS } from "../../../lib/team";
+import { pageLinks, pageOgUrl } from "../../../lib/seo";
 
 export const Route = createFileRoute("/about/team/board")({
   head: () => ({
@@ -16,9 +17,9 @@ export const Route = createFileRoute("/about/team/board")({
           "Independent board oversight anchoring BluFin's governance, accountability, and long-term stewardship.",
       },
       { property: "og:title", content: "Board of Directors — BluFin Capital Advisory" },
-      { property: "og:url", content: "/about/team/board" },
+      pageOgUrl("/about/team/board"),
     ],
-    links: [{ rel: "canonical", href: "/about/team/board" }],
+    links: pageLinks("/about/team/board"),
   }),
   component: BoardPage,
 });

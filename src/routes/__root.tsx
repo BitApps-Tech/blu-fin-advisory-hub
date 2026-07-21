@@ -16,6 +16,28 @@ import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { I18nProvider, useI18n } from "../i18n";
 import { Toaster } from "sonner";
+import { absoluteUrl, SITE_URL } from "../lib/seo";
+import { CONTACT } from "../lib/contact";
+import { COMPANY } from "../lib/company";
+
+const ORG_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  name: COMPANY.tradingName,
+  legalName: COMPANY.legalName,
+  url: SITE_URL,
+  logo: absoluteUrl("/favicon.png"),
+  email: CONTACT.email,
+  telephone: CONTACT.phoneDisplay,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Kidus Building, 3rd Floor, Kazanchis, Jomo Kenyatta Street",
+    addressLocality: "Addis Ababa",
+    addressCountry: "ET",
+  },
+  description: COMPANY.mission,
+  areaServed: "Ethiopia",
+};
 
 function NotFoundComponent() {
   const { t } = useI18n();
@@ -79,8 +101,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "To deliver ethical, insightful, and compliant investment and transaction advisory services that empower informed financial decisions and contribute to the robust development of the Ethiopian capital market.",
+          "ECMA-licensed Securities Investment Advisor delivering ethical, insightful, and compliant investment and transaction advisory for Ethiopia's capital market.",
       },
+      { name: "theme-color", content: "#1F3E72" },
       {
         property: "og:title",
         content: "BluFin Capital Advisory — Institutional Capital Markets Advisory",
@@ -88,16 +111,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "To deliver ethical, insightful, and compliant investment and transaction advisory services that empower informed financial decisions and contribute to the robust development of the Ethiopian capital market.",
+          "ECMA-licensed Securities Investment Advisor delivering ethical, insightful, and compliant investment and transaction advisory for Ethiopia's capital market.",
       },
       { property: "og:site_name", content: "BluFin Capital Advisory" },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
         content: "BluFin Capital Advisory — Institutional Capital Markets Advisory",
       },
-      { name: "twitter:description", content: "ECMA-licensed Securities Investment Advisor." },
+      {
+        name: "twitter:description",
+        content: "ECMA-licensed Securities Investment Advisor.",
+      },
       {
         property: "og:image",
         content:
@@ -119,6 +147,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(ORG_JSON_LD),
       },
     ],
   }),

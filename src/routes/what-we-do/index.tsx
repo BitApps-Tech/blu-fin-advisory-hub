@@ -4,14 +4,21 @@ import { useI18n } from "../../i18n";
 import { getPractices } from "../../lib/what-we-do";
 import photoTeam from "../../assets/photo-signing.png";
 import { MidContactBanner } from "../../components/MidContactBanner";
+import { pageLinks, pageOgUrl } from "../../lib/seo";
 
 export const Route = createFileRoute("/what-we-do/")({
   head: () => ({
     meta: [
       { title: "What We Do — BluFin Capital Advisory" },
-      { property: "og:url", content: "/what-we-do" },
+      {
+        name: "description",
+        content:
+          "Listing & capital markets, corporate finance, and M&A advisory from BluFin Capital Advisory PLC.",
+      },
+      { property: "og:title", content: "What We Do — BluFin Capital Advisory" },
+      pageOgUrl("/what-we-do"),
     ],
-    links: [{ rel: "canonical", href: "/what-we-do" }],
+    links: pageLinks("/what-we-do"),
   }),
   component: WhatWeDo,
 });

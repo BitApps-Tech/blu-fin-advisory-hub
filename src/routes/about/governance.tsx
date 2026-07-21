@@ -4,6 +4,7 @@ import { BOARD_COMMITTEES, GOVERNANCE_INTRO } from "../../lib/organogram";
 import { MidContactBanner } from "../../components/MidContactBanner";
 import { AboutPageNav } from "../../components/AboutPageNav";
 import { Organogram } from "../../components/Organogram";
+import { pageLinks, pageOgUrl } from "../../lib/seo";
 
 export const Route = createFileRoute("/about/governance")({
   head: () => ({
@@ -15,9 +16,9 @@ export const Route = createFileRoute("/about/governance")({
           "BluFin Capital Advisory governance structure, interactive organogram, and board committees.",
       },
       { property: "og:title", content: "Governance & Organogram — BluFin Capital Advisory" },
-      { property: "og:url", content: "/about/governance" },
+      pageOgUrl("/about/governance"),
     ],
-    links: [{ rel: "canonical", href: "/about/governance" }],
+    links: pageLinks("/about/governance"),
   }),
   component: GovernancePage,
 });

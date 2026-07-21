@@ -4,6 +4,7 @@ import { ArrowUpRight, Landmark, Building2, Handshake } from "lucide-react";
 import { useI18n } from "../i18n";
 import { getPractices } from "../lib/what-we-do";
 import { COMPANY } from "../lib/company";
+import { pageLinks, pageOgUrl } from "../lib/seo";
 import { AwardsSection } from "../components/AwardsSection";
 import { MidContactBanner } from "../components/MidContactBanner";
 import { Reveal } from "../components/Reveal";
@@ -19,9 +20,9 @@ export const Route = createFileRoute("/")({
       { title: "BluFin Capital Advisory — Securities Investment Advisor" },
       { name: "description", content: COMPANY.mission },
       { property: "og:title", content: "BluFin Capital Advisory — Securities Investment Advisor" },
-      { property: "og:url", content: "/" },
+      pageOgUrl("/"),
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: pageLinks("/"),
   }),
   component: Home,
 });
@@ -221,7 +222,7 @@ function Home() {
                         to={s.to}
                         className="link-more mt-6 inline-flex items-center gap-1 text-xs uppercase tracking-widest text-navy"
                       >
-                        {t.common.learnMore}{" "}
+                        {s.short}
                         <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </Link>
                     </Reveal>

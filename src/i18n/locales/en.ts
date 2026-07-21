@@ -375,7 +375,7 @@ export const en: Dictionary = {
         bio: "Chief Research Officer — PhD in Financial Economics; published researcher in FinTech, financial inclusion, and capital market development.",
       },
     ],
-    teamMore: "More",
+    teamMore: "View full profile",
     teamBack: "Back to team",
     teamEducation: "Education",
     teamExperience: "Key experience",

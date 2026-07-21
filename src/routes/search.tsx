@@ -5,6 +5,7 @@ import { z } from "zod";
 import { articleStore, ensureSeeded, type Article } from "../lib/mock-store";
 import { searchSite, type SearchHit } from "../lib/site-search";
 import { useI18n } from "../i18n";
+import { pageLinks, pageOgUrl } from "../lib/seo";
 
 const searchSchema = z.object({
   q: z.string().optional().catch(""),
@@ -15,9 +16,10 @@ export const Route = createFileRoute("/search")({
   head: () => ({
     meta: [
       { title: "Search — BluFin Capital Advisory" },
-      { property: "og:url", content: "/search" },
+      { name: "robots", content: "noindex, follow" },
+      pageOgUrl("/search"),
     ],
-    links: [{ rel: "canonical", href: "/search" }],
+    links: pageLinks("/search"),
   }),
   component: SearchPage,
 });

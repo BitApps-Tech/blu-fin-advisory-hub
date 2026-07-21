@@ -3,14 +3,21 @@ import { ArrowUpRight } from "lucide-react";
 import { useI18n } from "../i18n";
 import { CONTACT } from "../lib/contact";
 import { MidContactBanner } from "../components/MidContactBanner";
+import { pageLinks, pageOgUrl } from "../lib/seo";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
     meta: [
       { title: "Careers — BluFin Capital Advisory" },
-      { property: "og:url", content: "/careers" },
+      {
+        name: "description",
+        content:
+          "Join BluFin Capital Advisory — careers with Ethiopia's ECMA-licensed securities investment advisor.",
+      },
+      { property: "og:title", content: "Careers — BluFin Capital Advisory" },
+      pageOgUrl("/careers"),
     ],
-    links: [{ rel: "canonical", href: "/careers" }],
+    links: pageLinks("/careers"),
   }),
   component: Careers,
 });

@@ -34,7 +34,7 @@ export function SocialLinks({ className, iconClassName }: SocialLinksProps) {
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={item.name}
+            aria-label={`BluFin Capital Advisory on ${item.name}`}
             className="flex h-8 w-8 items-center justify-center rounded-full opacity-70 transition-all duration-300 hover:bg-white/15 hover:opacity-100"
           >
             <Icon className={cn("h-4 w-4", iconClassName)} />

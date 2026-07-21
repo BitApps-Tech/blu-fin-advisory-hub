@@ -271,7 +271,7 @@ export function SiteHeader() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={name}
+                    aria-label={`BluFin Capital Advisory on ${name}`}
                     className={cn(
                       "flex h-6 w-6 items-center justify-center text-white/85 transition-colors hover:text-white sm:h-7 sm:w-7",
                       index >= 2 && "hidden min-[400px]:flex",
@@ -294,7 +294,11 @@ export function SiteHeader() {
             scrolled ? "h-28" : "h-40",
           )}
         >
-          <Link to="/" className="shrink-0 transition-opacity hover:opacity-80">
+          <Link
+            to="/"
+            aria-label="BluFin Capital Advisory — Home"
+            className="shrink-0 transition-opacity hover:opacity-80"
+          >
             <Logo
               className={cn(
                 "transition-[height] duration-300",

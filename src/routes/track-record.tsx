@@ -6,6 +6,7 @@ import { AtAGlance } from "../components/AtAGlance";
 import { MidContactBanner } from "../components/MidContactBanner";
 import { useI18n } from "../i18n";
 import photoTeamCert from "../assets/photo-team-certificate.png";
+import { pageLinks, pageOgUrl } from "../lib/seo";
 
 export const Route = createFileRoute("/track-record")({
   head: () => ({
@@ -18,9 +19,9 @@ export const Route = createFileRoute("/track-record")({
       },
       { property: "og:title", content: "Track Record — BluFin Capital Advisory" },
       { property: "og:description", content: "Interactive ledger of completed advisory mandates." },
-      { property: "og:url", content: "/track-record" },
+      pageOgUrl("/track-record"),
     ],
-    links: [{ rel: "canonical", href: "/track-record" }],
+    links: pageLinks("/track-record"),
   }),
   component: TrackRecord,
 });

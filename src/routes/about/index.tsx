@@ -6,6 +6,7 @@ import photoEcma from "../../assets/photo-ecma-license.png";
 import photoTeam from "../../assets/photo-team-milestone.png";
 import { MidContactBanner } from "../../components/MidContactBanner";
 import { AboutPageNav } from "../../components/AboutPageNav";
+import { pageLinks, pageOgUrl } from "../../lib/seo";
 
 export const Route = createFileRoute("/about/")({
   head: () => ({
@@ -13,9 +14,9 @@ export const Route = createFileRoute("/about/")({
       { title: "About Us — BluFin Capital Advisory" },
       { name: "description", content: COMPANY.mission },
       { property: "og:title", content: "About Us — BluFin Capital Advisory" },
-      { property: "og:url", content: "/about" },
+      pageOgUrl("/about"),
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: pageLinks("/about"),
   }),
   component: About,
 });

@@ -13,7 +13,7 @@ export function SiteFooter() {
     <footer className="bg-[#8A8886] text-navy-foreground">
       <div className="container-editorial grid gap-12 py-16 md:grid-cols-4">
         <div className="md:col-span-1">
-          <Link to="/" className="inline-block">
+          <Link to="/" aria-label="BluFin Capital Advisory — Home" className="inline-block">
             <Logo variant="light" className="h-24 w-auto md:h-28" />
           </Link>
           <p className="-mt-8 max-w-xs text-sm leading-relaxed text-white/70 md:-mt-10">

@@ -5,6 +5,7 @@ import { TeamSection, type TeamMember } from "../../../components/TeamSection";
 import { AboutPageNav } from "../../../components/AboutPageNav";
 import { MidContactBanner } from "../../../components/MidContactBanner";
 import { APPOINTED_IDS } from "../../../lib/team";
+import { pageLinks, pageOgUrl } from "../../../lib/seo";
 
 export const Route = createFileRoute("/about/team/appointed")({
   head: () => ({
@@ -16,9 +17,9 @@ export const Route = createFileRoute("/about/team/appointed")({
           "BluFin's appointed representatives — CEO, Chief Compliance Officer, and Chief Research Officer.",
       },
       { property: "og:title", content: "Appointed Representatives — BluFin Capital Advisory" },
-      { property: "og:url", content: "/about/team/appointed" },
+      pageOgUrl("/about/team/appointed"),
     ],
-    links: [{ rel: "canonical", href: "/about/team/appointed" }],
+    links: pageLinks("/about/team/appointed"),
   }),
   component: AppointedPage,
 });
