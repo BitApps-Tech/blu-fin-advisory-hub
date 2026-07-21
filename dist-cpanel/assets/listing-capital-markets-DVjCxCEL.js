@@ -1,0 +1,1 @@
+import{t as e}from"./react-C4ERYxRo.js";import{t}from"./ServiceDetailPage-DUHceaSh.js";var n=e(),r=()=>(0,n.jsx)(t,{practiceKey:`listing`});export{r as component};

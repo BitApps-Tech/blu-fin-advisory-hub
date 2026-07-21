@@ -1,0 +1,1 @@
+var e=`https://blufincapitaladvisory.com`;function t(t=`/`){if(/^https?:\/\//i.test(t))return t;let n=t.startsWith(`/`)?t:`/${t}`;return`${e}${n===`/`?`/`:n}`}function n(e){return[{rel:`canonical`,href:t(e)}]}function r(e){return{property:`og:url`,content:t(e)}}export{r as i,t as n,n as r,e as t};

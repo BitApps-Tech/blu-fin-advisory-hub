@@ -1,18 +1,23 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { ArrowUpRight, Landmark, Building2, Handshake } from "lucide-react";
 import { useI18n } from "../i18n";
 import { getPractices } from "../lib/what-we-do";
 import { COMPANY } from "../lib/company";
 import { pageLinks, pageOgUrl } from "../lib/seo";
-import { AwardsSection } from "../components/AwardsSection";
-import { MidContactBanner } from "../components/MidContactBanner";
 import { Reveal } from "../components/Reveal";
 import photoBanner from "../assets/photo-team-milestone.png";
 import photoEcma from "../assets/photo-ecma-license.png";
 import photoSigning from "../assets/photo-signing.png";
 import photoCeremony from "../assets/photo-ecma-ceremony.png";
 import photoTeamCert from "../assets/photo-team-certificate.png";
+
+const MidContactBanner = lazy(() =>
+  import("../components/MidContactBanner").then((m) => ({ default: m.MidContactBanner })),
+);
+const AwardsSection = lazy(() =>
+  import("../components/AwardsSection").then((m) => ({ default: m.AwardsSection })),
+);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,55 +34,62 @@ export const Route = createFileRoute("/")({
 
 const PRACTICE_ICONS = [Landmark, Building2, Handshake] as const;
 
+const HERO_EXTRA: { src: string; effect: string; alt: string }[] = [
+  { src: photoEcma, effect: "hero-banner-anim-slide-left", alt: "ECMA license" },
+  { src: photoSigning, effect: "hero-banner-anim-slide-up", alt: "Signing ceremony" },
+  { src: photoCeremony, effect: "hero-banner-anim-zoom", alt: "ECMA ceremony" },
+  { src: photoTeamCert, effect: "hero-banner-anim-fade-soft", alt: "Team certificate" },
+];
+
 function Home() {
   const { t } = useI18n();
   const practices = getPractices(t);
   const c = t.company;
 
+  const [showExtras, setShowExtras] = useState(false);
+  const [heroIndex, setHeroIndex] = useState(0);
+
   const heroSlides = useMemo(
     () => [
       { src: photoBanner, effect: "hero-banner-anim-fade", alt: "BluFin milestone" },
-      { src: photoEcma, effect: "hero-banner-anim-slide-left", alt: "ECMA license" },
-      { src: photoSigning, effect: "hero-banner-anim-slide-up", alt: "Signing ceremony" },
-      { src: photoCeremony, effect: "hero-banner-anim-zoom", alt: "ECMA ceremony" },
-      { src: photoTeamCert, effect: "hero-banner-anim-fade-soft", alt: "Team certificate" },
+      ...(showExtras ? HERO_EXTRA : []),
     ],
-    [],
+    [showExtras],
   );
 
-  const [heroIndex, setHeroIndex] = useState(0);
-  const [heroReady, setHeroReady] = useState(false);
-
-  // Delay slideshow so the first paint / LCP isn't competing with extra images.
   useEffect(() => {
     const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
-    if (reducedMotion || heroSlides.length <= 1) return;
+    if (reducedMotion) return;
 
-    let intervalId: number | undefined;
-    let started = false;
-
-    const start = () => {
-      if (started) return;
-      started = true;
-      setHeroReady(true);
-      intervalId = window.setInterval(() => {
-        setHeroIndex((v) => (v + 1) % heroSlides.length);
-      }, 5500);
+    let cancelled = false;
+    const enable = () => {
+      if (!cancelled) setShowExtras(true);
     };
 
     const idleId =
       "requestIdleCallback" in window
-        ? window.requestIdleCallback(start, { timeout: 4000 })
+        ? window.requestIdleCallback(enable, { timeout: 4000 })
         : undefined;
-    const timeoutId = window.setTimeout(start, 3200);
+    const timeoutId = window.setTimeout(enable, 3000);
 
     return () => {
+      cancelled = true;
       window.clearTimeout(timeoutId);
-      if (intervalId) window.clearInterval(intervalId);
       if (idleId !== undefined && "cancelIdleCallback" in window) {
         window.cancelIdleCallback(idleId);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+    if (reducedMotion || heroSlides.length <= 1) return;
+
+    const id = window.setInterval(() => {
+      setHeroIndex((v) => (v + 1) % heroSlides.length);
+    }, 5500);
+
+    return () => window.clearInterval(id);
   }, [heroSlides.length]);
 
   return (
@@ -139,10 +151,8 @@ function Home() {
 
       {/* Sticky banner: image stays in the background while page content scrolls over it */}
       <div className="relative isolate">
-        <section className="sticky top-0 z-0 h-[100svh] overflow-hidden bg-navy" aria-hidden={false}>
+        <section className="sticky top-0 z-0 h-[100svh] overflow-hidden bg-navy">
           {heroSlides.map((slide, i) => {
-            const shouldLoad = i === 0 || heroReady;
-            if (!shouldLoad) return null;
             const active = i === heroIndex;
             return (
               <img
@@ -266,9 +276,13 @@ function Home() {
             </div>
           </section>
 
-          <MidContactBanner />
+          <Suspense fallback={null}>
+            <MidContactBanner />
+          </Suspense>
 
-          <AwardsSection />
+          <Suspense fallback={null}>
+            <AwardsSection />
+          </Suspense>
 
           <section className="hairline-t hairline-b bg-panel">
             <div className="container-editorial grid gap-0 py-0 md:grid-cols-2">

@@ -11,12 +11,64 @@
     <link rel="canonical" href="https://blufincapitaladvisory.com/" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="dns-prefetch" href="https://code.tidio.co" />
+    <style>
+      /* Critical first-paint shell — visible before the SPA JS downloads */
+      html,
+      body {
+        margin: 0;
+        background: #fff;
+        color: #2a2f3a;
+      }
+      #boot-shell {
+        box-sizing: border-box;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 4.5rem 1.25rem 3.5rem;
+        font-family: Georgia, "Times New Roman", serif;
+      }
+      #boot-shell .eyebrow {
+        margin: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 0.6875rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #8a8886;
+      }
+      #boot-shell h1 {
+        margin: 1.5rem 0 0;
+        max-width: 18ch;
+        font-size: clamp(2.4rem, 9vw, 4.25rem);
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        color: #1f3e72;
+      }
+      #boot-shell p {
+        margin: 1.5rem 0 0;
+        max-width: 36rem;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.65;
+        color: #6b7280;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="boot-shell">
+        <p class="eyebrow">Licensed Securities Investment Advisor · ECMA</p>
+        <h1>Ethical, insightful, and compliant advisory for Ethiopia's capital market.</h1>
+        <p>
+          To deliver ethical, insightful, and compliant investment and transaction advisory
+          services that empower informed financial decisions and contribute to the robust
+          development of the Ethiopian capital market.
+        </p>
+      </div>
+    </div>
     <script type="module" src="/src/spa-main.tsx"></script>
   </body>
 </html>

@@ -7,15 +7,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { am } from "./locales/am";
 import { en, type Dictionary } from "./locales/en";
-import { om } from "./locales/om";
-import { so } from "./locales/so";
-import { ti } from "./locales/ti";
-import { zh } from "./locales/zh";
 import { isLocale, LOCALE_STORAGE_KEY, LOCALES, type Locale } from "./types";
-
-const dictionaries: Record<Locale, Dictionary> = { en, am, om, ti, so, zh };
 
 type I18nContextValue = {
   locale: Locale;
@@ -25,6 +18,37 @@ type I18nContextValue = {
 };
 
 const I18nContext = createContext<I18nContextValue | null>(null);
+
+const cache: Partial<Record<Locale, Dictionary>> = { en };
+
+async function loadDictionary(locale: Locale): Promise<Dictionary> {
+  const hit = cache[locale];
+  if (hit) return hit;
+
+  let dict: Dictionary = en;
+  switch (locale) {
+    case "am":
+      dict = (await import("./locales/am")).am;
+      break;
+    case "om":
+      dict = (await import("./locales/om")).om;
+      break;
+    case "ti":
+      dict = (await import("./locales/ti")).ti;
+      break;
+    case "so":
+      dict = (await import("./locales/so")).so;
+      break;
+    case "zh":
+      dict = (await import("./locales/zh")).zh;
+      break;
+    default:
+      dict = en;
+  }
+
+  cache[locale] = dict;
+  return dict;
+}
 
 function readStoredLocale(): Locale {
   if (typeof window === "undefined") return "en";
@@ -39,11 +63,25 @@ function readStoredLocale(): Locale {
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
+  const [dict, setDict] = useState<Dictionary>(en);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    setLocaleState(readStoredLocale());
-    setReady(true);
+    const initial = readStoredLocale();
+    setLocaleState(initial);
+    if (initial === "en") {
+      setReady(true);
+      return;
+    }
+    let cancelled = false;
+    void loadDictionary(initial).then((d) => {
+      if (cancelled) return;
+      setDict(d);
+      setReady(true);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const setLocale = useCallback((next: Locale) => {
@@ -56,6 +94,11 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     if (typeof document !== "undefined") {
       document.documentElement.lang = next;
     }
+    if (next === "en") {
+      setDict(en);
+      return;
+    }
+    void loadDictionary(next).then(setDict);
   }, []);
 
   useEffect(() => {
@@ -67,10 +110,10 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     () => ({
       locale,
       setLocale,
-      t: dictionaries[locale],
+      t: dict,
       locales: LOCALES,
     }),
-    [locale, setLocale],
+    [locale, setLocale, dict],
   );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;

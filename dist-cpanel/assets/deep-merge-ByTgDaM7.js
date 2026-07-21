@@ -1,0 +1,1 @@
+function e(t,n){let r={...t};for(let i of Object.keys(n)){let a=n[i],o=t[i];a&&typeof a==`object`&&!Array.isArray(a)&&o&&typeof o==`object`&&!Array.isArray(o)?r[i]=e(o,a):a!==void 0&&(r[i]=a)}return r}export{e as t};

@@ -20,21 +20,38 @@ function injectStylesheet(href: string, id: string) {
     link.media = "all";
   };
   document.head.appendChild(link);
-  // Fallback if onload never fires
   window.setTimeout(() => {
     if (link.media !== "all") link.media = "all";
   }, 2000);
 }
 
 /**
- * Loads critical fonts without blocking first paint.
+ * Loads fonts after first paint so FCP/LCP are not blocked by webfonts.
  * Ethiopic face is loaded only when Amharic/Tigrinya is active.
  */
 export function FontLoader() {
   const { locale } = useI18n();
 
   useEffect(() => {
-    injectStylesheet(CRITICAL_FONTS, "blufin-fonts-critical");
+    let cancelled = false;
+    const load = () => {
+      if (cancelled) return;
+      injectStylesheet(CRITICAL_FONTS, "blufin-fonts-critical");
+    };
+
+    const idleId =
+      "requestIdleCallback" in window
+        ? window.requestIdleCallback(load, { timeout: 2500 })
+        : undefined;
+    const timeoutId = window.setTimeout(load, 1200);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+      if (idleId !== undefined && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+      }
+    };
   }, []);
 
   useEffect(() => {
