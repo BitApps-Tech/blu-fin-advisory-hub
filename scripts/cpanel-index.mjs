@@ -65,7 +65,7 @@ if (existsSync(htaccessSrc)) {
   console.log("Copied .htaccess");
 }
 
-for (const file of ["robots.txt", "sitemap.xml"]) {
+for (const file of ["robots.txt", "sitemap.xml", "llms.txt"]) {
   const src = join(process.cwd(), "public", file);
   if (existsSync(src)) {
     copyFileSync(src, join(publicDir, file));

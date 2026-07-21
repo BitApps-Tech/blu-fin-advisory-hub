@@ -16,7 +16,7 @@ if (existsSync(spaHtml)) {
   console.log("Renamed index.cpanel.html → index.html");
 }
 
-for (const file of [".htaccess", "robots.txt", "sitemap.xml"]) {
+for (const file of [".htaccess", "robots.txt", "sitemap.xml", "llms.txt"]) {
   const src = join(publicDir, file);
   if (existsSync(src)) {
     copyFileSync(src, join(outDir, file));

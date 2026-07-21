@@ -1,0 +1,10 @@
+-- Reorder menu_categories display order (run on existing mamokacha database)
+UPDATE `menu_categories` SET `order` = 1 WHERE `slug` = 'hot-drinks';
+UPDATE `menu_categories` SET `order` = 2 WHERE `slug` = 'breakfast';
+UPDATE `menu_categories` SET `order` = 3 WHERE `slug` = 'sandwiches';
+UPDATE `menu_categories` SET `order` = 4 WHERE `slug` = 'lasagna-and-pizza';
+UPDATE `menu_categories` SET `order` = 5 WHERE `slug` = 'salads';
+UPDATE `menu_categories` SET `order` = 6 WHERE `slug` = 'juices';
+UPDATE `menu_categories` SET `order` = 7 WHERE `slug` = 'pastry';
+UPDATE `menu_categories` SET `order` = 8 WHERE `slug` = 'cookies';
+UPDATE `menu_categories` SET `order` = 9 WHERE `slug` = 'cold-drinks';

@@ -36,6 +36,7 @@ RewriteRule ^ - [L]
 
 RewriteRule ^robots\.txt$ - [L]
 RewriteRule ^sitemap\.xml$ - [L]
+RewriteRule ^llms\.txt$ - [L]
 
 # SPA fallback
 RewriteRule ^ index.html [L]

@@ -113,9 +113,9 @@ const AboutCompanyProfileRoute = AboutCompanyProfileRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutTeamIndexRoute = AboutTeamIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AboutTeamRoute,
+  id: '/about/team/',
+  path: '/about/team/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AboutTeamBoardRoute = AboutTeamBoardRouteImport.update({
   id: '/about/team/board',
@@ -289,6 +289,7 @@ export interface RootRouteChildren {
   AboutTeamMemberIdRoute: typeof AboutTeamMemberIdRoute
   AboutTeamAppointedRoute: typeof AboutTeamAppointedRoute
   AboutTeamBoardRoute: typeof AboutTeamBoardRoute
+  AboutTeamIndexRoute: typeof AboutTeamIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -407,10 +408,10 @@ declare module '@tanstack/react-router' {
     }
     '/about/team/': {
       id: '/about/team/'
-      path: '/'
+      path: '/about/team'
       fullPath: '/about/team/'
       preLoaderRoute: typeof AboutTeamIndexRouteImport
-      parentRoute: typeof AboutTeamRoute
+      parentRoute: typeof rootRouteImport
     }
     '/about/team/board': {
       id: '/about/team/board'
@@ -456,6 +457,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutTeamMemberIdRoute: AboutTeamMemberIdRoute,
   AboutTeamAppointedRoute: AboutTeamAppointedRoute,
   AboutTeamBoardRoute: AboutTeamBoardRoute,
+  AboutTeamIndexRoute: AboutTeamIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

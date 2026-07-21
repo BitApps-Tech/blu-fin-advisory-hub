@@ -1,0 +1,25 @@
+# BluFin Capital Advisory
+
+BluFin Capital Advisory PLC is an ECMA-licensed Securities Investment Advisor in Ethiopia, providing ethical, insightful, and compliant investment and transaction advisory services.
+
+## Primary pages
+
+- [Home](https://blufincapitaladvisory.com/): Overview of BluFin Capital Advisory and its mission for Ethiopia's capital market
+- [About Us](https://blufincapitaladvisory.com/about): Firm overview, vision, mission, and values
+- [Company Profile](https://blufincapitaladvisory.com/about/company-profile): Legal details, ownership, services, and structure
+- [Governance](https://blufincapitaladvisory.com/about/governance): Organogram, reporting lines, and board committees
+- [Board of Directors](https://blufincapitaladvisory.com/about/team/board): Board members and profiles
+- [Appointed Representatives](https://blufincapitaladvisory.com/about/team/appointed): CEO, Chief Compliance Officer, and Chief Research Officer
+- [What We Do](https://blufincapitaladvisory.com/what-we-do): Advisory practice areas
+- [Listing & Capital Markets](https://blufincapitaladvisory.com/what-we-do/listing-capital-markets): Listing and capital markets solutions
+- [Corporate Finance](https://blufincapitaladvisory.com/what-we-do/corporate-finance): Corporate finance and advisory
+- [M&A and Deals](https://blufincapitaladvisory.com/what-we-do/ma-deals): Mergers, acquisitions, and transaction advisory
+- [Insights](https://blufincapitaladvisory.com/insights): Research, commentary, and announcements
+- [Track Record](https://blufincapitaladvisory.com/track-record): Selected advisory transactions
+- [Careers](https://blufincapitaladvisory.com/careers): Working at BluFin
+- [Contact](https://blufincapitaladvisory.com/contact): Request a consultation
+
+## Optional
+
+- [Sitemap](https://blufincapitaladvisory.com/sitemap.xml): Machine-readable list of public URLs
+- [Robots](https://blufincapitaladvisory.com/robots.txt): Crawler guidance
