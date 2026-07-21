@@ -262,3 +262,84 @@
     transform: scaleX(1);
   }
 }
+
+/* Home hero banner slideshow animations */
+.hero-banner-anim-fade {
+  animation: heroBannerFade 1200ms ease-in-out both;
+}
+@keyframes heroBannerFade {
+  0% {
+    opacity: 0;
+    transform: scale(1.07);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.hero-banner-anim-fade-soft {
+  animation: heroBannerFadeSoft 1200ms ease-in-out both;
+}
+@keyframes heroBannerFadeSoft {
+  0% {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.hero-banner-anim-slide-left {
+  animation: heroBannerSlideLeft 1200ms ease-in-out both;
+}
+@keyframes heroBannerSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-28px) scale(1.07);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1.05);
+  }
+}
+
+.hero-banner-anim-slide-up {
+  animation: heroBannerSlideUp 1200ms ease-in-out both;
+}
+@keyframes heroBannerSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(1.07);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1.05);
+  }
+}
+
+.hero-banner-anim-zoom {
+  animation: heroBannerZoom 1200ms ease-in-out both;
+}
+@keyframes heroBannerZoom {
+  0% {
+    opacity: 0;
+    transform: scale(1.16);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner-anim-fade,
+  .hero-banner-anim-fade-soft,
+  .hero-banner-anim-slide-left,
+  .hero-banner-anim-slide-up,
+  .hero-banner-anim-zoom {
+    animation: none !important;
+  }
+}

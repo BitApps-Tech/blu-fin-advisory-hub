@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowUpRight, Landmark, Building2, Handshake } from "lucide-react";
 import { useI18n } from "../i18n";
 import { getPractices } from "../lib/what-we-do";
@@ -10,6 +11,7 @@ import photoBanner from "../assets/photo-team-milestone.png";
 import photoEcma from "../assets/photo-ecma-license.png";
 import photoSigning from "../assets/photo-signing.png";
 import photoCeremony from "../assets/photo-ecma-ceremony.png";
+import photoTeamCert from "../assets/photo-team-certificate.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,6 +32,30 @@ function Home() {
   const { t } = useI18n();
   const practices = getPractices(t);
   const c = t.company;
+
+  const heroSlides = useMemo(
+    () => [
+      { src: photoBanner, effect: "hero-banner-anim-fade", alt: "BluFin milestone" },
+      { src: photoEcma, effect: "hero-banner-anim-slide-left", alt: "ECMA license" },
+      { src: photoSigning, effect: "hero-banner-anim-slide-up", alt: "Signing ceremony" },
+      { src: photoCeremony, effect: "hero-banner-anim-zoom", alt: "ECMA ceremony" },
+      { src: photoTeamCert, effect: "hero-banner-anim-fade-soft", alt: "Team certificate" },
+    ],
+    [],
+  );
+
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+    if (reducedMotion || heroSlides.length <= 1) return;
+
+    const id = window.setInterval(() => {
+      setHeroIndex((v) => (v + 1) % heroSlides.length);
+    }, 5500);
+
+    return () => window.clearInterval(id);
+  }, [heroSlides.length]);
 
   return (
     <>
@@ -92,9 +118,12 @@ function Home() {
       <div className="relative isolate">
         <section className="sticky top-0 z-0 h-[100svh] overflow-hidden bg-navy">
           <img
-            src={photoBanner}
-            alt=""
-            className="absolute inset-0 h-full w-full scale-105 object-cover object-[center_30%]"
+            key={heroIndex}
+            src={heroSlides[heroIndex]?.src}
+            alt={heroSlides[heroIndex]?.alt ?? ""}
+            className={`absolute inset-0 h-full w-full object-cover object-[center_30%] ${
+              heroSlides[heroIndex]?.effect ?? ""
+            }`}
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-navy/10" />
           <div className="absolute inset-x-0 bottom-0">
